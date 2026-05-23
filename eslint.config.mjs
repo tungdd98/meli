@@ -1,15 +1,12 @@
 import nx from '@nx/eslint-plugin';
+import prettier from 'eslint-config-prettier';
 
 export default [
   ...nx.configs['flat/base'],
   ...nx.configs['flat/typescript'],
   ...nx.configs['flat/javascript'],
   {
-      "ignores": [
-        "**/dist",
-        "**/out-tsc",
-        "**/vite.config.*.timestamp*"
-      ]
+    ignores: ['**/dist', '**/out-tsc', '**/vite.config.*.timestamp*'],
   },
   {
     files: ['**/*.ts', '**/*.tsx', '**/*.js', '**/*.jsx'],
@@ -43,4 +40,5 @@ export default [
     // Override or add rules here
     rules: {},
   },
+  prettier,
 ];
