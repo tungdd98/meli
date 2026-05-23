@@ -44,3 +44,6 @@ Thumbs.db
 .claude/settings.local.json
 
 vite.config.*.timestamp*
+
+# TanStack Router generated
+routeTree.gen.ts
