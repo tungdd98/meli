@@ -1,4 +1,5 @@
 import type { ThemeOptions } from '@mui/material/styles';
+import { shadows } from './shadows';
 import { shape } from './shape';
 
 export const components: ThemeOptions['components'] = {
@@ -16,8 +17,8 @@ export const components: ThemeOptions['components'] = {
       sizeMedium: { height: 44 },
       sizeLarge: { height: 52 },
       containedPrimary: {
-        boxShadow: '0 1px 3px rgba(0,0,0,0.06)',
-        '&:hover': { boxShadow: '0 1px 3px rgba(0,0,0,0.06)' },
+        boxShadow: shadows[1],
+        '&:hover': { boxShadow: shadows[1] },
       },
     },
   },
@@ -68,22 +69,19 @@ export const components: ThemeOptions['components'] = {
     defaultProps: {
       fullWidth: true,
       maxWidth: false,
+      slotProps: {
+        backdrop: {
+          sx: { backgroundColor: 'rgba(0,0,0,0.3)' },
+        },
+      },
     },
     styleOverrides: {
       paper: {
         borderRadius: shape.radiusLg,
-        boxShadow: '0 8px 24px rgba(0,0,0,0.12)',
+        boxShadow: shadows[3],
         padding: 24,
         maxWidth: '90vw',
         margin: 16,
-      },
-    },
-  },
-
-  MuiBackdrop: {
-    styleOverrides: {
-      root: {
-        backgroundColor: 'rgba(0,0,0,0.3)',
       },
     },
   },
@@ -136,8 +134,8 @@ export const components: ThemeOptions['components'] = {
   MuiAlert: {
     styleOverrides: {
       root: {
-        borderRadius: 12,
-        boxShadow: '0 4px 12px rgba(0,0,0,0.08)',
+        borderRadius: shape.borderRadius,
+        boxShadow: shadows[2],
       },
       standardSuccess: {
         backgroundColor: '#ecfdf5',
