@@ -18,12 +18,15 @@
   "dependencies": {
     "@emotion/react": "11.14.0",
     "@emotion/styled": "11.14.1",
+    "@fontsource/plus-jakarta-sans": "5.2.8",
     "@mui/icons-material": "6.5.0",
     "@mui/material": "6.5.0",
+    "@mui/x-date-pickers": "8.28.7",
     "@tanstack/react-query": "5.100.13",
     "@tanstack/react-router": "1.170.7",
     "@tanstack/react-router-with-query": "1.130.17",
-    "react": "19.2.15",
+    "dayjs": "1.11.20",
+    "react": "19.2.6",
     "react-dom": "19.2.6",
     "zustand": "5.0.13"
   },
