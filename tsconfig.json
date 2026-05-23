@@ -5,6 +5,18 @@
   "references": [
     {
       "path": "./apps/web"
+    },
+    {
+      "path": "./libs/ui"
+    },
+    {
+      "path": "./libs/utils"
+    },
+    {
+      "path": "./libs/hooks"
+    },
+    {
+      "path": "./libs/api"
     }
   ]
 }

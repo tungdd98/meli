@@ -16,6 +16,13 @@
     "skipLibCheck": true,
     "strict": true,
     "target": "es2022",
-    "customConditions": ["@meli/source"]
+    "customConditions": ["@meli/source"],
+    "baseUrl": ".",
+    "paths": {
+      "@meli/api": ["libs/api/src/index.ts"],
+      "@meli/hooks": ["libs/hooks/src/index.ts"],
+      "@meli/ui": ["libs/ui/src/index.ts"],
+      "@meli/utils": ["libs/utils/src/index.ts"]
+    }
   }
 }
