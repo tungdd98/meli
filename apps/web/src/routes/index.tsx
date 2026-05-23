@@ -1,0 +1,18 @@
+import { createFileRoute } from '@tanstack/react-router';
+import Container from '@mui/material/Container';
+import Typography from '@mui/material/Typography';
+
+export const Route = createFileRoute('/')({
+  component: HomePage,
+});
+
+function HomePage() {
+  return (
+    <Container maxWidth="sm" sx={{ mt: 4 }}>
+      <Typography variant="h3" gutterBottom>
+        Meli
+      </Typography>
+      <Typography variant="body1">Welcome to Meli.</Typography>
+    </Container>
+  );
+}

@@ -9,9 +9,10 @@
     "@emotion/styled": "11.14.1",
     "@mui/icons-material": "6.5.0",
     "@mui/material": "6.5.0",
+    "@tanstack/react-router": "1.170.7",
+    "@tanstack/react-router-with-query": "1.130.17",
     "react": "^19.0.0",
-    "react-dom": "^19.0.0",
-    "react-router-dom": "6.30.3"
+    "react-dom": "^19.0.0"
   },
   "devDependencies": {
     "@babel/core": "^7.14.5",
@@ -28,6 +29,8 @@
     "@swc/cli": "~0.8.0",
     "@swc/core": "~1.15.5",
     "@swc/helpers": "~0.5.18",
+    "@tanstack/router-devtools": "1.167.0",
+    "@tanstack/router-plugin": "1.168.10",
     "@types/node": "20.19.9",
     "@types/react": "^19.0.0",
     "@types/react-dom": "^19.0.0",
