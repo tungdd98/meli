@@ -1,6 +1,5 @@
 import { createFileRoute } from '@tanstack/react-router';
-import Container from '@mui/material/Container';
-import Typography from '@mui/material/Typography';
+import { Container, Typography } from '@mui/material';
 
 export const Route = createFileRoute('/about')({
   component: AboutPage,

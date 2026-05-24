@@ -36,8 +36,13 @@ module boundaries, so import shared code through package aliases such as
 files by route (`about.tsx`, `index.tsx`) and library implementation files by
 feature under `src/lib/`.
 
+For MUI components, always import from the `@mui/material` named barrel, never from
+deep paths. Example: `import { Button, Stack, Typography } from '@mui/material'`.
+Never use `import Button from '@mui/material/Button'`.
+
 For MUI icons, always use the Rounded variant (e.g. `HomeRounded`, `SearchRounded`)
 and import via named barrel: `import { HomeRounded } from '@mui/icons-material'`.
+Never use deep paths like `import HomeRounded from '@mui/icons-material/HomeRounded'`.
 
 For border radius in `sx` props, import `shape` and use named token values:
 `borderRadius: shape.sm` (8px), `borderRadius: shape.md` (12px),
