@@ -151,6 +151,52 @@ function ShapeShowcase() {
   );
 }
 
+function ShadowShowcase() {
+  const theme = useTheme();
+  const tokens = theme.shadows
+    .map((value, index) => ({ name: `shadows[${index}]`, value }))
+    .filter(({ value }, index) => index < 4 || value !== 'none');
+
+  return (
+    <Box
+      sx={{
+        p: 2,
+        display: 'flex',
+        gap: 3,
+        flexWrap: 'wrap',
+        alignItems: 'flex-start',
+      }}
+    >
+      {tokens.map(({ name, value }) => (
+        <Box
+          key={name}
+          sx={{
+            width: 180,
+            minHeight: 128,
+            p: 2,
+            borderRadius: 2,
+            bgcolor: 'background.paper',
+            boxShadow: value,
+            border: '1px solid rgba(0,0,0,0.06)',
+            display: 'flex',
+            flexDirection: 'column',
+            justifyContent: 'flex-end',
+            gap: 1,
+          }}
+        >
+          <Typography variant="subtitle2">{name}</Typography>
+          <Typography
+            variant="caption"
+            sx={{ color: 'text.secondary', overflowWrap: 'anywhere' }}
+          >
+            {value}
+          </Typography>
+        </Box>
+      ))}
+    </Box>
+  );
+}
+
 const meta: Meta = {
   title: 'Theme',
 };
@@ -167,4 +213,8 @@ export const TypographyVariants: Story = {
 
 export const Shape: Story = {
   render: () => <ShapeShowcase />,
+};
+
+export const Shadow: Story = {
+  render: () => <ShadowShowcase />,
 };
