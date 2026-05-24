@@ -19,9 +19,9 @@ Current `shape.ts` has two issues:
 
 ## Decision
 
-**Approach:** Store named tokens as string px values directly in `theme.shape`.
+**Approach:** Store named tokens as string px values directly in `theme.shape`. Import the `shape` object and reference tokens by name.
 
-MUI's sx system resolves `borderRadius: 'md'` by looking up `theme.shape['md']`. When the resolved value is a string (e.g. `'12px'`), it is passed through to CSS as-is — no multiplier applied. This gives exact pixel control with zero MUI customization.
+MUI's `getValue` function (in `@mui/system/spacing`) returns strings as-is without any theme lookup — `sx={{ borderRadius: 'md' }}` outputs `border-radius: md` (invalid CSS). The correct usage is `sx={{ borderRadius: shape.md }}`, where `shape.md = '12px'` is a valid CSS string that MUI passes through unchanged.
 
 Numeric shorthand (`sx={{ borderRadius: 3 }}`) remains valid: MUI multiplies the number by `theme.shape.borderRadius` (base unit = 4px).
 
@@ -90,12 +90,13 @@ Changing `borderRadius` from `12` → `4` affects MUI components without explici
 ```
 ### Border Radius
 
-Use named tokens in the `sx` prop — do not use numeric shorthand:
+Import `shape` and use named tokens. Do NOT use bare string shortcuts.
 
-  ✅  sx={{ borderRadius: 'md' }}
-  ❌  sx={{ borderRadius: 3 }}   // only when no token fits
+  ✅  import { shape } from '../../theme/shape';
+      sx={{ borderRadius: shape.md }}
 
-Numeric shorthand is reserved for one-off values outside the token scale.
+  ❌  sx={{ borderRadius: 'md' }}   // MUI passes strings to CSS as-is — invalid
+  ❌  sx={{ borderRadius: 3 }}      // numeric shorthand, avoid unless no token fits
 ```
 
 ## Files Changed

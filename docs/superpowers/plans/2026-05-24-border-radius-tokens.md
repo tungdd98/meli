@@ -2,9 +2,9 @@
 
 > **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:subagent-driven-development (recommended) or superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [ ]`) syntax for tracking.
 
-**Goal:** Replace inconsistent `radiusSm/radiusLg/radiusFull` shape tokens with semantic string-px tokens (`sm`, `md`, `lg`, `full`) so `sx={{ borderRadius: 'md' }}` works natively in MUI.
+**Goal:** Replace inconsistent `radiusSm/radiusLg/radiusFull` shape tokens with semantic string-px tokens (`sm`, `md`, `lg`, `full`) and document the correct usage convention.
 
-**Architecture:** Store named tokens as string px values in `theme.shape`. MUI's sx system resolves `borderRadius: 'md'` → looks up `theme.shape['md']` → returns `'12px'` (string passthrough, no multiplier). Numeric shorthand (`borderRadius: 3`) remains valid via the base unit (`borderRadius: 4`).
+**Architecture:** Store named tokens as string px values in `theme.shape`. Import `shape` and reference tokens directly — `sx={{ borderRadius: shape.md }}` works because `shape.md = '12px'` is a valid CSS string. Note: `sx={{ borderRadius: 'md' }}` does NOT work — MUI's `getValue` returns strings as-is without theme lookup, producing invalid CSS `border-radius: md`. Numeric shorthand (`borderRadius: 3`) remains valid via the base unit (`borderRadius: 4`).
 
 **Tech Stack:** MUI v6, TypeScript module augmentation, Nx monorepo (`pnpm nx typecheck ui`).
 
@@ -365,7 +365,7 @@ git commit -m "refactor(ui): update ShapeShowcase for string-px border-radius to
 Append the following bullet after the `**Icons**` bullet in the `## Key Conventions` section:
 
 ```markdown
-- **Border Radius**: Use named tokens in `sx` prop — `sx={{ borderRadius: 'md' }}`. Available tokens: `'sm'` (8px), `'md'` (12px), `'lg'` (16px), `'full'` (9999px). Numeric shorthand only for ad-hoc values outside the token scale.
+- **Border Radius**: Import `shape` and use named tokens — `shape.sm` (8px), `shape.md` (12px), `shape.lg` (16px), `shape.full` (9999px). Example: `sx={{ borderRadius: shape.md }}`. Do not use bare string shortcuts like `borderRadius: 'md'` (MUI passes strings to CSS as-is — `'md'` is not valid CSS). Do not use numeric shorthand like `borderRadius: 3`.
 ```
 
 - [ ] **Step 2: Add convention to `AGENTS.md`**
@@ -373,7 +373,7 @@ Append the following bullet after the `**Icons**` bullet in the `## Key Conventi
 Append the following paragraph after the MUI icons paragraph in the `## Coding Style & Naming Conventions` section:
 
 ```markdown
-For border radius in `sx` props, use named tokens from `theme.shape`: `borderRadius: 'sm'` (8px), `borderRadius: 'md'` (12px), `borderRadius: 'lg'` (16px), `borderRadius: 'full'` (9999px). Avoid numeric shorthand such as `borderRadius: 3`; only use it for one-off values outside the token scale.
+For border radius, import `shape` from the theme and use named tokens: `shape.sm` (8px), `shape.md` (12px), `shape.lg` (16px), `shape.full` (9999px). Use them directly in `sx` props: `sx={{ borderRadius: shape.md }}`. Do not use bare string shortcuts (`borderRadius: 'md'`) — MUI passes strings to CSS as-is and `'md'` is not a valid CSS value. Avoid numeric shorthand (`borderRadius: 3`) unless no token fits.
 ```
 
 - [ ] **Step 3: Commit**
