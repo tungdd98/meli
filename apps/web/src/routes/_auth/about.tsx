@@ -1,7 +1,7 @@
 import { createFileRoute } from '@tanstack/react-router';
 import { Container, Typography } from '@mui/material';
 
-export const Route = createFileRoute('/about')({
+export const Route = createFileRoute('/_auth/about')({
   component: AboutPage,
 });
 

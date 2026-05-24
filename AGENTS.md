@@ -44,6 +44,16 @@ For MUI icons, always use the Rounded variant (e.g. `HomeRounded`, `SearchRounde
 and import via named barrel: `import { HomeRounded } from '@mui/icons-material'`.
 Never use deep paths like `import HomeRounded from '@mui/icons-material/HomeRounded'`.
 
+For UI implementation, use the design system before writing local styles. Prefer
+components and theme overrides from `@meli/ui` and MUI theme tokens (`palette`,
+`typography`, `shape`, component variants) over duplicating visual styles in app
+routes or feature components. In app code, keep `sx` limited to layout concerns
+such as spacing, sizing, alignment, and responsive placement. Do not reimplement
+design-system styles for cards, buttons, text fields, alerts, colors, shadows,
+typography, or borders with ad hoc `sx` unless no existing token/component covers
+the case; when that happens, add or update the design-system component/theme
+first, or document the exception in the code review/PR.
+
 For border radius in `sx` props, import `shape` and use named token values:
 `borderRadius: shape.sm` (8px), `borderRadius: shape.md` (12px),
 `borderRadius: shape.lg` (16px), `borderRadius: shape.full` (9999px). Do not use
