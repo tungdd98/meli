@@ -15,7 +15,7 @@ declare module '@mui/material/styles' {
   }
 }
 
-export const palette: ThemeOptions['palette'] = {
+export const palette = {
   primary: {
     main: '#F08180',
     light: '#F7ADAC',
@@ -44,4 +44,4 @@ export const palette: ThemeOptions['palette'] = {
     50: '#FFF0F0',
     100: '#FFE0E0',
   },
-};
+} satisfies ThemeOptions['palette'];

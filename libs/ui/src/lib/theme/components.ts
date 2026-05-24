@@ -1,4 +1,6 @@
 import type { ThemeOptions } from '@mui/material/styles';
+import { alpha } from '@mui/material/styles';
+import { palette } from './palette';
 import { shadows, offsetShadows } from './shadows';
 import { shape } from './shape';
 
@@ -38,19 +40,19 @@ export const components: ThemeOptions['components'] = {
     styleOverrides: {
       root: {
         borderRadius: shape.lg,
-        backgroundColor: '#FFFFFF',
+        backgroundColor: palette.background.paper,
         minHeight: 48,
         boxShadow: 'inset 0 2px 4px rgba(0,0,0,0.03)',
         '& .MuiOutlinedInput-notchedOutline': {
-          borderColor: '#FFE0E0',
+          borderColor: palette.coral[100],
           borderWidth: '3px',
         },
         '&:hover .MuiOutlinedInput-notchedOutline': {
-          borderColor: '#FFE0E0',
+          borderColor: palette.coral[100],
           borderWidth: '3px',
         },
         '&.Mui-focused .MuiOutlinedInput-notchedOutline': {
-          borderColor: '#F08180',
+          borderColor: palette.primary.main,
           borderWidth: '3px',
         },
       },
@@ -171,9 +173,9 @@ export const components: ThemeOptions['components'] = {
     styleOverrides: {
       root: {
         borderRadius: shape.xl,
-        border: '3px solid #FFE0E0',
+        border: `3px solid ${palette.coral[100]}`,
         boxShadow: offsetShadows.card,
-        backgroundColor: '#FFFFFF',
+        backgroundColor: palette.background.paper,
       },
     },
   },
@@ -181,8 +183,8 @@ export const components: ThemeOptions['components'] = {
   MuiAvatar: {
     styleOverrides: {
       root: {
-        backgroundColor: '#FFE0E0',
-        color: '#F08180',
+        backgroundColor: palette.coral[100],
+        color: palette.primary.main,
       },
     },
   },
@@ -195,16 +197,16 @@ export const components: ThemeOptions['components'] = {
         fontSize: '13px',
       },
       colorPrimary: {
-        color: '#F08180',
+        color: palette.primary.main,
         '&.MuiChip-filled': {
-          backgroundColor: '#FFF0F0',
-          border: '1px solid #FFE0E0',
+          backgroundColor: palette.coral[50],
+          border: `1px solid ${palette.coral[100]}`,
         },
       },
       colorSecondary: {
-        color: '#5BBCB4',
+        color: palette.secondary.main,
         '&.MuiChip-filled': {
-          backgroundColor: 'rgba(91,188,180,0.1)',
+          backgroundColor: alpha(palette.secondary.main, 0.1),
         },
       },
     },
