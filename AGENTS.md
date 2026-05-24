@@ -39,6 +39,12 @@ feature under `src/lib/`.
 For MUI icons, always use the Rounded variant (e.g. `HomeRounded`, `SearchRounded`)
 and import via named barrel: `import { HomeRounded } from '@mui/icons-material'`.
 
+For border radius in `sx` props, use named tokens from `theme.shape`:
+`borderRadius: 'sm'` (8px), `borderRadius: 'md'` (12px),
+`borderRadius: 'lg'` (16px), `borderRadius: 'full'` (9999px). Avoid numeric
+shorthand such as `borderRadius: 3`; only use it for one-off values outside the
+token scale.
+
 ## Testing Guidelines
 
 Vitest is configured through Nx/Vite, but the current scaffold has no test files.
