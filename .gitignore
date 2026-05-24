@@ -47,3 +47,5 @@ vite.config.*.timestamp*
 
 # TanStack Router generated
 routeTree.gen.ts
+
+storybook-static
