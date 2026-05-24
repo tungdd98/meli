@@ -49,3 +49,6 @@ vite.config.*.timestamp*
 routeTree.gen.ts
 
 storybook-static
+
+# Supabase local env (contains secrets)
+apps/web/.env.local
