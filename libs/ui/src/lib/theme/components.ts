@@ -1,4 +1,5 @@
 import type { ThemeOptions } from '@mui/material/styles';
+import type {} from '@mui/x-date-pickers/themeAugmentation';
 import { alpha } from '@mui/material/styles';
 import { palette } from './palette';
 import { shadows, offsetShadows } from './shadows';
@@ -52,6 +53,29 @@ export const components: ThemeOptions['components'] = {
           borderWidth: '3px',
         },
         '&.Mui-focused .MuiOutlinedInput-notchedOutline': {
+          borderColor: palette.primary.main,
+          borderWidth: '3px',
+        },
+      },
+    },
+  },
+
+  MuiPickersOutlinedInput: {
+    styleOverrides: {
+      root: {
+        borderRadius: shape.lg,
+        backgroundColor: palette.background.paper,
+        minHeight: 48,
+        boxShadow: 'inset 0 2px 4px rgba(0,0,0,0.03)',
+        '& .MuiPickersOutlinedInput-notchedOutline': {
+          borderColor: palette.coral[100],
+          borderWidth: '3px',
+        },
+        '&:hover .MuiPickersOutlinedInput-notchedOutline': {
+          borderColor: palette.coral[100],
+          borderWidth: '3px',
+        },
+        '&.Mui-focused .MuiPickersOutlinedInput-notchedOutline': {
           borderColor: palette.primary.main,
           borderWidth: '3px',
         },

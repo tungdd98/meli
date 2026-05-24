@@ -32,6 +32,8 @@ export function FormDatePicker<TFieldValues extends FieldValues>({
           slotProps={{
             textField: {
               inputRef: ref,
+              variant: 'outlined',
+              InputLabelProps: { shrink: true },
               fullWidth: true,
               error: !!fieldState.error,
               helperText: fieldState.error?.message ?? helperText,
