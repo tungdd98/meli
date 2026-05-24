@@ -1,0 +1,384 @@
+{
+  "version": "2.9",
+  "children": [
+    {
+      "type": "frame",
+      "id": "tpQ5Z",
+      "x": 0,
+      "y": 0,
+      "name": "Login / Mobile",
+      "width": 390,
+      "height": 844,
+      "fill": "$meli-background",
+      "layout": "vertical",
+      "padding": 24,
+      "justifyContent": "center",
+      "alignItems": "center",
+      "children": [
+        {
+          "type": "frame",
+          "id": "IPDoh",
+          "name": "Mobile Login Card",
+          "width": "fill_container",
+          "fill": "$meli-paper",
+          "cornerRadius": "$meli-radius-xl",
+          "stroke": {
+            "align": "inside",
+            "thickness": 3,
+            "fill": "$meli-coral-100"
+          },
+          "effect": {
+            "type": "shadow",
+            "shadowType": "outer",
+            "color": "#F0818029",
+            "offset": {
+              "x": 0,
+              "y": 10
+            },
+            "blur": 24
+          },
+          "layout": "vertical",
+          "gap": 22,
+          "padding": 24,
+          "children": [
+            {
+              "type": "frame",
+              "id": "78o56",
+              "name": "Mobile Brand",
+              "width": "fill_container",
+              "layout": "vertical",
+              "gap": 10,
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "EelQ1",
+                  "name": "Baby Image Logo",
+                  "width": 124,
+                  "height": 124,
+                  "fill": {
+                    "type": "image",
+                    "enabled": true,
+                    "url": "../../../apps/web/src/assets/baby.png",
+                    "mode": "fit"
+                  },
+                  "stroke": {
+                    "align": "inside",
+                    "thickness": 0,
+                    "fill": "#FFFFFF00"
+                  },
+                  "justifyContent": "center",
+                  "alignItems": "center"
+                },
+                {
+                  "type": "text",
+                  "id": "qw12I",
+                  "name": "Mobile Brand Name",
+                  "fill": "$meli-text-primary",
+                  "textGrowth": "fixed-width",
+                  "width": "fill_container",
+                  "content": "Meli",
+                  "lineHeight": 1.3,
+                  "textAlign": "center",
+                  "fontFamily": "Plus Jakarta Sans",
+                  "fontSize": 18,
+                  "fontWeight": "700"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "KdcyU",
+              "name": "Mobile Heading",
+              "width": "fill_container",
+              "layout": "vertical",
+              "gap": 8,
+              "children": [
+                {
+                  "type": "text",
+                  "id": "eSChT",
+                  "name": "Mobile Title",
+                  "fill": "$meli-text-primary",
+                  "textGrowth": "fixed-width",
+                  "width": "fill_container",
+                  "content": "Đăng nhập",
+                  "lineHeight": 1.3,
+                  "textAlign": "center",
+                  "fontFamily": "Plus Jakarta Sans",
+                  "fontSize": 24,
+                  "fontWeight": "700"
+                },
+                {
+                  "type": "text",
+                  "id": "C7VMw",
+                  "name": "Mobile Subtitle",
+                  "fill": "$meli-text-secondary",
+                  "textGrowth": "fixed-width",
+                  "width": "fill_container",
+                  "content": "Sử dụng email và mật khẩu được cấp để vào hệ thống.",
+                  "lineHeight": 1.5,
+                  "textAlign": "center",
+                  "fontFamily": "Plus Jakarta Sans",
+                  "fontSize": 14,
+                  "fontWeight": "normal"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "5frkY",
+              "name": "Mobile Form",
+              "width": "fill_container",
+              "layout": "vertical",
+              "gap": 16,
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "x0Ulb",
+                  "name": "Mobile Email Field",
+                  "width": "fill_container",
+                  "layout": "vertical",
+                  "gap": 6,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "ArAwU",
+                      "name": "Mobile Email Label",
+                      "fill": "$meli-text-primary",
+                      "content": "Email",
+                      "lineHeight": 1.5,
+                      "fontFamily": "Plus Jakarta Sans",
+                      "fontSize": 14,
+                      "fontWeight": "600"
+                    },
+                    {
+                      "type": "frame",
+                      "id": "A572x",
+                      "name": "Mobile Email Input",
+                      "width": "fill_container",
+                      "height": 52,
+                      "fill": "$meli-paper",
+                      "cornerRadius": "$meli-radius-lg",
+                      "stroke": {
+                        "align": "inside",
+                        "thickness": 3,
+                        "fill": "$meli-coral-100"
+                      },
+                      "padding": [
+                        0,
+                        16
+                      ],
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "mOxt3",
+                          "name": "Mobile Email Placeholder",
+                          "fill": "$meli-text-disabled",
+                          "content": "name@company.com",
+                          "lineHeight": 1.5,
+                          "fontFamily": "Plus Jakarta Sans",
+                          "fontSize": 16,
+                          "fontWeight": "normal"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "gYYyr",
+                  "name": "Mobile Password Field",
+                  "width": "fill_container",
+                  "layout": "vertical",
+                  "gap": 6,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "2JnRd",
+                      "name": "Mobile Password Label",
+                      "fill": "$meli-text-primary",
+                      "content": "Mật khẩu",
+                      "lineHeight": 1.5,
+                      "fontFamily": "Plus Jakarta Sans",
+                      "fontSize": 14,
+                      "fontWeight": "600"
+                    },
+                    {
+                      "type": "frame",
+                      "id": "le2s5",
+                      "name": "Mobile Password Input",
+                      "width": "fill_container",
+                      "height": 52,
+                      "fill": "$meli-paper",
+                      "cornerRadius": "$meli-radius-lg",
+                      "stroke": {
+                        "align": "inside",
+                        "thickness": 3,
+                        "fill": "$meli-coral-100"
+                      },
+                      "padding": [
+                        0,
+                        16
+                      ],
+                      "justifyContent": "space_between",
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "5xc1C",
+                          "name": "Mobile Password Placeholder",
+                          "fill": "$meli-text-disabled",
+                          "content": "••••••••",
+                          "lineHeight": 1.5,
+                          "fontFamily": "Plus Jakarta Sans",
+                          "fontSize": 16,
+                          "fontWeight": "normal"
+                        },
+                        {
+                          "type": "icon_font",
+                          "id": "VCNp6",
+                          "name": "Mobile VisibilityRounded",
+                          "width": 24,
+                          "height": 24,
+                          "iconFontName": "visibility",
+                          "iconFontFamily": "Material Symbols Rounded",
+                          "weight": 400,
+                          "fill": "$meli-text-secondary"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "AJ8Ab",
+                  "name": "Mobile Submit Button",
+                  "width": "fill_container",
+                  "height": 52,
+                  "fill": "$meli-primary",
+                  "cornerRadius": "$meli-radius-lg",
+                  "stroke": {
+                    "align": "inside",
+                    "thickness": 3,
+                    "fill": "#00000014"
+                  },
+                  "effect": {
+                    "type": "shadow",
+                    "shadowType": "outer",
+                    "color": "#D45E5D",
+                    "offset": {
+                      "x": 0,
+                      "y": 4
+                    }
+                  },
+                  "padding": [
+                    0,
+                    24
+                  ],
+                  "justifyContent": "center",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "o9QgP",
+                      "name": "Mobile Submit Label",
+                      "fill": "#FFFFFF",
+                      "content": "Đăng nhập",
+                      "lineHeight": 1.75,
+                      "fontFamily": "Plus Jakarta Sans",
+                      "fontSize": 14,
+                      "fontWeight": "600"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "variables": {
+    "meli-background": {
+      "type": "color",
+      "value": "#FFF5F5"
+    },
+    "meli-coral-100": {
+      "type": "color",
+      "value": "#FFE0E0"
+    },
+    "meli-coral-50": {
+      "type": "color",
+      "value": "#FFF0F0"
+    },
+    "meli-error": {
+      "type": "color",
+      "value": "#EF4444"
+    },
+    "meli-error-bg": {
+      "type": "color",
+      "value": "#FEF2F2"
+    },
+    "meli-error-fg": {
+      "type": "color",
+      "value": "#991B1B"
+    },
+    "meli-font": {
+      "type": "string",
+      "value": "Plus Jakarta Sans"
+    },
+    "meli-paper": {
+      "type": "color",
+      "value": "#FFFFFF"
+    },
+    "meli-primary": {
+      "type": "color",
+      "value": "#F08180"
+    },
+    "meli-primary-dark": {
+      "type": "color",
+      "value": "#D45E5D"
+    },
+    "meli-primary-light": {
+      "type": "color",
+      "value": "#F7ADAC"
+    },
+    "meli-radius-full": {
+      "type": "number",
+      "value": 9999
+    },
+    "meli-radius-lg": {
+      "type": "number",
+      "value": 16
+    },
+    "meli-radius-md": {
+      "type": "number",
+      "value": 12
+    },
+    "meli-radius-sm": {
+      "type": "number",
+      "value": 8
+    },
+    "meli-radius-xl": {
+      "type": "number",
+      "value": 20
+    },
+    "meli-secondary": {
+      "type": "color",
+      "value": "#5BBCB4"
+    },
+    "meli-text-disabled": {
+      "type": "color",
+      "value": "#B0B0B0"
+    },
+    "meli-text-primary": {
+      "type": "color",
+      "value": "#1A1A2E"
+    },
+    "meli-text-secondary": {
+      "type": "color",
+      "value": "#6B7280"
+    }
+  }
+}
