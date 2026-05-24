@@ -1,0 +1,3657 @@
+{
+  "version": "2.11",
+  "children": [
+    {
+      "type": "frame",
+      "id": "IJC8m",
+      "x": 0,
+      "y": 0,
+      "name": "Onboarding mobile flow",
+      "height": 844,
+      "fill": "#FFFFFF",
+      "gap": 28,
+      "children": [
+        {
+          "type": "frame",
+          "id": "dLbFI",
+          "name": "01 Due date from LMP",
+          "clip": true,
+          "width": 390,
+          "height": 844,
+          "fill": "$meli-background",
+          "layout": "vertical",
+          "gap": 20,
+          "padding": [
+            32,
+            24,
+            24,
+            24
+          ],
+          "children": [
+            {
+              "type": "frame",
+              "id": "mUiZ7",
+              "name": "Top",
+              "width": "fill_container",
+              "justifyContent": "space_between",
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "zyIx4",
+                  "name": "Back button",
+                  "width": 40,
+                  "height": 40,
+                  "fill": "$meli-paper",
+                  "cornerRadius": 20,
+                  "stroke": {
+                    "thickness": 3,
+                    "fill": "$meli-coral-100"
+                  },
+                  "justifyContent": "center",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "icon_font",
+                      "id": "EajdH",
+                      "width": 22,
+                      "height": 22,
+                      "iconFontName": "chevron_left",
+                      "iconFontFamily": "Material Symbols Rounded",
+                      "weight": 500,
+                      "fill": "$meli-text-primary"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "xmt5e",
+                  "name": "Progress",
+                  "gap": 6,
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "rectangle",
+                      "cornerRadius": 9999,
+                      "id": "CKTkh",
+                      "name": "Progress 1",
+                      "fill": "$meli-primary",
+                      "width": 28,
+                      "height": 8
+                    },
+                    {
+                      "type": "rectangle",
+                      "cornerRadius": 9999,
+                      "id": "isNba",
+                      "name": "Progress 2",
+                      "fill": "$meli-coral-100",
+                      "width": 8,
+                      "height": 8
+                    },
+                    {
+                      "type": "rectangle",
+                      "cornerRadius": 9999,
+                      "id": "veAHZ",
+                      "name": "Progress 3",
+                      "fill": "$meli-coral-100",
+                      "width": 8,
+                      "height": 8
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "pzzon",
+              "name": "Hero",
+              "width": "fill_container",
+              "layout": "vertical",
+              "gap": 14,
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "lHM3i",
+                  "name": "Baby image",
+                  "width": 108,
+                  "height": 108,
+                  "fill": "$meli-paper",
+                  "cornerRadius": 54,
+                  "stroke": {
+                    "thickness": 3,
+                    "fill": "$meli-coral-100"
+                  },
+                  "effect": {
+                    "type": "shadow",
+                    "shadowType": "outer",
+                    "color": "#F0818026",
+                    "offset": {
+                      "x": 0,
+                      "y": 8
+                    },
+                    "blur": 20
+                  },
+                  "justifyContent": "center",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "icon_font",
+                      "id": "D5mA8",
+                      "width": 54,
+                      "height": 54,
+                      "iconFontName": "pregnant_woman",
+                      "iconFontFamily": "Material Symbols Rounded",
+                      "weight": 500,
+                      "fill": "$meli-primary"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "id": "GNTrw",
+                  "name": "Title",
+                  "fill": "$meli-text-primary",
+                  "textGrowth": "fixed-width",
+                  "width": "fill_container",
+                  "content": "Ngày dự sinh của bạn",
+                  "lineHeight": 1.35,
+                  "textAlign": "center",
+                  "fontFamily": "Plus Jakarta Sans",
+                  "fontSize": 24,
+                  "fontWeight": "700"
+                },
+                {
+                  "type": "text",
+                  "id": "akIEw",
+                  "name": "Description",
+                  "fill": "$meli-text-secondary",
+                  "textGrowth": "fixed-width",
+                  "width": "fill_container",
+                  "content": "Chọn ngày đầu tiên của kỳ kinh cuối để Meli ước tính mốc thai kỳ.",
+                  "lineHeight": 1.35,
+                  "textAlign": "center",
+                  "fontFamily": "Plus Jakarta Sans",
+                  "fontSize": 14
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "NKGD8",
+              "name": "Form",
+              "width": "fill_container",
+              "layout": "vertical",
+              "gap": 16,
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "AA0WQ",
+                  "name": "Ngày đầu kỳ kinh cuối",
+                  "width": "fill_container",
+                  "layout": "vertical",
+                  "gap": 8,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "b3XdF",
+                      "name": "Label",
+                      "fill": "$meli-text-primary",
+                      "content": "Ngày đầu kỳ kinh cuối",
+                      "lineHeight": 1.35,
+                      "fontFamily": "Plus Jakarta Sans",
+                      "fontSize": 13,
+                      "fontWeight": "600"
+                    },
+                    {
+                      "type": "frame",
+                      "id": "R4RVJy",
+                      "name": "Input",
+                      "width": "fill_container",
+                      "height": 56,
+                      "fill": "$meli-paper",
+                      "cornerRadius": 16,
+                      "stroke": {
+                        "thickness": 3,
+                        "fill": "$meli-coral-100"
+                      },
+                      "effect": {
+                        "type": "shadow",
+                        "shadowType": "outer",
+                        "color": "#00000008",
+                        "offset": {
+                          "x": 0,
+                          "y": 2
+                        },
+                        "blur": 4
+                      },
+                      "gap": 10,
+                      "padding": [
+                        0,
+                        16
+                      ],
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "icon_font",
+                          "id": "CiNWw",
+                          "width": 22,
+                          "height": 22,
+                          "iconFontName": "calendar_month",
+                          "iconFontFamily": "Material Symbols Rounded",
+                          "weight": 400,
+                          "fill": "$meli-text-secondary"
+                        },
+                        {
+                          "type": "text",
+                          "id": "U3z7Y",
+                          "name": "Value",
+                          "fill": "$meli-text-primary",
+                          "content": "12/09/2025",
+                          "lineHeight": 1.35,
+                          "fontFamily": "Plus Jakarta Sans",
+                          "fontSize": 15,
+                          "fontWeight": "500"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "J8EK1",
+                  "name": "Due date preview",
+                  "width": "fill_container",
+                  "fill": "$meli-paper",
+                  "cornerRadius": 20,
+                  "stroke": {
+                    "thickness": 3,
+                    "fill": "$meli-coral-100"
+                  },
+                  "effect": {
+                    "type": "shadow",
+                    "shadowType": "outer",
+                    "color": "#F0818026",
+                    "offset": {
+                      "x": 6,
+                      "y": 6
+                    }
+                  },
+                  "layout": "vertical",
+                  "gap": 4,
+                  "padding": 16,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "JwlRO",
+                      "name": "Eyebrow",
+                      "fill": "$meli-primary",
+                      "content": "Dự sinh ước tính",
+                      "lineHeight": 1.35,
+                      "fontFamily": "Plus Jakarta Sans",
+                      "fontSize": 12,
+                      "fontWeight": "700"
+                    },
+                    {
+                      "type": "text",
+                      "id": "ZmOb3",
+                      "name": "Date",
+                      "fill": "$meli-text-primary",
+                      "textGrowth": "fixed-width",
+                      "width": "fill_container",
+                      "content": "19/06/2026",
+                      "lineHeight": 1.35,
+                      "fontFamily": "Plus Jakarta Sans",
+                      "fontSize": 24,
+                      "fontWeight": "700"
+                    },
+                    {
+                      "type": "text",
+                      "id": "Er4jT",
+                      "name": "Copy",
+                      "fill": "$meli-text-secondary",
+                      "textGrowth": "fixed-width",
+                      "width": "fill_container",
+                      "content": "Bạn có thể thay đổi thông tin này sau trong hồ sơ.",
+                      "lineHeight": 1.35,
+                      "fontFamily": "Plus Jakarta Sans",
+                      "fontSize": 13
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "Jr0vh",
+                  "name": "Link row",
+                  "width": "fill_container",
+                  "justifyContent": "space_between",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "HBFuA",
+                      "name": "Hint",
+                      "fill": "$meli-text-secondary",
+                      "content": "Đã có ngày từ bác sĩ?",
+                      "lineHeight": 1.35,
+                      "fontFamily": "Plus Jakarta Sans",
+                      "fontSize": 13,
+                      "fontWeight": "500"
+                    },
+                    {
+                      "type": "text",
+                      "id": "N4XlWt",
+                      "name": "Link",
+                      "fill": "$meli-primary",
+                      "content": "Nhập trực tiếp",
+                      "lineHeight": 1.35,
+                      "fontFamily": "Plus Jakarta Sans",
+                      "fontSize": 13,
+                      "fontWeight": "700"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "jb54t",
+              "name": "Spacer",
+              "width": "fill_container",
+              "height": "fill_container",
+              "layout": "vertical"
+            },
+            {
+              "type": "frame",
+              "id": "gLquC",
+              "name": "Footer",
+              "width": "fill_container",
+              "layout": "vertical",
+              "gap": 10,
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "YqD85",
+                  "name": "Tiếp tục",
+                  "width": "fill_container",
+                  "height": 52,
+                  "fill": "$meli-primary",
+                  "cornerRadius": 16,
+                  "stroke": {
+                    "thickness": 3,
+                    "fill": "#00000014"
+                  },
+                  "effect": {
+                    "type": "shadow",
+                    "shadowType": "outer",
+                    "color": "#F0818040",
+                    "offset": {
+                      "x": 4,
+                      "y": 4
+                    }
+                  },
+                  "justifyContent": "center",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "kqpUD",
+                      "name": "Label",
+                      "fill": "#FFFFFF",
+                      "content": "Tiếp tục",
+                      "lineHeight": 1.35,
+                      "fontFamily": "Plus Jakarta Sans",
+                      "fontSize": 14,
+                      "fontWeight": "700"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "zGk1R",
+                  "name": "Bỏ qua",
+                  "width": "fill_container",
+                  "height": 52,
+                  "fill": "#00000000",
+                  "cornerRadius": 16,
+                  "justifyContent": "center",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "UFeXu",
+                      "name": "Label",
+                      "fill": "$meli-primary",
+                      "content": "Bỏ qua",
+                      "lineHeight": 1.35,
+                      "fontFamily": "Plus Jakarta Sans",
+                      "fontSize": 14,
+                      "fontWeight": "700"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "Q41avj",
+          "name": "01b Direct due date",
+          "clip": true,
+          "width": 390,
+          "height": 844,
+          "fill": "$meli-background",
+          "layout": "vertical",
+          "gap": 20,
+          "padding": [
+            32,
+            24,
+            24,
+            24
+          ],
+          "children": [
+            {
+              "type": "frame",
+              "id": "DOOTc",
+              "name": "Top",
+              "width": "fill_container",
+              "justifyContent": "space_between",
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "Z6hhl",
+                  "name": "Back button",
+                  "width": 40,
+                  "height": 40,
+                  "fill": "$meli-paper",
+                  "cornerRadius": 20,
+                  "stroke": {
+                    "thickness": 3,
+                    "fill": "$meli-coral-100"
+                  },
+                  "justifyContent": "center",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "icon_font",
+                      "id": "o4Mdls",
+                      "width": 22,
+                      "height": 22,
+                      "iconFontName": "chevron_left",
+                      "iconFontFamily": "Material Symbols Rounded",
+                      "weight": 500,
+                      "fill": "$meli-text-primary"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "U2Zvn8",
+                  "name": "Progress",
+                  "gap": 6,
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "rectangle",
+                      "cornerRadius": 9999,
+                      "id": "R0qPjb",
+                      "name": "Progress 1",
+                      "fill": "$meli-primary",
+                      "width": 28,
+                      "height": 8
+                    },
+                    {
+                      "type": "rectangle",
+                      "cornerRadius": 9999,
+                      "id": "lTG6F",
+                      "name": "Progress 2",
+                      "fill": "$meli-coral-100",
+                      "width": 8,
+                      "height": 8
+                    },
+                    {
+                      "type": "rectangle",
+                      "cornerRadius": 9999,
+                      "id": "SR18l",
+                      "name": "Progress 3",
+                      "fill": "$meli-coral-100",
+                      "width": 8,
+                      "height": 8
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "o2rAtK",
+              "name": "Hero",
+              "width": "fill_container",
+              "layout": "vertical",
+              "gap": 14,
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "ZJfhI",
+                  "name": "Baby image",
+                  "width": 108,
+                  "height": 108,
+                  "fill": "$meli-paper",
+                  "cornerRadius": 54,
+                  "stroke": {
+                    "thickness": 3,
+                    "fill": "$meli-coral-100"
+                  },
+                  "effect": {
+                    "type": "shadow",
+                    "shadowType": "outer",
+                    "color": "#F0818026",
+                    "offset": {
+                      "x": 0,
+                      "y": 8
+                    },
+                    "blur": 20
+                  },
+                  "justifyContent": "center",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "icon_font",
+                      "id": "YSsVb",
+                      "width": 54,
+                      "height": 54,
+                      "iconFontName": "event_available",
+                      "iconFontFamily": "Material Symbols Rounded",
+                      "weight": 500,
+                      "fill": "$meli-primary"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "id": "FHo2x",
+                  "name": "Title",
+                  "fill": "$meli-text-primary",
+                  "textGrowth": "fixed-width",
+                  "width": "fill_container",
+                  "content": "Nhập ngày dự sinh",
+                  "lineHeight": 1.35,
+                  "textAlign": "center",
+                  "fontFamily": "Plus Jakarta Sans",
+                  "fontSize": 24,
+                  "fontWeight": "700"
+                },
+                {
+                  "type": "text",
+                  "id": "ouMcT",
+                  "name": "Description",
+                  "fill": "$meli-text-secondary",
+                  "textGrowth": "fixed-width",
+                  "width": "fill_container",
+                  "content": "Dùng ngày dự sinh bác sĩ đã thông báo để cá nhân hóa hành trình của bạn.",
+                  "lineHeight": 1.35,
+                  "textAlign": "center",
+                  "fontFamily": "Plus Jakarta Sans",
+                  "fontSize": 14
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "BdHQf",
+              "name": "Form",
+              "width": "fill_container",
+              "layout": "vertical",
+              "gap": 16,
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "xHhrC",
+                  "name": "Ngày dự sinh",
+                  "width": "fill_container",
+                  "layout": "vertical",
+                  "gap": 8,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "TX3uY",
+                      "name": "Label",
+                      "fill": "$meli-text-primary",
+                      "content": "Ngày dự sinh",
+                      "lineHeight": 1.35,
+                      "fontFamily": "Plus Jakarta Sans",
+                      "fontSize": 13,
+                      "fontWeight": "600"
+                    },
+                    {
+                      "type": "frame",
+                      "id": "D4w4K",
+                      "name": "Input",
+                      "width": "fill_container",
+                      "height": 56,
+                      "fill": "$meli-paper",
+                      "cornerRadius": 16,
+                      "stroke": {
+                        "thickness": 3,
+                        "fill": "$meli-coral-100"
+                      },
+                      "effect": {
+                        "type": "shadow",
+                        "shadowType": "outer",
+                        "color": "#00000008",
+                        "offset": {
+                          "x": 0,
+                          "y": 2
+                        },
+                        "blur": 4
+                      },
+                      "gap": 10,
+                      "padding": [
+                        0,
+                        16
+                      ],
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "icon_font",
+                          "id": "j4RxSV",
+                          "width": 22,
+                          "height": 22,
+                          "iconFontName": "calendar_month",
+                          "iconFontFamily": "Material Symbols Rounded",
+                          "weight": 400,
+                          "fill": "$meli-text-secondary"
+                        },
+                        {
+                          "type": "text",
+                          "id": "q0MRr",
+                          "name": "Value",
+                          "fill": "$meli-text-primary",
+                          "content": "19/06/2026",
+                          "lineHeight": 1.35,
+                          "fontFamily": "Plus Jakarta Sans",
+                          "fontSize": 15,
+                          "fontWeight": "500"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "Wp0j5",
+                  "name": "Doctor note",
+                  "width": "fill_container",
+                  "fill": "$meli-coral-50",
+                  "cornerRadius": 20,
+                  "stroke": {
+                    "thickness": 3,
+                    "fill": "$meli-coral-100"
+                  },
+                  "gap": 10,
+                  "padding": 16,
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "icon_font",
+                      "id": "v33gDz",
+                      "width": 24,
+                      "height": 24,
+                      "iconFontName": "medical_information",
+                      "iconFontFamily": "Material Symbols Rounded",
+                      "weight": 500,
+                      "fill": "$meli-primary"
+                    },
+                    {
+                      "type": "text",
+                      "id": "flccV",
+                      "name": "Note",
+                      "fill": "$meli-text-secondary",
+                      "textGrowth": "fixed-width",
+                      "width": "fill_container",
+                      "content": "Nếu ngày này thay đổi sau lần khám tiếp theo, bạn vẫn có thể cập nhật trong hồ sơ.",
+                      "lineHeight": 1.35,
+                      "fontFamily": "Plus Jakarta Sans",
+                      "fontSize": 13,
+                      "fontWeight": "500"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "J6q1G",
+                  "name": "Link row",
+                  "width": "fill_container",
+                  "justifyContent": "space_between",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "Qt4fP",
+                      "name": "Hint",
+                      "fill": "$meli-text-secondary",
+                      "content": "Muốn tính từ kỳ kinh cuối?",
+                      "lineHeight": 1.35,
+                      "fontFamily": "Plus Jakarta Sans",
+                      "fontSize": 13,
+                      "fontWeight": "500"
+                    },
+                    {
+                      "type": "text",
+                      "id": "iiksz",
+                      "name": "Link",
+                      "fill": "$meli-primary",
+                      "content": "Tính ngày dự sinh",
+                      "lineHeight": 1.35,
+                      "fontFamily": "Plus Jakarta Sans",
+                      "fontSize": 13,
+                      "fontWeight": "700"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "RAkoJ",
+              "name": "Spacer",
+              "width": "fill_container",
+              "height": "fill_container",
+              "layout": "vertical"
+            },
+            {
+              "type": "frame",
+              "id": "OZNu7",
+              "name": "Footer",
+              "width": "fill_container",
+              "layout": "vertical",
+              "gap": 10,
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "VGVRx",
+                  "name": "Tiếp tục",
+                  "width": "fill_container",
+                  "height": 52,
+                  "fill": "$meli-primary",
+                  "cornerRadius": 16,
+                  "stroke": {
+                    "thickness": 3,
+                    "fill": "#00000014"
+                  },
+                  "effect": {
+                    "type": "shadow",
+                    "shadowType": "outer",
+                    "color": "#F0818040",
+                    "offset": {
+                      "x": 4,
+                      "y": 4
+                    }
+                  },
+                  "justifyContent": "center",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "r6zPwM",
+                      "name": "Label",
+                      "fill": "#FFFFFF",
+                      "content": "Tiếp tục",
+                      "lineHeight": 1.35,
+                      "fontFamily": "Plus Jakarta Sans",
+                      "fontSize": 14,
+                      "fontWeight": "700"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "zyvld",
+                  "name": "Bỏ qua",
+                  "width": "fill_container",
+                  "height": 52,
+                  "fill": "#00000000",
+                  "cornerRadius": 16,
+                  "justifyContent": "center",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "bNSjN",
+                      "name": "Label",
+                      "fill": "$meli-primary",
+                      "content": "Bỏ qua",
+                      "lineHeight": 1.35,
+                      "fontFamily": "Plus Jakarta Sans",
+                      "fontSize": 14,
+                      "fontWeight": "700"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "cw8dv",
+          "name": "02 Weight and BMI",
+          "clip": true,
+          "width": 390,
+          "height": 844,
+          "fill": "$meli-background",
+          "layout": "vertical",
+          "gap": 20,
+          "padding": [
+            32,
+            24,
+            24,
+            24
+          ],
+          "children": [
+            {
+              "type": "frame",
+              "id": "N4jhuY",
+              "name": "Top",
+              "width": "fill_container",
+              "justifyContent": "space_between",
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "pNaQY",
+                  "name": "Back button",
+                  "width": 40,
+                  "height": 40,
+                  "fill": "$meli-paper",
+                  "cornerRadius": 20,
+                  "stroke": {
+                    "thickness": 3,
+                    "fill": "$meli-coral-100"
+                  },
+                  "justifyContent": "center",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "icon_font",
+                      "id": "jKbjx",
+                      "width": 22,
+                      "height": 22,
+                      "iconFontName": "chevron_left",
+                      "iconFontFamily": "Material Symbols Rounded",
+                      "weight": 500,
+                      "fill": "$meli-text-primary"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "pW7fl",
+                  "name": "Progress",
+                  "gap": 6,
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "rectangle",
+                      "cornerRadius": 9999,
+                      "id": "Yb4Xn",
+                      "name": "Progress 1",
+                      "fill": "$meli-primary",
+                      "width": 8,
+                      "height": 8
+                    },
+                    {
+                      "type": "rectangle",
+                      "cornerRadius": 9999,
+                      "id": "xf3Vd",
+                      "name": "Progress 2",
+                      "fill": "$meli-primary",
+                      "width": 28,
+                      "height": 8
+                    },
+                    {
+                      "type": "rectangle",
+                      "cornerRadius": 9999,
+                      "id": "Op1TK",
+                      "name": "Progress 3",
+                      "fill": "$meli-coral-100",
+                      "width": 8,
+                      "height": 8
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "ENY4P",
+              "name": "Hero",
+              "width": "fill_container",
+              "layout": "vertical",
+              "gap": 14,
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "b6VvZ",
+                  "name": "Baby image",
+                  "width": 108,
+                  "height": 108,
+                  "fill": "$meli-paper",
+                  "cornerRadius": 54,
+                  "stroke": {
+                    "thickness": 3,
+                    "fill": "$meli-coral-100"
+                  },
+                  "effect": {
+                    "type": "shadow",
+                    "shadowType": "outer",
+                    "color": "#F0818026",
+                    "offset": {
+                      "x": 0,
+                      "y": 8
+                    },
+                    "blur": 20
+                  },
+                  "justifyContent": "center",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "icon_font",
+                      "id": "zsKiD",
+                      "width": 54,
+                      "height": 54,
+                      "iconFontName": "monitor_weight",
+                      "iconFontFamily": "Material Symbols Rounded",
+                      "weight": 500,
+                      "fill": "$meli-primary"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "id": "L2kMMD",
+                  "name": "Title",
+                  "fill": "$meli-text-primary",
+                  "textGrowth": "fixed-width",
+                  "width": "fill_container",
+                  "content": "Cân nặng của mẹ",
+                  "lineHeight": 1.35,
+                  "textAlign": "center",
+                  "fontFamily": "Plus Jakarta Sans",
+                  "fontSize": 24,
+                  "fontWeight": "700"
+                },
+                {
+                  "type": "text",
+                  "id": "hXFxz",
+                  "name": "Description",
+                  "fill": "$meli-text-secondary",
+                  "textGrowth": "fixed-width",
+                  "width": "fill_container",
+                  "content": "Nhập chiều cao và cân nặng để Meli gợi ý mức tăng cân phù hợp.",
+                  "lineHeight": 1.35,
+                  "textAlign": "center",
+                  "fontFamily": "Plus Jakarta Sans",
+                  "fontSize": 14
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "jgY4w",
+              "name": "Form",
+              "width": "fill_container",
+              "layout": "vertical",
+              "gap": 14,
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "wmwY2",
+                  "name": "Cân nặng hiện tại",
+                  "width": "fill_container",
+                  "layout": "vertical",
+                  "gap": 8,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "wU1dF",
+                      "name": "Label",
+                      "fill": "$meli-text-primary",
+                      "content": "Cân nặng hiện tại",
+                      "lineHeight": 1.35,
+                      "fontFamily": "Plus Jakarta Sans",
+                      "fontSize": 13,
+                      "fontWeight": "600"
+                    },
+                    {
+                      "type": "frame",
+                      "id": "MsKjv",
+                      "name": "Input",
+                      "width": "fill_container",
+                      "height": 56,
+                      "fill": "$meli-paper",
+                      "cornerRadius": 16,
+                      "stroke": {
+                        "thickness": 3,
+                        "fill": "$meli-coral-100"
+                      },
+                      "effect": {
+                        "type": "shadow",
+                        "shadowType": "outer",
+                        "color": "#00000008",
+                        "offset": {
+                          "x": 0,
+                          "y": 2
+                        },
+                        "blur": 4
+                      },
+                      "gap": 10,
+                      "padding": [
+                        0,
+                        16
+                      ],
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "icon_font",
+                          "id": "A6LFo",
+                          "width": 22,
+                          "height": 22,
+                          "iconFontName": "scale",
+                          "iconFontFamily": "Material Symbols Rounded",
+                          "weight": 400,
+                          "fill": "$meli-text-secondary"
+                        },
+                        {
+                          "type": "text",
+                          "id": "w2yL5",
+                          "name": "Value",
+                          "fill": "$meli-text-primary",
+                          "content": "58.5 kg",
+                          "lineHeight": 1.35,
+                          "fontFamily": "Plus Jakarta Sans",
+                          "fontSize": 15,
+                          "fontWeight": "500"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "m8ww4",
+                  "name": "Chiều cao",
+                  "width": "fill_container",
+                  "layout": "vertical",
+                  "gap": 8,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "HJP53",
+                      "name": "Label",
+                      "fill": "$meli-text-primary",
+                      "content": "Chiều cao",
+                      "lineHeight": 1.35,
+                      "fontFamily": "Plus Jakarta Sans",
+                      "fontSize": 13,
+                      "fontWeight": "600"
+                    },
+                    {
+                      "type": "frame",
+                      "id": "XXWgY",
+                      "name": "Input",
+                      "width": "fill_container",
+                      "height": 56,
+                      "fill": "$meli-paper",
+                      "cornerRadius": 16,
+                      "stroke": {
+                        "thickness": 3,
+                        "fill": "$meli-coral-100"
+                      },
+                      "effect": {
+                        "type": "shadow",
+                        "shadowType": "outer",
+                        "color": "#00000008",
+                        "offset": {
+                          "x": 0,
+                          "y": 2
+                        },
+                        "blur": 4
+                      },
+                      "gap": 10,
+                      "padding": [
+                        0,
+                        16
+                      ],
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "icon_font",
+                          "id": "H920Sv",
+                          "width": 22,
+                          "height": 22,
+                          "iconFontName": "height",
+                          "iconFontFamily": "Material Symbols Rounded",
+                          "weight": 400,
+                          "fill": "$meli-text-secondary"
+                        },
+                        {
+                          "type": "text",
+                          "id": "euySc",
+                          "name": "Value",
+                          "fill": "$meli-text-primary",
+                          "content": "162 cm",
+                          "lineHeight": 1.35,
+                          "fontFamily": "Plus Jakarta Sans",
+                          "fontSize": 15,
+                          "fontWeight": "500"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "gbi77",
+                  "name": "BMI card",
+                  "width": "fill_container",
+                  "fill": "$meli-paper",
+                  "cornerRadius": 20,
+                  "stroke": {
+                    "thickness": 3,
+                    "fill": "$meli-coral-100"
+                  },
+                  "effect": {
+                    "type": "shadow",
+                    "shadowType": "outer",
+                    "color": "#F0818026",
+                    "offset": {
+                      "x": 6,
+                      "y": 6
+                    }
+                  },
+                  "layout": "vertical",
+                  "gap": 10,
+                  "padding": 18,
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "IXnSt",
+                      "name": "BMI row",
+                      "width": "fill_container",
+                      "justifyContent": "space_between",
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "qnuB5",
+                          "name": "Label",
+                          "fill": "$meli-text-secondary",
+                          "content": "BMI của bạn",
+                          "lineHeight": 1.35,
+                          "fontFamily": "Plus Jakarta Sans",
+                          "fontSize": 13,
+                          "fontWeight": "700"
+                        },
+                        {
+                          "type": "text",
+                          "id": "NmI5h",
+                          "name": "Value",
+                          "fill": "$meli-text-primary",
+                          "content": "22.3",
+                          "lineHeight": 1.35,
+                          "fontFamily": "Plus Jakarta Sans",
+                          "fontSize": 28,
+                          "fontWeight": "700"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "text",
+                      "id": "CSFp8",
+                      "name": "Tip",
+                      "fill": "$meli-text-secondary",
+                      "textGrowth": "fixed-width",
+                      "width": "fill_container",
+                      "content": "Tuần thai thứ 24: mức tăng gợi ý hiện tại khoảng 6.0 - 7.5 kg.",
+                      "lineHeight": 1.35,
+                      "fontFamily": "Plus Jakarta Sans",
+                      "fontSize": 13,
+                      "fontWeight": "500"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "z5TJK8",
+              "name": "Spacer",
+              "width": "fill_container",
+              "height": "fill_container",
+              "layout": "vertical"
+            },
+            {
+              "type": "frame",
+              "id": "t1Cj4",
+              "name": "Footer",
+              "width": "fill_container",
+              "layout": "vertical",
+              "gap": 10,
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "ioSEs",
+                  "name": "Tiếp tục",
+                  "width": "fill_container",
+                  "height": 52,
+                  "fill": "$meli-primary",
+                  "cornerRadius": 16,
+                  "stroke": {
+                    "thickness": 3,
+                    "fill": "#00000014"
+                  },
+                  "effect": {
+                    "type": "shadow",
+                    "shadowType": "outer",
+                    "color": "#F0818040",
+                    "offset": {
+                      "x": 4,
+                      "y": 4
+                    }
+                  },
+                  "justifyContent": "center",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "qS4AP",
+                      "name": "Label",
+                      "fill": "#FFFFFF",
+                      "content": "Tiếp tục",
+                      "lineHeight": 1.35,
+                      "fontFamily": "Plus Jakarta Sans",
+                      "fontSize": 14,
+                      "fontWeight": "700"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "TMkE3",
+                  "name": "Để sau",
+                  "width": "fill_container",
+                  "height": 52,
+                  "fill": "#00000000",
+                  "cornerRadius": 16,
+                  "justifyContent": "center",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "DKILp",
+                      "name": "Label",
+                      "fill": "$meli-primary",
+                      "content": "Để sau",
+                      "lineHeight": 1.35,
+                      "fontFamily": "Plus Jakarta Sans",
+                      "fontSize": 14,
+                      "fontWeight": "700"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "DByFU",
+          "name": "03 Baby info",
+          "clip": true,
+          "width": 390,
+          "height": 844,
+          "fill": "$meli-background",
+          "layout": "vertical",
+          "gap": 20,
+          "padding": [
+            32,
+            24,
+            24,
+            24
+          ],
+          "children": [
+            {
+              "type": "frame",
+              "id": "lIOzX",
+              "name": "Top",
+              "width": "fill_container",
+              "justifyContent": "space_between",
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "nbMkt",
+                  "name": "Back button",
+                  "width": 40,
+                  "height": 40,
+                  "fill": "$meli-paper",
+                  "cornerRadius": 20,
+                  "stroke": {
+                    "thickness": 3,
+                    "fill": "$meli-coral-100"
+                  },
+                  "justifyContent": "center",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "icon_font",
+                      "id": "btEid",
+                      "width": 22,
+                      "height": 22,
+                      "iconFontName": "chevron_left",
+                      "iconFontFamily": "Material Symbols Rounded",
+                      "weight": 500,
+                      "fill": "$meli-text-primary"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "n1IxV",
+                  "name": "Progress",
+                  "gap": 6,
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "rectangle",
+                      "cornerRadius": 9999,
+                      "id": "yemAu",
+                      "name": "Progress 1",
+                      "fill": "$meli-primary",
+                      "width": 8,
+                      "height": 8
+                    },
+                    {
+                      "type": "rectangle",
+                      "cornerRadius": 9999,
+                      "id": "dg9eY",
+                      "name": "Progress 2",
+                      "fill": "$meli-primary",
+                      "width": 8,
+                      "height": 8
+                    },
+                    {
+                      "type": "rectangle",
+                      "cornerRadius": 9999,
+                      "id": "d4y9gA",
+                      "name": "Progress 3",
+                      "fill": "$meli-primary",
+                      "width": 28,
+                      "height": 8
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "wG3Kq",
+              "name": "Hero",
+              "width": "fill_container",
+              "layout": "vertical",
+              "gap": 14,
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "l0NuEE",
+                  "name": "Baby image",
+                  "width": 108,
+                  "height": 108,
+                  "fill": "$meli-paper",
+                  "cornerRadius": 54,
+                  "stroke": {
+                    "thickness": 3,
+                    "fill": "$meli-coral-100"
+                  },
+                  "effect": {
+                    "type": "shadow",
+                    "shadowType": "outer",
+                    "color": "#F0818026",
+                    "offset": {
+                      "x": 0,
+                      "y": 8
+                    },
+                    "blur": 20
+                  },
+                  "justifyContent": "center",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "icon_font",
+                      "id": "vbwDw",
+                      "width": 54,
+                      "height": 54,
+                      "iconFontName": "child_care",
+                      "iconFontFamily": "Material Symbols Rounded",
+                      "weight": 500,
+                      "fill": "$meli-primary"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "id": "NEJaC",
+                  "name": "Title",
+                  "fill": "$meli-text-primary",
+                  "textGrowth": "fixed-width",
+                  "width": "fill_container",
+                  "content": "Thông tin của bé",
+                  "lineHeight": 1.35,
+                  "textAlign": "center",
+                  "fontFamily": "Plus Jakarta Sans",
+                  "fontSize": 24,
+                  "fontWeight": "700"
+                },
+                {
+                  "type": "text",
+                  "id": "Zs4as",
+                  "name": "Description",
+                  "fill": "$meli-text-secondary",
+                  "textGrowth": "fixed-width",
+                  "width": "fill_container",
+                  "content": "Một vài chi tiết nhỏ giúp trải nghiệm Meli gần gũi hơn với gia đình bạn.",
+                  "lineHeight": 1.35,
+                  "textAlign": "center",
+                  "fontFamily": "Plus Jakarta Sans",
+                  "fontSize": 14
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "s0qhH",
+              "name": "Form",
+              "width": "fill_container",
+              "layout": "vertical",
+              "gap": 14,
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "JWWZV",
+                  "name": "Tên của bé",
+                  "width": "fill_container",
+                  "layout": "vertical",
+                  "gap": 8,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "taX0j",
+                      "name": "Label",
+                      "fill": "$meli-text-primary",
+                      "content": "Tên của bé",
+                      "lineHeight": 1.35,
+                      "fontFamily": "Plus Jakarta Sans",
+                      "fontSize": 13,
+                      "fontWeight": "600"
+                    },
+                    {
+                      "type": "frame",
+                      "id": "CfySJ",
+                      "name": "Input",
+                      "width": "fill_container",
+                      "height": 56,
+                      "fill": "$meli-paper",
+                      "cornerRadius": 16,
+                      "stroke": {
+                        "thickness": 3,
+                        "fill": "$meli-coral-100"
+                      },
+                      "effect": {
+                        "type": "shadow",
+                        "shadowType": "outer",
+                        "color": "#00000008",
+                        "offset": {
+                          "x": 0,
+                          "y": 2
+                        },
+                        "blur": 4
+                      },
+                      "gap": 10,
+                      "padding": [
+                        0,
+                        16
+                      ],
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "icon_font",
+                          "id": "PWN7d",
+                          "width": 22,
+                          "height": 22,
+                          "iconFontName": "badge",
+                          "iconFontFamily": "Material Symbols Rounded",
+                          "weight": 400,
+                          "fill": "$meli-text-secondary"
+                        },
+                        {
+                          "type": "text",
+                          "id": "W9XZm",
+                          "name": "Value",
+                          "fill": "$meli-text-primary",
+                          "content": "Meli",
+                          "lineHeight": 1.35,
+                          "fontFamily": "Plus Jakarta Sans",
+                          "fontSize": 15,
+                          "fontWeight": "500"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "tOCDE",
+                  "name": "Giới tính",
+                  "width": "fill_container",
+                  "layout": "vertical",
+                  "gap": 8,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "CcWWj",
+                      "name": "Label",
+                      "fill": "$meli-text-primary",
+                      "content": "Giới tính",
+                      "lineHeight": 1.35,
+                      "fontFamily": "Plus Jakarta Sans",
+                      "fontSize": 13,
+                      "fontWeight": "600"
+                    },
+                    {
+                      "type": "frame",
+                      "id": "V92fq",
+                      "name": "Input",
+                      "width": "fill_container",
+                      "height": 56,
+                      "fill": "$meli-paper",
+                      "cornerRadius": 16,
+                      "stroke": {
+                        "thickness": 3,
+                        "fill": "$meli-coral-100"
+                      },
+                      "effect": {
+                        "type": "shadow",
+                        "shadowType": "outer",
+                        "color": "#00000008",
+                        "offset": {
+                          "x": 0,
+                          "y": 2
+                        },
+                        "blur": 4
+                      },
+                      "gap": 10,
+                      "padding": [
+                        0,
+                        16
+                      ],
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "icon_font",
+                          "id": "GsW9J",
+                          "width": 22,
+                          "height": 22,
+                          "iconFontName": "keyboard_arrow_down",
+                          "iconFontFamily": "Material Symbols Rounded",
+                          "weight": 400,
+                          "fill": "$meli-text-secondary"
+                        },
+                        {
+                          "type": "text",
+                          "id": "Q9CGJ",
+                          "name": "Value",
+                          "fill": "$meli-text-primary",
+                          "content": "Chưa biết",
+                          "lineHeight": 1.35,
+                          "fontFamily": "Plus Jakarta Sans",
+                          "fontSize": 15,
+                          "fontWeight": "500"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "U25Zn",
+                  "name": "Twins toggle",
+                  "width": "fill_container",
+                  "height": 60,
+                  "fill": "$meli-paper",
+                  "cornerRadius": 20,
+                  "stroke": {
+                    "thickness": 3,
+                    "fill": "$meli-coral-100"
+                  },
+                  "gap": 12,
+                  "padding": [
+                    0,
+                    16
+                  ],
+                  "justifyContent": "space_between",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "yxXvc",
+                      "name": "Toggle copy",
+                      "gap": 10,
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "icon_font",
+                          "id": "yEiWM",
+                          "width": 22,
+                          "height": 22,
+                          "iconFontName": "favorite",
+                          "iconFontFamily": "Material Symbols Rounded",
+                          "weight": 500,
+                          "fill": "$meli-primary"
+                        },
+                        {
+                          "type": "text",
+                          "id": "A44Uqq",
+                          "name": "Label",
+                          "fill": "$meli-text-primary",
+                          "content": "Mang thai đôi",
+                          "lineHeight": 1.35,
+                          "fontFamily": "Plus Jakarta Sans",
+                          "fontSize": 14,
+                          "fontWeight": "700"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "k1AzeU",
+                      "name": "Toggle off",
+                      "width": 46,
+                      "height": 28,
+                      "fill": "$meli-coral-100",
+                      "cornerRadius": 9999,
+                      "padding": [
+                        0,
+                        3
+                      ],
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "ellipse",
+                          "id": "Z1IqB4",
+                          "name": "Knob",
+                          "fill": "$meli-paper",
+                          "width": 22,
+                          "height": 22,
+                          "effect": {
+                            "type": "shadow",
+                            "shadowType": "outer",
+                            "color": "#0000001A",
+                            "offset": {
+                              "x": 0,
+                              "y": 1
+                            },
+                            "blur": 3
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "GuMtv",
+              "name": "Spacer",
+              "width": "fill_container",
+              "height": "fill_container",
+              "layout": "vertical"
+            },
+            {
+              "type": "frame",
+              "id": "feQpl",
+              "name": "Footer",
+              "width": "fill_container",
+              "layout": "vertical",
+              "gap": 10,
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "j0CTPw",
+                  "name": "Tiếp tục",
+                  "width": "fill_container",
+                  "height": 52,
+                  "fill": "$meli-primary",
+                  "cornerRadius": 16,
+                  "stroke": {
+                    "thickness": 3,
+                    "fill": "#00000014"
+                  },
+                  "effect": {
+                    "type": "shadow",
+                    "shadowType": "outer",
+                    "color": "#F0818040",
+                    "offset": {
+                      "x": 4,
+                      "y": 4
+                    }
+                  },
+                  "justifyContent": "center",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "tslJY",
+                      "name": "Label",
+                      "fill": "#FFFFFF",
+                      "content": "Tiếp tục",
+                      "lineHeight": 1.35,
+                      "fontFamily": "Plus Jakarta Sans",
+                      "fontSize": 14,
+                      "fontWeight": "700"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "c28a9",
+                  "name": "Để sau",
+                  "width": "fill_container",
+                  "height": 52,
+                  "fill": "#00000000",
+                  "cornerRadius": 16,
+                  "justifyContent": "center",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "i2X6Dj",
+                      "name": "Label",
+                      "fill": "$meli-primary",
+                      "content": "Để sau",
+                      "lineHeight": 1.35,
+                      "fontFamily": "Plus Jakarta Sans",
+                      "fontSize": 14,
+                      "fontWeight": "700"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "ecTOC",
+      "x": 0,
+      "y": 0,
+      "name": "Onboarding mobile flow",
+      "height": 844,
+      "fill": "#FFFFFF",
+      "gap": 28,
+      "children": [
+        {
+          "type": "frame",
+          "id": "c20xM",
+          "name": "01 Due date from LMP",
+          "clip": true,
+          "width": 390,
+          "height": 844,
+          "fill": "$meli-background",
+          "layout": "vertical",
+          "gap": 20,
+          "padding": [
+            32,
+            24,
+            24,
+            24
+          ],
+          "children": [
+            {
+              "type": "frame",
+              "id": "lStCV",
+              "name": "Top",
+              "width": "fill_container",
+              "justifyContent": "space_between",
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "lWAdv",
+                  "name": "Back button",
+                  "width": 40,
+                  "height": 40,
+                  "fill": "$meli-paper",
+                  "cornerRadius": 20,
+                  "stroke": {
+                    "thickness": 3,
+                    "fill": "$meli-coral-100"
+                  },
+                  "justifyContent": "center",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "icon_font",
+                      "id": "wZgqJ",
+                      "width": 22,
+                      "height": 22,
+                      "iconFontName": "chevron_left",
+                      "iconFontFamily": "Material Symbols Rounded",
+                      "weight": 500,
+                      "fill": "$meli-text-primary"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "hf3qM",
+                  "name": "Progress",
+                  "gap": 6,
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "rectangle",
+                      "cornerRadius": 9999,
+                      "id": "R3Z46v",
+                      "name": "Progress 1",
+                      "fill": "$meli-primary",
+                      "width": 28,
+                      "height": 8
+                    },
+                    {
+                      "type": "rectangle",
+                      "cornerRadius": 9999,
+                      "id": "ga172",
+                      "name": "Progress 2",
+                      "fill": "$meli-coral-100",
+                      "width": 8,
+                      "height": 8
+                    },
+                    {
+                      "type": "rectangle",
+                      "cornerRadius": 9999,
+                      "id": "fRSu5",
+                      "name": "Progress 3",
+                      "fill": "$meli-coral-100",
+                      "width": 8,
+                      "height": 8
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "FGfvM",
+              "name": "Hero",
+              "width": "fill_container",
+              "layout": "vertical",
+              "gap": 14,
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "eGgWh",
+                  "name": "Baby image",
+                  "width": 108,
+                  "height": 108,
+                  "fill": "$meli-paper",
+                  "cornerRadius": 54,
+                  "stroke": {
+                    "thickness": 3,
+                    "fill": "$meli-coral-100"
+                  },
+                  "effect": {
+                    "type": "shadow",
+                    "shadowType": "outer",
+                    "color": "#F0818026",
+                    "offset": {
+                      "x": 0,
+                      "y": 8
+                    },
+                    "blur": 20
+                  },
+                  "justifyContent": "center",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "icon_font",
+                      "id": "MfDJP",
+                      "width": 54,
+                      "height": 54,
+                      "iconFontName": "pregnant_woman",
+                      "iconFontFamily": "Material Symbols Rounded",
+                      "weight": 500,
+                      "fill": "$meli-primary"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "id": "pQQOK",
+                  "name": "Title",
+                  "fill": "$meli-text-primary",
+                  "textGrowth": "fixed-width",
+                  "width": "fill_container",
+                  "content": "Ngày dự sinh của bạn",
+                  "lineHeight": 1.35,
+                  "textAlign": "center",
+                  "fontFamily": "Plus Jakarta Sans",
+                  "fontSize": 24,
+                  "fontWeight": "700"
+                },
+                {
+                  "type": "text",
+                  "id": "m99GNe",
+                  "name": "Description",
+                  "fill": "$meli-text-secondary",
+                  "textGrowth": "fixed-width",
+                  "width": "fill_container",
+                  "content": "Chọn ngày đầu tiên của kỳ kinh cuối để Meli ước tính mốc thai kỳ.",
+                  "lineHeight": 1.35,
+                  "textAlign": "center",
+                  "fontFamily": "Plus Jakarta Sans",
+                  "fontSize": 14
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "aV6Nr",
+              "name": "Form",
+              "width": "fill_container",
+              "layout": "vertical",
+              "gap": 16,
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "XkmKl",
+                  "name": "Ngày đầu kỳ kinh cuối",
+                  "width": "fill_container",
+                  "layout": "vertical",
+                  "gap": 8,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "jknll",
+                      "name": "Label",
+                      "fill": "$meli-text-primary",
+                      "content": "Ngày đầu kỳ kinh cuối",
+                      "lineHeight": 1.35,
+                      "fontFamily": "Plus Jakarta Sans",
+                      "fontSize": 13,
+                      "fontWeight": "600"
+                    },
+                    {
+                      "type": "frame",
+                      "id": "h7Mft7",
+                      "name": "Input",
+                      "width": "fill_container",
+                      "height": 56,
+                      "fill": "$meli-paper",
+                      "cornerRadius": 16,
+                      "stroke": {
+                        "thickness": 3,
+                        "fill": "$meli-coral-100"
+                      },
+                      "effect": {
+                        "type": "shadow",
+                        "shadowType": "outer",
+                        "color": "#00000008",
+                        "offset": {
+                          "x": 0,
+                          "y": 2
+                        },
+                        "blur": 4
+                      },
+                      "gap": 10,
+                      "padding": [
+                        0,
+                        16
+                      ],
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "icon_font",
+                          "id": "rBE77",
+                          "width": 22,
+                          "height": 22,
+                          "iconFontName": "calendar_month",
+                          "iconFontFamily": "Material Symbols Rounded",
+                          "weight": 400,
+                          "fill": "$meli-text-secondary"
+                        },
+                        {
+                          "type": "text",
+                          "id": "WwzZ2",
+                          "name": "Value",
+                          "fill": "$meli-text-primary",
+                          "content": "12/09/2025",
+                          "lineHeight": 1.35,
+                          "fontFamily": "Plus Jakarta Sans",
+                          "fontSize": 15,
+                          "fontWeight": "500"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "k9j8D",
+                  "name": "Due date preview",
+                  "width": "fill_container",
+                  "fill": "$meli-paper",
+                  "cornerRadius": 20,
+                  "stroke": {
+                    "thickness": 3,
+                    "fill": "$meli-coral-100"
+                  },
+                  "effect": {
+                    "type": "shadow",
+                    "shadowType": "outer",
+                    "color": "#F0818026",
+                    "offset": {
+                      "x": 6,
+                      "y": 6
+                    }
+                  },
+                  "layout": "vertical",
+                  "gap": 4,
+                  "padding": 16,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "VVQnG",
+                      "name": "Eyebrow",
+                      "fill": "$meli-primary",
+                      "content": "Dự sinh ước tính",
+                      "lineHeight": 1.35,
+                      "fontFamily": "Plus Jakarta Sans",
+                      "fontSize": 12,
+                      "fontWeight": "700"
+                    },
+                    {
+                      "type": "text",
+                      "id": "G36ON",
+                      "name": "Date",
+                      "fill": "$meli-text-primary",
+                      "textGrowth": "fixed-width",
+                      "width": "fill_container",
+                      "content": "19/06/2026",
+                      "lineHeight": 1.35,
+                      "fontFamily": "Plus Jakarta Sans",
+                      "fontSize": 24,
+                      "fontWeight": "700"
+                    },
+                    {
+                      "type": "text",
+                      "id": "UwJYi",
+                      "name": "Copy",
+                      "fill": "$meli-text-secondary",
+                      "textGrowth": "fixed-width",
+                      "width": "fill_container",
+                      "content": "Bạn có thể thay đổi thông tin này sau trong hồ sơ.",
+                      "lineHeight": 1.35,
+                      "fontFamily": "Plus Jakarta Sans",
+                      "fontSize": 13
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "f5xz29",
+                  "name": "Link row",
+                  "width": "fill_container",
+                  "justifyContent": "space_between",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "ozvp0",
+                      "name": "Hint",
+                      "fill": "$meli-text-secondary",
+                      "content": "Đã có ngày từ bác sĩ?",
+                      "lineHeight": 1.35,
+                      "fontFamily": "Plus Jakarta Sans",
+                      "fontSize": 13,
+                      "fontWeight": "500"
+                    },
+                    {
+                      "type": "text",
+                      "id": "MaOdE",
+                      "name": "Link",
+                      "fill": "$meli-primary",
+                      "content": "Nhập trực tiếp",
+                      "lineHeight": 1.35,
+                      "fontFamily": "Plus Jakarta Sans",
+                      "fontSize": 13,
+                      "fontWeight": "700"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "aOmN9",
+              "name": "Spacer",
+              "width": "fill_container",
+              "height": "fill_container",
+              "layout": "vertical"
+            },
+            {
+              "type": "frame",
+              "id": "tFPzr",
+              "name": "Footer",
+              "width": "fill_container",
+              "layout": "vertical",
+              "gap": 10,
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "T5Vh7U",
+                  "name": "Tiếp tục",
+                  "width": "fill_container",
+                  "height": 52,
+                  "fill": "$meli-primary",
+                  "cornerRadius": 16,
+                  "stroke": {
+                    "thickness": 3,
+                    "fill": "#00000014"
+                  },
+                  "effect": {
+                    "type": "shadow",
+                    "shadowType": "outer",
+                    "color": "#F0818040",
+                    "offset": {
+                      "x": 4,
+                      "y": 4
+                    }
+                  },
+                  "justifyContent": "center",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "XqPfy",
+                      "name": "Label",
+                      "fill": "#FFFFFF",
+                      "content": "Tiếp tục",
+                      "lineHeight": 1.35,
+                      "fontFamily": "Plus Jakarta Sans",
+                      "fontSize": 14,
+                      "fontWeight": "700"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "kxAzo",
+                  "name": "Bỏ qua",
+                  "width": "fill_container",
+                  "height": 52,
+                  "fill": "#00000000",
+                  "cornerRadius": 16,
+                  "justifyContent": "center",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "mIHdu",
+                      "name": "Label",
+                      "fill": "$meli-primary",
+                      "content": "Bỏ qua",
+                      "lineHeight": 1.35,
+                      "fontFamily": "Plus Jakarta Sans",
+                      "fontSize": 14,
+                      "fontWeight": "700"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "ntuNW",
+          "name": "01b Direct due date",
+          "clip": true,
+          "width": 390,
+          "height": 844,
+          "fill": "$meli-background",
+          "layout": "vertical",
+          "gap": 20,
+          "padding": [
+            32,
+            24,
+            24,
+            24
+          ],
+          "children": [
+            {
+              "type": "frame",
+              "id": "b4Cotl",
+              "name": "Top",
+              "width": "fill_container",
+              "justifyContent": "space_between",
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "CI5Q2",
+                  "name": "Back button",
+                  "width": 40,
+                  "height": 40,
+                  "fill": "$meli-paper",
+                  "cornerRadius": 20,
+                  "stroke": {
+                    "thickness": 3,
+                    "fill": "$meli-coral-100"
+                  },
+                  "justifyContent": "center",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "icon_font",
+                      "id": "T6kbhU",
+                      "width": 22,
+                      "height": 22,
+                      "iconFontName": "chevron_left",
+                      "iconFontFamily": "Material Symbols Rounded",
+                      "weight": 500,
+                      "fill": "$meli-text-primary"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "O8Ih3x",
+                  "name": "Progress",
+                  "gap": 6,
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "rectangle",
+                      "cornerRadius": 9999,
+                      "id": "qrKJZ",
+                      "name": "Progress 1",
+                      "fill": "$meli-primary",
+                      "width": 28,
+                      "height": 8
+                    },
+                    {
+                      "type": "rectangle",
+                      "cornerRadius": 9999,
+                      "id": "s6GX2S",
+                      "name": "Progress 2",
+                      "fill": "$meli-coral-100",
+                      "width": 8,
+                      "height": 8
+                    },
+                    {
+                      "type": "rectangle",
+                      "cornerRadius": 9999,
+                      "id": "YLLqQ",
+                      "name": "Progress 3",
+                      "fill": "$meli-coral-100",
+                      "width": 8,
+                      "height": 8
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "UmZVl",
+              "name": "Hero",
+              "width": "fill_container",
+              "layout": "vertical",
+              "gap": 14,
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "bP3ND",
+                  "name": "Baby image",
+                  "width": 108,
+                  "height": 108,
+                  "fill": "$meli-paper",
+                  "cornerRadius": 54,
+                  "stroke": {
+                    "thickness": 3,
+                    "fill": "$meli-coral-100"
+                  },
+                  "effect": {
+                    "type": "shadow",
+                    "shadowType": "outer",
+                    "color": "#F0818026",
+                    "offset": {
+                      "x": 0,
+                      "y": 8
+                    },
+                    "blur": 20
+                  },
+                  "justifyContent": "center",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "icon_font",
+                      "id": "kFaaU",
+                      "width": 54,
+                      "height": 54,
+                      "iconFontName": "event_available",
+                      "iconFontFamily": "Material Symbols Rounded",
+                      "weight": 500,
+                      "fill": "$meli-primary"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "id": "rU3ui",
+                  "name": "Title",
+                  "fill": "$meli-text-primary",
+                  "textGrowth": "fixed-width",
+                  "width": "fill_container",
+                  "content": "Nhập ngày dự sinh",
+                  "lineHeight": 1.35,
+                  "textAlign": "center",
+                  "fontFamily": "Plus Jakarta Sans",
+                  "fontSize": 24,
+                  "fontWeight": "700"
+                },
+                {
+                  "type": "text",
+                  "id": "RvEtW",
+                  "name": "Description",
+                  "fill": "$meli-text-secondary",
+                  "textGrowth": "fixed-width",
+                  "width": "fill_container",
+                  "content": "Dùng ngày dự sinh bác sĩ đã thông báo để cá nhân hóa hành trình của bạn.",
+                  "lineHeight": 1.35,
+                  "textAlign": "center",
+                  "fontFamily": "Plus Jakarta Sans",
+                  "fontSize": 14
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "QfKRt",
+              "name": "Form",
+              "width": "fill_container",
+              "layout": "vertical",
+              "gap": 16,
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "m1wck9",
+                  "name": "Ngày dự sinh",
+                  "width": "fill_container",
+                  "layout": "vertical",
+                  "gap": 8,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "uevOy",
+                      "name": "Label",
+                      "fill": "$meli-text-primary",
+                      "content": "Ngày dự sinh",
+                      "lineHeight": 1.35,
+                      "fontFamily": "Plus Jakarta Sans",
+                      "fontSize": 13,
+                      "fontWeight": "600"
+                    },
+                    {
+                      "type": "frame",
+                      "id": "t6DRrF",
+                      "name": "Input",
+                      "width": "fill_container",
+                      "height": 56,
+                      "fill": "$meli-paper",
+                      "cornerRadius": 16,
+                      "stroke": {
+                        "thickness": 3,
+                        "fill": "$meli-coral-100"
+                      },
+                      "effect": {
+                        "type": "shadow",
+                        "shadowType": "outer",
+                        "color": "#00000008",
+                        "offset": {
+                          "x": 0,
+                          "y": 2
+                        },
+                        "blur": 4
+                      },
+                      "gap": 10,
+                      "padding": [
+                        0,
+                        16
+                      ],
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "icon_font",
+                          "id": "GN4S6",
+                          "width": 22,
+                          "height": 22,
+                          "iconFontName": "calendar_month",
+                          "iconFontFamily": "Material Symbols Rounded",
+                          "weight": 400,
+                          "fill": "$meli-text-secondary"
+                        },
+                        {
+                          "type": "text",
+                          "id": "M4aVt",
+                          "name": "Value",
+                          "fill": "$meli-text-primary",
+                          "content": "19/06/2026",
+                          "lineHeight": 1.35,
+                          "fontFamily": "Plus Jakarta Sans",
+                          "fontSize": 15,
+                          "fontWeight": "500"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "jQVuE",
+                  "name": "Doctor note",
+                  "width": "fill_container",
+                  "fill": "$meli-coral-50",
+                  "cornerRadius": 20,
+                  "stroke": {
+                    "thickness": 3,
+                    "fill": "$meli-coral-100"
+                  },
+                  "gap": 10,
+                  "padding": 16,
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "icon_font",
+                      "id": "hRPdd",
+                      "width": 24,
+                      "height": 24,
+                      "iconFontName": "medical_information",
+                      "iconFontFamily": "Material Symbols Rounded",
+                      "weight": 500,
+                      "fill": "$meli-primary"
+                    },
+                    {
+                      "type": "text",
+                      "id": "KFQIJ",
+                      "name": "Note",
+                      "fill": "$meli-text-secondary",
+                      "textGrowth": "fixed-width",
+                      "width": "fill_container",
+                      "content": "Nếu ngày này thay đổi sau lần khám tiếp theo, bạn vẫn có thể cập nhật trong hồ sơ.",
+                      "lineHeight": 1.35,
+                      "fontFamily": "Plus Jakarta Sans",
+                      "fontSize": 13,
+                      "fontWeight": "500"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "s5wRn4",
+                  "name": "Link row",
+                  "width": "fill_container",
+                  "justifyContent": "space_between",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "CCR6E",
+                      "name": "Hint",
+                      "fill": "$meli-text-secondary",
+                      "content": "Muốn tính từ kỳ kinh cuối?",
+                      "lineHeight": 1.35,
+                      "fontFamily": "Plus Jakarta Sans",
+                      "fontSize": 13,
+                      "fontWeight": "500"
+                    },
+                    {
+                      "type": "text",
+                      "id": "UTrYB",
+                      "name": "Link",
+                      "fill": "$meli-primary",
+                      "content": "Tính ngày dự sinh",
+                      "lineHeight": 1.35,
+                      "fontFamily": "Plus Jakarta Sans",
+                      "fontSize": 13,
+                      "fontWeight": "700"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "XEEUU",
+              "name": "Spacer",
+              "width": "fill_container",
+              "height": "fill_container",
+              "layout": "vertical"
+            },
+            {
+              "type": "frame",
+              "id": "m8hqzm",
+              "name": "Footer",
+              "width": "fill_container",
+              "layout": "vertical",
+              "gap": 10,
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "CfrXD",
+                  "name": "Tiếp tục",
+                  "width": "fill_container",
+                  "height": 52,
+                  "fill": "$meli-primary",
+                  "cornerRadius": 16,
+                  "stroke": {
+                    "thickness": 3,
+                    "fill": "#00000014"
+                  },
+                  "effect": {
+                    "type": "shadow",
+                    "shadowType": "outer",
+                    "color": "#F0818040",
+                    "offset": {
+                      "x": 4,
+                      "y": 4
+                    }
+                  },
+                  "justifyContent": "center",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "Tj9I6",
+                      "name": "Label",
+                      "fill": "#FFFFFF",
+                      "content": "Tiếp tục",
+                      "lineHeight": 1.35,
+                      "fontFamily": "Plus Jakarta Sans",
+                      "fontSize": 14,
+                      "fontWeight": "700"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "o43SgJ",
+                  "name": "Bỏ qua",
+                  "width": "fill_container",
+                  "height": 52,
+                  "fill": "#00000000",
+                  "cornerRadius": 16,
+                  "justifyContent": "center",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "b7K3g",
+                      "name": "Label",
+                      "fill": "$meli-primary",
+                      "content": "Bỏ qua",
+                      "lineHeight": 1.35,
+                      "fontFamily": "Plus Jakarta Sans",
+                      "fontSize": 14,
+                      "fontWeight": "700"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "sFrAG",
+          "name": "02 Weight and BMI",
+          "clip": true,
+          "width": 390,
+          "height": 844,
+          "fill": "$meli-background",
+          "layout": "vertical",
+          "gap": 20,
+          "padding": [
+            32,
+            24,
+            24,
+            24
+          ],
+          "children": [
+            {
+              "type": "frame",
+              "id": "ClG4V",
+              "name": "Top",
+              "width": "fill_container",
+              "justifyContent": "space_between",
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "cl8l3",
+                  "name": "Back button",
+                  "width": 40,
+                  "height": 40,
+                  "fill": "$meli-paper",
+                  "cornerRadius": 20,
+                  "stroke": {
+                    "thickness": 3,
+                    "fill": "$meli-coral-100"
+                  },
+                  "justifyContent": "center",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "icon_font",
+                      "id": "ji5vQ",
+                      "width": 22,
+                      "height": 22,
+                      "iconFontName": "chevron_left",
+                      "iconFontFamily": "Material Symbols Rounded",
+                      "weight": 500,
+                      "fill": "$meli-text-primary"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "F9eY2a",
+                  "name": "Progress",
+                  "gap": 6,
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "rectangle",
+                      "cornerRadius": 9999,
+                      "id": "ImB5D",
+                      "name": "Progress 1",
+                      "fill": "$meli-primary",
+                      "width": 8,
+                      "height": 8
+                    },
+                    {
+                      "type": "rectangle",
+                      "cornerRadius": 9999,
+                      "id": "Xg4kj",
+                      "name": "Progress 2",
+                      "fill": "$meli-primary",
+                      "width": 28,
+                      "height": 8
+                    },
+                    {
+                      "type": "rectangle",
+                      "cornerRadius": 9999,
+                      "id": "wnBcw",
+                      "name": "Progress 3",
+                      "fill": "$meli-coral-100",
+                      "width": 8,
+                      "height": 8
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "fYhqr",
+              "name": "Hero",
+              "width": "fill_container",
+              "layout": "vertical",
+              "gap": 14,
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "VeqNL",
+                  "name": "Baby image",
+                  "width": 108,
+                  "height": 108,
+                  "fill": "$meli-paper",
+                  "cornerRadius": 54,
+                  "stroke": {
+                    "thickness": 3,
+                    "fill": "$meli-coral-100"
+                  },
+                  "effect": {
+                    "type": "shadow",
+                    "shadowType": "outer",
+                    "color": "#F0818026",
+                    "offset": {
+                      "x": 0,
+                      "y": 8
+                    },
+                    "blur": 20
+                  },
+                  "justifyContent": "center",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "icon_font",
+                      "id": "T0lCh",
+                      "width": 54,
+                      "height": 54,
+                      "iconFontName": "monitor_weight",
+                      "iconFontFamily": "Material Symbols Rounded",
+                      "weight": 500,
+                      "fill": "$meli-primary"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "id": "AZJtI",
+                  "name": "Title",
+                  "fill": "$meli-text-primary",
+                  "textGrowth": "fixed-width",
+                  "width": "fill_container",
+                  "content": "Cân nặng của mẹ",
+                  "lineHeight": 1.35,
+                  "textAlign": "center",
+                  "fontFamily": "Plus Jakarta Sans",
+                  "fontSize": 24,
+                  "fontWeight": "700"
+                },
+                {
+                  "type": "text",
+                  "id": "jp3IN",
+                  "name": "Description",
+                  "fill": "$meli-text-secondary",
+                  "textGrowth": "fixed-width",
+                  "width": "fill_container",
+                  "content": "Nhập chiều cao và cân nặng để Meli gợi ý mức tăng cân phù hợp.",
+                  "lineHeight": 1.35,
+                  "textAlign": "center",
+                  "fontFamily": "Plus Jakarta Sans",
+                  "fontSize": 14
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "rMSNj",
+              "name": "Form",
+              "width": "fill_container",
+              "layout": "vertical",
+              "gap": 14,
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "xvsdr",
+                  "name": "Cân nặng hiện tại",
+                  "width": "fill_container",
+                  "layout": "vertical",
+                  "gap": 8,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "CakaT",
+                      "name": "Label",
+                      "fill": "$meli-text-primary",
+                      "content": "Cân nặng hiện tại",
+                      "lineHeight": 1.35,
+                      "fontFamily": "Plus Jakarta Sans",
+                      "fontSize": 13,
+                      "fontWeight": "600"
+                    },
+                    {
+                      "type": "frame",
+                      "id": "PPtDB",
+                      "name": "Input",
+                      "width": "fill_container",
+                      "height": 56,
+                      "fill": "$meli-paper",
+                      "cornerRadius": 16,
+                      "stroke": {
+                        "thickness": 3,
+                        "fill": "$meli-coral-100"
+                      },
+                      "effect": {
+                        "type": "shadow",
+                        "shadowType": "outer",
+                        "color": "#00000008",
+                        "offset": {
+                          "x": 0,
+                          "y": 2
+                        },
+                        "blur": 4
+                      },
+                      "gap": 10,
+                      "padding": [
+                        0,
+                        16
+                      ],
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "icon_font",
+                          "id": "hx43O",
+                          "width": 22,
+                          "height": 22,
+                          "iconFontName": "scale",
+                          "iconFontFamily": "Material Symbols Rounded",
+                          "weight": 400,
+                          "fill": "$meli-text-secondary"
+                        },
+                        {
+                          "type": "text",
+                          "id": "sY8U5",
+                          "name": "Value",
+                          "fill": "$meli-text-primary",
+                          "content": "58.5 kg",
+                          "lineHeight": 1.35,
+                          "fontFamily": "Plus Jakarta Sans",
+                          "fontSize": 15,
+                          "fontWeight": "500"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "Orwdh",
+                  "name": "Chiều cao",
+                  "width": "fill_container",
+                  "layout": "vertical",
+                  "gap": 8,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "IgjIc",
+                      "name": "Label",
+                      "fill": "$meli-text-primary",
+                      "content": "Chiều cao",
+                      "lineHeight": 1.35,
+                      "fontFamily": "Plus Jakarta Sans",
+                      "fontSize": 13,
+                      "fontWeight": "600"
+                    },
+                    {
+                      "type": "frame",
+                      "id": "ikg6D",
+                      "name": "Input",
+                      "width": "fill_container",
+                      "height": 56,
+                      "fill": "$meli-paper",
+                      "cornerRadius": 16,
+                      "stroke": {
+                        "thickness": 3,
+                        "fill": "$meli-coral-100"
+                      },
+                      "effect": {
+                        "type": "shadow",
+                        "shadowType": "outer",
+                        "color": "#00000008",
+                        "offset": {
+                          "x": 0,
+                          "y": 2
+                        },
+                        "blur": 4
+                      },
+                      "gap": 10,
+                      "padding": [
+                        0,
+                        16
+                      ],
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "icon_font",
+                          "id": "sjA73",
+                          "width": 22,
+                          "height": 22,
+                          "iconFontName": "height",
+                          "iconFontFamily": "Material Symbols Rounded",
+                          "weight": 400,
+                          "fill": "$meli-text-secondary"
+                        },
+                        {
+                          "type": "text",
+                          "id": "Fc2tg",
+                          "name": "Value",
+                          "fill": "$meli-text-primary",
+                          "content": "162 cm",
+                          "lineHeight": 1.35,
+                          "fontFamily": "Plus Jakarta Sans",
+                          "fontSize": 15,
+                          "fontWeight": "500"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "qdbSf",
+                  "name": "BMI card",
+                  "width": "fill_container",
+                  "fill": "$meli-paper",
+                  "cornerRadius": 20,
+                  "stroke": {
+                    "thickness": 3,
+                    "fill": "$meli-coral-100"
+                  },
+                  "effect": {
+                    "type": "shadow",
+                    "shadowType": "outer",
+                    "color": "#F0818026",
+                    "offset": {
+                      "x": 6,
+                      "y": 6
+                    }
+                  },
+                  "layout": "vertical",
+                  "gap": 10,
+                  "padding": 18,
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "DuQpT",
+                      "name": "BMI row",
+                      "width": "fill_container",
+                      "justifyContent": "space_between",
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "vQKew",
+                          "name": "Label",
+                          "fill": "$meli-text-secondary",
+                          "content": "BMI của bạn",
+                          "lineHeight": 1.35,
+                          "fontFamily": "Plus Jakarta Sans",
+                          "fontSize": 13,
+                          "fontWeight": "700"
+                        },
+                        {
+                          "type": "text",
+                          "id": "fDyek",
+                          "name": "Value",
+                          "fill": "$meli-text-primary",
+                          "content": "22.3",
+                          "lineHeight": 1.35,
+                          "fontFamily": "Plus Jakarta Sans",
+                          "fontSize": 28,
+                          "fontWeight": "700"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "text",
+                      "id": "TKABb",
+                      "name": "Tip",
+                      "fill": "$meli-text-secondary",
+                      "textGrowth": "fixed-width",
+                      "width": "fill_container",
+                      "content": "Tuần thai thứ 24: mức tăng gợi ý hiện tại khoảng 6.0 - 7.5 kg.",
+                      "lineHeight": 1.35,
+                      "fontFamily": "Plus Jakarta Sans",
+                      "fontSize": 13,
+                      "fontWeight": "500"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "UKhg9",
+              "name": "Spacer",
+              "width": "fill_container",
+              "height": "fill_container",
+              "layout": "vertical"
+            },
+            {
+              "type": "frame",
+              "id": "r1JSO",
+              "name": "Footer",
+              "width": "fill_container",
+              "layout": "vertical",
+              "gap": 10,
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "VaK1N",
+                  "name": "Tiếp tục",
+                  "width": "fill_container",
+                  "height": 52,
+                  "fill": "$meli-primary",
+                  "cornerRadius": 16,
+                  "stroke": {
+                    "thickness": 3,
+                    "fill": "#00000014"
+                  },
+                  "effect": {
+                    "type": "shadow",
+                    "shadowType": "outer",
+                    "color": "#F0818040",
+                    "offset": {
+                      "x": 4,
+                      "y": 4
+                    }
+                  },
+                  "justifyContent": "center",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "xIlUd",
+                      "name": "Label",
+                      "fill": "#FFFFFF",
+                      "content": "Tiếp tục",
+                      "lineHeight": 1.35,
+                      "fontFamily": "Plus Jakarta Sans",
+                      "fontSize": 14,
+                      "fontWeight": "700"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "S1eMr",
+                  "name": "Để sau",
+                  "width": "fill_container",
+                  "height": 52,
+                  "fill": "#00000000",
+                  "cornerRadius": 16,
+                  "justifyContent": "center",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "U2Zv6",
+                      "name": "Label",
+                      "fill": "$meli-primary",
+                      "content": "Để sau",
+                      "lineHeight": 1.35,
+                      "fontFamily": "Plus Jakarta Sans",
+                      "fontSize": 14,
+                      "fontWeight": "700"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "QoxRb",
+          "name": "03 Baby info",
+          "clip": true,
+          "width": 390,
+          "height": 844,
+          "fill": "$meli-background",
+          "layout": "vertical",
+          "gap": 20,
+          "padding": [
+            32,
+            24,
+            24,
+            24
+          ],
+          "children": [
+            {
+              "type": "frame",
+              "id": "efqgR",
+              "name": "Top",
+              "width": "fill_container",
+              "justifyContent": "space_between",
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "w2Czod",
+                  "name": "Back button",
+                  "width": 40,
+                  "height": 40,
+                  "fill": "$meli-paper",
+                  "cornerRadius": 20,
+                  "stroke": {
+                    "thickness": 3,
+                    "fill": "$meli-coral-100"
+                  },
+                  "justifyContent": "center",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "icon_font",
+                      "id": "shcov",
+                      "width": 22,
+                      "height": 22,
+                      "iconFontName": "chevron_left",
+                      "iconFontFamily": "Material Symbols Rounded",
+                      "weight": 500,
+                      "fill": "$meli-text-primary"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "RvilQ",
+                  "name": "Progress",
+                  "gap": 6,
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "rectangle",
+                      "cornerRadius": 9999,
+                      "id": "G7DW9T",
+                      "name": "Progress 1",
+                      "fill": "$meli-primary",
+                      "width": 8,
+                      "height": 8
+                    },
+                    {
+                      "type": "rectangle",
+                      "cornerRadius": 9999,
+                      "id": "q8Fbce",
+                      "name": "Progress 2",
+                      "fill": "$meli-primary",
+                      "width": 8,
+                      "height": 8
+                    },
+                    {
+                      "type": "rectangle",
+                      "cornerRadius": 9999,
+                      "id": "N44Q7",
+                      "name": "Progress 3",
+                      "fill": "$meli-primary",
+                      "width": 28,
+                      "height": 8
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "le9ZY",
+              "name": "Hero",
+              "width": "fill_container",
+              "layout": "vertical",
+              "gap": 14,
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "TbJIk",
+                  "name": "Baby image",
+                  "width": 108,
+                  "height": 108,
+                  "fill": "$meli-paper",
+                  "cornerRadius": 54,
+                  "stroke": {
+                    "thickness": 3,
+                    "fill": "$meli-coral-100"
+                  },
+                  "effect": {
+                    "type": "shadow",
+                    "shadowType": "outer",
+                    "color": "#F0818026",
+                    "offset": {
+                      "x": 0,
+                      "y": 8
+                    },
+                    "blur": 20
+                  },
+                  "justifyContent": "center",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "icon_font",
+                      "id": "WVPec",
+                      "width": 54,
+                      "height": 54,
+                      "iconFontName": "child_care",
+                      "iconFontFamily": "Material Symbols Rounded",
+                      "weight": 500,
+                      "fill": "$meli-primary"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "id": "DXzBZ",
+                  "name": "Title",
+                  "fill": "$meli-text-primary",
+                  "textGrowth": "fixed-width",
+                  "width": "fill_container",
+                  "content": "Thông tin của bé",
+                  "lineHeight": 1.35,
+                  "textAlign": "center",
+                  "fontFamily": "Plus Jakarta Sans",
+                  "fontSize": 24,
+                  "fontWeight": "700"
+                },
+                {
+                  "type": "text",
+                  "id": "K57iW",
+                  "name": "Description",
+                  "fill": "$meli-text-secondary",
+                  "textGrowth": "fixed-width",
+                  "width": "fill_container",
+                  "content": "Một vài chi tiết nhỏ giúp trải nghiệm Meli gần gũi hơn với gia đình bạn.",
+                  "lineHeight": 1.35,
+                  "textAlign": "center",
+                  "fontFamily": "Plus Jakarta Sans",
+                  "fontSize": 14
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "Iuy5r",
+              "name": "Form",
+              "width": "fill_container",
+              "layout": "vertical",
+              "gap": 14,
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "BWeu6",
+                  "name": "Tên của bé",
+                  "width": "fill_container",
+                  "layout": "vertical",
+                  "gap": 8,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "Q9hs8q",
+                      "name": "Label",
+                      "fill": "$meli-text-primary",
+                      "content": "Tên của bé",
+                      "lineHeight": 1.35,
+                      "fontFamily": "Plus Jakarta Sans",
+                      "fontSize": 13,
+                      "fontWeight": "600"
+                    },
+                    {
+                      "type": "frame",
+                      "id": "ZKSvA",
+                      "name": "Input",
+                      "width": "fill_container",
+                      "height": 56,
+                      "fill": "$meli-paper",
+                      "cornerRadius": 16,
+                      "stroke": {
+                        "thickness": 3,
+                        "fill": "$meli-coral-100"
+                      },
+                      "effect": {
+                        "type": "shadow",
+                        "shadowType": "outer",
+                        "color": "#00000008",
+                        "offset": {
+                          "x": 0,
+                          "y": 2
+                        },
+                        "blur": 4
+                      },
+                      "gap": 10,
+                      "padding": [
+                        0,
+                        16
+                      ],
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "icon_font",
+                          "id": "K067Q",
+                          "width": 22,
+                          "height": 22,
+                          "iconFontName": "badge",
+                          "iconFontFamily": "Material Symbols Rounded",
+                          "weight": 400,
+                          "fill": "$meli-text-secondary"
+                        },
+                        {
+                          "type": "text",
+                          "id": "iTIr7",
+                          "name": "Value",
+                          "fill": "$meli-text-primary",
+                          "content": "Meli",
+                          "lineHeight": 1.35,
+                          "fontFamily": "Plus Jakarta Sans",
+                          "fontSize": 15,
+                          "fontWeight": "500"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "BMg4F",
+                  "name": "Giới tính",
+                  "width": "fill_container",
+                  "layout": "vertical",
+                  "gap": 8,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "GW0Fm",
+                      "name": "Label",
+                      "fill": "$meli-text-primary",
+                      "content": "Giới tính",
+                      "lineHeight": 1.35,
+                      "fontFamily": "Plus Jakarta Sans",
+                      "fontSize": 13,
+                      "fontWeight": "600"
+                    },
+                    {
+                      "type": "frame",
+                      "id": "f7LewJ",
+                      "name": "Input",
+                      "width": "fill_container",
+                      "height": 56,
+                      "fill": "$meli-paper",
+                      "cornerRadius": 16,
+                      "stroke": {
+                        "thickness": 3,
+                        "fill": "$meli-coral-100"
+                      },
+                      "effect": {
+                        "type": "shadow",
+                        "shadowType": "outer",
+                        "color": "#00000008",
+                        "offset": {
+                          "x": 0,
+                          "y": 2
+                        },
+                        "blur": 4
+                      },
+                      "gap": 10,
+                      "padding": [
+                        0,
+                        16
+                      ],
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "icon_font",
+                          "id": "xzR9V",
+                          "width": 22,
+                          "height": 22,
+                          "iconFontName": "keyboard_arrow_down",
+                          "iconFontFamily": "Material Symbols Rounded",
+                          "weight": 400,
+                          "fill": "$meli-text-secondary"
+                        },
+                        {
+                          "type": "text",
+                          "id": "K1IWk",
+                          "name": "Value",
+                          "fill": "$meli-text-primary",
+                          "content": "Chưa biết",
+                          "lineHeight": 1.35,
+                          "fontFamily": "Plus Jakarta Sans",
+                          "fontSize": 15,
+                          "fontWeight": "500"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "S1WHws",
+                  "name": "Twins toggle",
+                  "width": "fill_container",
+                  "height": 60,
+                  "fill": "$meli-paper",
+                  "cornerRadius": 20,
+                  "stroke": {
+                    "thickness": 3,
+                    "fill": "$meli-coral-100"
+                  },
+                  "gap": 12,
+                  "padding": [
+                    0,
+                    16
+                  ],
+                  "justifyContent": "space_between",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "mXZZQ",
+                      "name": "Toggle copy",
+                      "gap": 10,
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "icon_font",
+                          "id": "EhDB6",
+                          "width": 22,
+                          "height": 22,
+                          "iconFontName": "favorite",
+                          "iconFontFamily": "Material Symbols Rounded",
+                          "weight": 500,
+                          "fill": "$meli-primary"
+                        },
+                        {
+                          "type": "text",
+                          "id": "ONqTY",
+                          "name": "Label",
+                          "fill": "$meli-text-primary",
+                          "content": "Mang thai đôi",
+                          "lineHeight": 1.35,
+                          "fontFamily": "Plus Jakarta Sans",
+                          "fontSize": 14,
+                          "fontWeight": "700"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "CnCmk",
+                      "name": "Toggle off",
+                      "width": 46,
+                      "height": 28,
+                      "fill": "$meli-coral-100",
+                      "cornerRadius": 9999,
+                      "padding": [
+                        0,
+                        3
+                      ],
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "ellipse",
+                          "id": "kJIQ0",
+                          "name": "Knob",
+                          "fill": "$meli-paper",
+                          "width": 22,
+                          "height": 22,
+                          "effect": {
+                            "type": "shadow",
+                            "shadowType": "outer",
+                            "color": "#0000001A",
+                            "offset": {
+                              "x": 0,
+                              "y": 1
+                            },
+                            "blur": 3
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "I9k3X",
+              "name": "Spacer",
+              "width": "fill_container",
+              "height": "fill_container",
+              "layout": "vertical"
+            },
+            {
+              "type": "frame",
+              "id": "xt5BV",
+              "name": "Footer",
+              "width": "fill_container",
+              "layout": "vertical",
+              "gap": 10,
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "QfWcZ",
+                  "name": "Tiếp tục",
+                  "width": "fill_container",
+                  "height": 52,
+                  "fill": "$meli-primary",
+                  "cornerRadius": 16,
+                  "stroke": {
+                    "thickness": 3,
+                    "fill": "#00000014"
+                  },
+                  "effect": {
+                    "type": "shadow",
+                    "shadowType": "outer",
+                    "color": "#F0818040",
+                    "offset": {
+                      "x": 4,
+                      "y": 4
+                    }
+                  },
+                  "justifyContent": "center",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "iKakc",
+                      "name": "Label",
+                      "fill": "#FFFFFF",
+                      "content": "Tiếp tục",
+                      "lineHeight": 1.35,
+                      "fontFamily": "Plus Jakarta Sans",
+                      "fontSize": 14,
+                      "fontWeight": "700"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "Ge7FM",
+                  "name": "Để sau",
+                  "width": "fill_container",
+                  "height": 52,
+                  "fill": "#00000000",
+                  "cornerRadius": 16,
+                  "justifyContent": "center",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "cPc9A",
+                      "name": "Label",
+                      "fill": "$meli-primary",
+                      "content": "Để sau",
+                      "lineHeight": 1.35,
+                      "fontFamily": "Plus Jakarta Sans",
+                      "fontSize": 14,
+                      "fontWeight": "700"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "variables": {
+    "meli-background": {
+      "type": "color",
+      "value": "#FFF5F5"
+    },
+    "meli-coral-100": {
+      "type": "color",
+      "value": "#FFE0E0"
+    },
+    "meli-coral-50": {
+      "type": "color",
+      "value": "#FFF0F0"
+    },
+    "meli-font-family": {
+      "type": "string",
+      "value": "Plus Jakarta Sans"
+    },
+    "meli-paper": {
+      "type": "color",
+      "value": "#FFFFFF"
+    },
+    "meli-primary": {
+      "type": "color",
+      "value": "#F08180"
+    },
+    "meli-radius-full": {
+      "type": "number",
+      "value": 9999
+    },
+    "meli-radius-lg": {
+      "type": "number",
+      "value": 16
+    },
+    "meli-radius-md": {
+      "type": "number",
+      "value": 12
+    },
+    "meli-radius-sm": {
+      "type": "number",
+      "value": 8
+    },
+    "meli-radius-xl": {
+      "type": "number",
+      "value": 20
+    },
+    "meli-secondary": {
+      "type": "color",
+      "value": "#5BBCB4"
+    },
+    "meli-text-primary": {
+      "type": "color",
+      "value": "#1A1A2E"
+    },
+    "meli-text-secondary": {
+      "type": "color",
+      "value": "#6B7280"
+    }
+  }
+}
