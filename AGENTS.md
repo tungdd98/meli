@@ -36,6 +36,9 @@ module boundaries, so import shared code through package aliases such as
 files by route (`about.tsx`, `index.tsx`) and library implementation files by
 feature under `src/lib/`.
 
+For MUI icons, always use the Rounded variant (e.g. `HomeRounded`, `SearchRounded`)
+and import via named barrel: `import { HomeRounded } from '@mui/icons-material'`.
+
 ## Testing Guidelines
 
 Vitest is configured through Nx/Vite, but the current scaffold has no test files.

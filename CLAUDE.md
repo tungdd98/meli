@@ -54,3 +54,4 @@ Nx monorepo with pnpm workspaces. One app (`apps/web`) and four shared libraries
 - **Commits**: Conventional Commits enforced by commitlint + husky. Format: `type(scope): message`.
 - **Lint-staged**: ESLint + Prettier run automatically on staged `.ts`/`.tsx` files via husky pre-commit hook.
 - **Module boundaries**: `@nx/enforce-module-boundaries` ESLint rule is active — libs should not import from `apps/`, and cross-lib imports must respect configured tags.
+- **Icons**: Use the Rounded variant from `@mui/icons-material` (for example: `HomeRounded`, `SearchRounded`). Import via named barrel: `import { HomeRounded, SearchRounded } from '@mui/icons-material'`.
