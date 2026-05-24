@@ -82,7 +82,7 @@ create trigger on_auth_user_created
 - `due_date` lưu kết quả cuối (LMP + 280 ngày hoặc nhập trực tiếp) — không lưu LMP riêng
 - `baby_gender` mặc định `'unknown'` khi user không chọn
 - Row được tạo tự động qua trigger khi user đăng ký → app chỉ cần `update`, không cần `insert`
-- `onboarding_completed = true` khi: (a) hoàn thành bước cuối, hoặc (b) nhấn "Bỏ qua" ở bước 1
+- `onboarding_completed = true` chỉ khi user đến bước cuối (baby) và nhấn "Tiếp tục" hoặc "Để sau" — mọi "Bỏ qua" ở bước giữa chỉ skip sang step kế, không set flag này
 
 ---
 
@@ -172,14 +172,14 @@ libs/api/src/lib/
 - Tính preview `due_date = lmp + 280 ngày` hiển thị dưới input
 - Khi "Tiếp tục": `profilesApi.update({ due_date })` → `/onboarding/weight`
 - Link "Nếu biết từ bác sĩ" → navigate `/onboarding/due-date/direct`
-- Nút "Bỏ qua": `profilesApi.update({ onboarding_completed: true })` → `/`
+- Nút "Bỏ qua": navigate `/onboarding/weight`, không gọi API (cùng hành vi "Để sau")
 
 **Due date — Màn hình 1b (`due-date.direct.tsx`):**
 
 - Date picker nhập trực tiếp `due_date`
 - Link "Tính ngày dự sinh" → navigate back `/onboarding/due-date`
 - Khi "Tiếp tục": `profilesApi.update({ due_date })` → `/onboarding/weight`
-- Nút "Bỏ qua": `profilesApi.update({ onboarding_completed: true })` → `/` (cùng hành vi với màn hình 1a)
+- Nút "Bỏ qua": navigate `/onboarding/weight`, không gọi API (cùng hành vi "Để sau")
 
 **Weight — Màn hình 2 (`weight.tsx`):**
 
