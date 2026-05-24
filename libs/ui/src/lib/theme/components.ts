@@ -37,14 +37,21 @@ export const components: ThemeOptions['components'] = {
   MuiOutlinedInput: {
     styleOverrides: {
       root: {
-        borderRadius: shape.md,
+        borderRadius: shape.lg,
         backgroundColor: '#FFFFFF',
         minHeight: 48,
+        boxShadow: 'inset 0 2px 4px rgba(0,0,0,0.03)',
         '& .MuiOutlinedInput-notchedOutline': {
-          borderColor: '#E0E0E0',
+          borderColor: '#FFE0E0',
+          borderWidth: '3px',
         },
         '&:hover .MuiOutlinedInput-notchedOutline': {
-          borderColor: '#E0E0E0',
+          borderColor: '#FFE0E0',
+          borderWidth: '3px',
+        },
+        '&.Mui-focused .MuiOutlinedInput-notchedOutline': {
+          borderColor: '#F08180',
+          borderWidth: '3px',
         },
       },
     },
@@ -156,6 +163,49 @@ export const components: ThemeOptions['components'] = {
       standardInfo: {
         backgroundColor: '#eff6ff',
         color: '#1e40af',
+      },
+    },
+  },
+
+  MuiCard: {
+    styleOverrides: {
+      root: {
+        borderRadius: shape.xl,
+        border: '3px solid #FFE0E0',
+        boxShadow: offsetShadows.card,
+        backgroundColor: '#FFFFFF',
+      },
+    },
+  },
+
+  MuiAvatar: {
+    styleOverrides: {
+      root: {
+        backgroundColor: '#FFE0E0',
+        color: '#F08180',
+      },
+    },
+  },
+
+  MuiChip: {
+    styleOverrides: {
+      root: {
+        borderRadius: shape.full,
+        fontWeight: 600,
+        fontSize: '13px',
+      },
+      colorPrimary: {
+        color: '#F08180',
+        '&.MuiChip-filled': {
+          backgroundColor: '#FFF0F0',
+          border: '1px solid #FFE0E0',
+        },
+      },
+      colorSecondary: {
+        color: '#5BBCB4',
+        '&.MuiChip-filled': {
+          backgroundColor: 'rgba(91,188,180,0.1)',
+        },
       },
     },
   },
