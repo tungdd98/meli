@@ -1,24 +1,28 @@
 import type { ThemeOptions } from '@mui/material/styles';
-import { shadows } from './shadows';
+import { shadows, offsetShadows } from './shadows';
 import { shape } from './shape';
 
 export const components: ThemeOptions['components'] = {
   MuiButton: {
     defaultProps: {
-      disableElevation: true,
       fullWidth: true,
     },
     styleOverrides: {
       root: {
-        borderRadius: shape.full,
+        borderRadius: shape.lg,
         textTransform: 'none' as const,
       },
       sizeSmall: { height: 36 },
       sizeMedium: { height: 44 },
       sizeLarge: { height: 52 },
       containedPrimary: {
-        boxShadow: shadows[1],
-        '&:hover': { boxShadow: shadows[1] },
+        border: '3px solid rgba(0,0,0,0.08)',
+        boxShadow: offsetShadows.button,
+        '&:hover': { boxShadow: offsetShadows.button },
+      },
+      outlinedPrimary: {
+        borderWidth: '3px',
+        '&:hover': { borderWidth: '3px' },
       },
     },
   },
