@@ -98,12 +98,17 @@ function TypographyShowcase() {
 }
 
 function ShapeShowcase() {
-  const tokens = [
-    { name: 'radiusSm', value: shape.radiusSm },
-    { name: 'borderRadius', value: shape.borderRadius },
-    { name: 'radiusLg', value: shape.radiusLg },
-    { name: 'radiusFull', value: shape.radiusFull },
+  const tokens: { name: string; value: string }[] = [
+    { name: 'sm', value: shape.sm },
+    { name: 'md', value: shape.md },
+    { name: 'lg', value: shape.lg },
+    { name: 'full', value: shape.full },
   ];
+
+  const capRadius = (v: string) => {
+    const px = parseInt(v, 10);
+    return px > 40 ? '40px' : v;
+  };
 
   return (
     <Box
@@ -130,7 +135,7 @@ function ShapeShowcase() {
               width: 80,
               height: 80,
               bgcolor: 'primary.main',
-              borderRadius: `${Math.min(value, 40)}px`,
+              borderRadius: capRadius(value),
             }}
           />
           <Typography
@@ -143,7 +148,7 @@ function ShapeShowcase() {
             variant="caption"
             sx={{ fontSize: 10, color: 'text.secondary' }}
           >
-            {value}px
+            {value}
           </Typography>
         </Box>
       ))}

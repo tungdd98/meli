@@ -10,7 +10,7 @@ export const components: ThemeOptions['components'] = {
     },
     styleOverrides: {
       root: {
-        borderRadius: shape.radiusFull,
+        borderRadius: shape.full,
         textTransform: 'none' as const,
       },
       sizeSmall: { height: 36 },
@@ -33,7 +33,7 @@ export const components: ThemeOptions['components'] = {
   MuiOutlinedInput: {
     styleOverrides: {
       root: {
-        borderRadius: shape.borderRadius,
+        borderRadius: shape.md,
         backgroundColor: '#FFFFFF',
         minHeight: 48,
         '& .MuiOutlinedInput-notchedOutline': {
@@ -77,7 +77,7 @@ export const components: ThemeOptions['components'] = {
     },
     styleOverrides: {
       paper: {
-        borderRadius: shape.radiusLg,
+        borderRadius: shape.lg,
         boxShadow: shadows[3],
         padding: 24,
         maxWidth: '90vw',
@@ -134,7 +134,7 @@ export const components: ThemeOptions['components'] = {
   MuiAlert: {
     styleOverrides: {
       root: {
-        borderRadius: shape.borderRadius,
+        borderRadius: shape.md,
         boxShadow: shadows[2],
       },
       standardSuccess: {
