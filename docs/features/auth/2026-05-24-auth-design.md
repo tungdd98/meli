@@ -43,15 +43,18 @@ interface AuthState {
 }
 ```
 
-- `signIn`: gọi `supabase.auth.signInWithPassword()`, set `isLoading` trong khi chờ
+- `isLoading`: mặc định `true` khi app khởi động, set `false` sau khi `getSession()` resolve. Ngăn route guard redirect nhầm trước khi auth state được xác định.
+- `signIn`: gọi `supabase.auth.signInWithPassword()`, set `isLoading: true` trong khi chờ
 - `signOut`: gọi `supabase.auth.signOut()`, clear `session` và `user`
 
 ## Session Initialization
 
 Trong `providers.tsx`, thêm effect khi mount:
 
-1. Gọi `supabase.auth.getSession()` để restore session đã lưu (localStorage)
+1. Gọi `supabase.auth.getSession()` để restore session đã lưu (localStorage) → set `isLoading: false` khi done
 2. Subscribe `supabase.auth.onAuthStateChange()` để sync store realtime (token refresh, logout từ tab khác)
+
+Route guard `_auth.tsx` phải chờ `isLoading === false` trước khi quyết định redirect.
 
 ## Login UI
 
