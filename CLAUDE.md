@@ -24,6 +24,9 @@ pnpm nx run-many -t typecheck
 # Test
 pnpm nx test <project>          # run tests for a project
 pnpm nx test <project> -- --testNamePattern="pattern"  # single test
+
+# Storybook
+pnpm nx storybook @meli/ui --port 4400  # xem components tại http://localhost:4400
 ```
 
 ## Architecture

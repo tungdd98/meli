@@ -22,6 +22,9 @@ Use pnpm and Nx from the repository root:
 - `pnpm exec nx lint @meli/web` runs ESLint for one project.
 - `pnpm exec nx typecheck @meli/web` runs TypeScript project checking.
 - `pnpm exec nx test @meli/ui` runs Vitest where a test target exists.
+- `pnpm exec nx storybook @meli/ui --port 4400` starts the Storybook dev server
+  at `http://localhost:4400` for browsing and interacting with `@meli/ui`
+  components and design tokens.
 
 ## Coding Style & Naming Conventions
 
