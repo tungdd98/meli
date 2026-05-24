@@ -1,6 +1,8 @@
 import type { Preview, Decorator } from '@storybook/react';
 import { ThemeProvider } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
+import { LocalizationProvider } from '@mui/x-date-pickers';
+import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { theme } from '../src/lib/theme';
 
 const withTheme: Decorator = (Story) => (
@@ -10,8 +12,14 @@ const withTheme: Decorator = (Story) => (
   </ThemeProvider>
 );
 
+const withLocalization: Decorator = (Story) => (
+  <LocalizationProvider dateAdapter={AdapterDayjs}>
+    <Story />
+  </LocalizationProvider>
+);
+
 const preview: Preview = {
-  decorators: [withTheme],
+  decorators: [withLocalization, withTheme],
   parameters: {
     controls: {
       matchers: {
