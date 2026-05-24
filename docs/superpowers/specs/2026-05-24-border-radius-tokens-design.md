@@ -13,7 +13,7 @@ Current `shape.ts` has two issues:
 
 ## Goal
 
-- Enable `sx={{ borderRadius: 'md' }}` alongside existing numeric shorthand `sx={{ borderRadius: 3 }}`
+- Use named token values like `sx={{ borderRadius: shape.md }}` alongside existing numeric shorthand `sx={{ borderRadius: 3 }}`
 - Consistent, semantic token names (`sm`, `md`, `lg`, `full`)
 - No unstable MUI APIs required
 
