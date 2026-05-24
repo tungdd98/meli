@@ -51,7 +51,7 @@ function AuthInitializer({ children }: { children: ReactNode }) {
     );
   }
 
-  return <>{children}</>;
+  return children;
 }
 
 export function Providers() {
