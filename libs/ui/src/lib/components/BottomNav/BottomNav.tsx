@@ -8,7 +8,6 @@ import { shape } from '../../theme/shape';
 export interface BottomNavItem {
   label: string;
   icon: ReactNode;
-  activeIcon: ReactNode;
 }
 
 export interface BottomNavProps {
@@ -59,9 +58,7 @@ export function BottomNav({ items, value, onChange }: BottomNavProps) {
               transition: 'color 0.2s',
             }}
           >
-            <Box sx={{ fontSize: 24, display: 'flex' }}>
-              {isActive ? item.activeIcon : item.icon}
-            </Box>
+            <Box sx={{ fontSize: 24, display: 'flex' }}>{item.icon}</Box>
             <Typography variant="caption" sx={{ fontSize: 10, lineHeight: 1 }}>
               {item.label}
             </Typography>

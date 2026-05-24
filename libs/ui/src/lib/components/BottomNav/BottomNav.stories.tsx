@@ -1,25 +1,18 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import HomeIcon from '@mui/icons-material/Home';
-import HomeOutlinedIcon from '@mui/icons-material/HomeOutlined';
-import SearchIcon from '@mui/icons-material/Search';
-import SearchOutlinedIcon from '@mui/icons-material/SearchOutlined';
-import PersonIcon from '@mui/icons-material/Person';
-import PersonOutlinedIcon from '@mui/icons-material/PersonOutlined';
-import FavoriteIcon from '@mui/icons-material/Favorite';
-import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
-import NotificationsIcon from '@mui/icons-material/Notifications';
-import NotificationsNoneIcon from '@mui/icons-material/NotificationsNone';
+import {
+  HomeRounded,
+  SearchRounded,
+  PersonRounded,
+  FavoriteRounded,
+  NotificationsRounded,
+} from '@mui/icons-material';
 import { fn } from 'storybook/test';
 import { BottomNav } from './BottomNav';
 
 const threeItems = [
-  { label: 'Home', icon: <HomeOutlinedIcon />, activeIcon: <HomeIcon /> },
-  { label: 'Search', icon: <SearchOutlinedIcon />, activeIcon: <SearchIcon /> },
-  {
-    label: 'Profile',
-    icon: <PersonOutlinedIcon />,
-    activeIcon: <PersonIcon />,
-  },
+  { label: 'Home', icon: <HomeRounded /> },
+  { label: 'Search', icon: <SearchRounded /> },
+  { label: 'Profile', icon: <PersonRounded /> },
 ];
 
 const meta: Meta<typeof BottomNav> = {
@@ -48,27 +41,11 @@ export const LastItemActive: Story = {
 export const ManyItems: Story = {
   args: {
     items: [
-      { label: 'Home', icon: <HomeOutlinedIcon />, activeIcon: <HomeIcon /> },
-      {
-        label: 'Search',
-        icon: <SearchOutlinedIcon />,
-        activeIcon: <SearchIcon />,
-      },
-      {
-        label: 'Saved',
-        icon: <FavoriteBorderIcon />,
-        activeIcon: <FavoriteIcon />,
-      },
-      {
-        label: 'Alerts',
-        icon: <NotificationsNoneIcon />,
-        activeIcon: <NotificationsIcon />,
-      },
-      {
-        label: 'Profile',
-        icon: <PersonOutlinedIcon />,
-        activeIcon: <PersonIcon />,
-      },
+      { label: 'Home', icon: <HomeRounded /> },
+      { label: 'Search', icon: <SearchRounded /> },
+      { label: 'Saved', icon: <FavoriteRounded /> },
+      { label: 'Alerts', icon: <NotificationsRounded /> },
+      { label: 'Profile', icon: <PersonRounded /> },
     ],
     value: 0,
     onChange: fn(),
