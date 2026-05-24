@@ -125,7 +125,7 @@ export function DemoForm({ onSubmit, defaultValues }: DemoFormProps) {
           control={control}
           label="Tôi đồng ý với điều khoản sử dụng"
         />
-        <Button type="submit" variant="contained" size="large">
+        <Button type="submit" variant="contained">
           Gửi
         </Button>
       </Stack>

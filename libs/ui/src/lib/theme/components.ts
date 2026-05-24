@@ -7,9 +7,6 @@ import { shape } from './shape';
 
 export const components: ThemeOptions['components'] = {
   MuiButton: {
-    defaultProps: {
-      fullWidth: true,
-    },
     styleOverrides: {
       root: {
         borderRadius: shape.lg,
@@ -42,7 +39,6 @@ export const components: ThemeOptions['components'] = {
       root: {
         borderRadius: shape.lg,
         backgroundColor: palette.background.paper,
-        minHeight: 48,
         boxShadow: 'inset 0 2px 4px rgba(0,0,0,0.03)',
         '& .MuiOutlinedInput-notchedOutline': {
           borderColor: palette.coral[100],
@@ -214,11 +210,14 @@ export const components: ThemeOptions['components'] = {
   },
 
   MuiChip: {
+    defaultProps: {
+      size: 'small',
+    },
     styleOverrides: {
       root: {
         borderRadius: shape.full,
         fontWeight: 600,
-        fontSize: '13px',
+        fontSize: '12px',
       },
       colorPrimary: {
         color: palette.primary.main,
