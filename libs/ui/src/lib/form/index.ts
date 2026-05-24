@@ -5,3 +5,4 @@ export * from './FormSwitch';
 export * from './FormRadioGroup';
 export * from './FormDatePicker';
 export * from './FormAutocomplete';
+export * from './DemoForm';
