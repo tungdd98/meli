@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { calcBmi, calcWeightGainTip } from './bmi';
+import { calcBmi, calcWeightGainTip } from './bmi.js';
 
 describe('calcBmi', () => {
   it('tính đúng BMI', () => {
