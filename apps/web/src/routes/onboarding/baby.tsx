@@ -4,10 +4,7 @@ import { z } from 'zod';
 import { createFileRoute, useNavigate } from '@tanstack/react-router';
 import {
   Box,
-  Button,
-  FormControl,
   InputAdornment,
-  InputLabel,
   MenuItem,
   Select,
   Stack,
@@ -26,7 +23,9 @@ import { profilesApi } from '@meli/api';
 import { useAuthStore } from '../../stores/auth.store';
 import {
   BackButtonIcon,
-  fieldAdornmentSx,
+  FieldBlock,
+  fieldSx,
+  FooterActions,
   outlinedCardSx,
   stepPageSx,
   WizardHero,
@@ -108,37 +107,51 @@ function BabyPage() {
       <WizardHero
         icon={<ChildCareRounded />}
         title="Thông tin của bé"
-        description="Thêm vài thông tin nhỏ để Meli cá nhân hóa trải nghiệm theo bé."
+        description="Một vài chi tiết nhỏ giúp thông tin Meli gửi đến phù hợp với gia đình bạn."
       />
 
-      <Stack gap={2}>
-        <TextField
-          {...register('baby_name')}
-          label="Tên của bé"
-          InputLabelProps={{ shrink: true }}
-          InputProps={{
-            startAdornment: (
-              <InputAdornment position="start" sx={fieldAdornmentSx}>
-                <BadgeRounded />
-              </InputAdornment>
-            ),
-          }}
-        />
+      <Stack gap="14px" sx={{ height: 252 }}>
+        <FieldBlock label="Tên của bé">
+          <TextField
+            {...register('baby_name')}
+            placeholder="Meli"
+            sx={fieldSx}
+            InputProps={{
+              startAdornment: (
+                <InputAdornment position="start">
+                  <BadgeRounded />
+                </InputAdornment>
+              ),
+            }}
+          />
+        </FieldBlock>
 
-        <Controller
-          name="baby_gender"
-          control={control}
-          render={({ field }) => (
-            <FormControl fullWidth>
-              <InputLabel shrink>Giới tính của bé</InputLabel>
-              <Select {...field} label="Giới tính của bé" notched>
+        <FieldBlock label="Giới tính">
+          <Controller
+            name="baby_gender"
+            control={control}
+            render={({ field }) => (
+              <Select
+                {...field}
+                displayEmpty
+                sx={{
+                  borderRadius: shape.lg,
+                  height: 56,
+                  fontSize: 14,
+                  fontWeight: 500,
+                  '& .MuiSelect-select': {
+                    alignItems: 'center',
+                    display: 'flex',
+                  },
+                }}
+              >
                 <MenuItem value="unknown">Chưa biết</MenuItem>
                 <MenuItem value="male">Bé trai</MenuItem>
                 <MenuItem value="female">Bé gái</MenuItem>
               </Select>
-            </FormControl>
-          )}
-        />
+            )}
+          />
+        </FieldBlock>
 
         <Controller
           name="is_twins"
@@ -148,11 +161,14 @@ function BabyPage() {
               direction="row"
               alignItems="center"
               justifyContent="space-between"
-              sx={outlinedCardSx}
+              sx={{ ...outlinedCardSx, height: 60, py: 0 }}
             >
               <Stack direction="row" alignItems="center" gap={1.5}>
-                <FavoriteRounded color="primary" />
-                <Typography color="text.primary" sx={{ fontWeight: 600 }}>
+                <FavoriteRounded color="primary" sx={{ fontSize: 22 }} />
+                <Typography
+                  color="text.primary"
+                  sx={{ fontSize: 14, fontWeight: 700, lineHeight: '20px' }}
+                >
                   Mang thai đôi
                 </Typography>
               </Stack>
@@ -191,27 +207,14 @@ function BabyPage() {
         />
       </Stack>
 
-      <Box sx={{ flex: 1 }} />
+      <Box sx={{ height: 96 }} />
 
-      <Stack gap={1.5}>
-        <Button
-          type="submit"
-          variant="contained"
-          size="large"
-          disabled={isSubmitting}
-        >
-          Tiếp tục
-        </Button>
-        <Button
-          type="button"
-          variant="text"
-          size="large"
-          disabled={isSubmitting}
-          onClick={handleSkip}
-        >
-          Để sau
-        </Button>
-      </Stack>
+      <FooterActions
+        type="submit"
+        disabled={isSubmitting}
+        skipLabel="Để sau"
+        onSkip={handleSkip}
+      />
     </Stack>
   );
 }

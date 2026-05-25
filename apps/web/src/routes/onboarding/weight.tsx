@@ -4,7 +4,6 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
 import {
   Box,
-  Button,
   InputAdornment,
   Stack,
   TextField,
@@ -21,7 +20,9 @@ import { calcBmi, calcPregnancyWeek, calcWeightGainTip } from '@meli/utils';
 import { useAuthStore } from '../../stores/auth.store';
 import {
   BackButtonIcon,
-  fieldAdornmentSx,
+  FieldBlock,
+  fieldSx,
+  FooterActions,
   outlinedCardSx,
   stepPageSx,
   WizardHero,
@@ -107,83 +108,85 @@ function WeightPage() {
       <WizardHero
         icon={<MonitorWeightRounded />}
         title="Cân nặng của mẹ"
-        description="Meli dùng BMI để gợi ý khoảng tăng cân phù hợp trong thai kỳ."
+        description="Nhập chiều cao và cân nặng để Meli gợi ý mức tăng cân phù hợp."
       />
 
-      <Stack gap={2}>
-        <TextField
-          {...register('weight_kg')}
-          label="Cân nặng hiện tại"
-          type="number"
-          error={!!errors.weight_kg}
-          helperText={errors.weight_kg?.message}
-          InputLabelProps={{ shrink: true }}
-          InputProps={{
-            startAdornment: (
-              <InputAdornment position="start" sx={fieldAdornmentSx}>
-                <ScaleRounded />
-              </InputAdornment>
-            ),
-            endAdornment: <InputAdornment position="end">kg</InputAdornment>,
-          }}
-        />
-        <TextField
-          {...register('height_cm')}
-          label="Chiều cao"
-          type="number"
-          error={!!errors.height_cm}
-          helperText={errors.height_cm?.message}
-          InputLabelProps={{ shrink: true }}
-          InputProps={{
-            startAdornment: (
-              <InputAdornment position="start" sx={fieldAdornmentSx}>
-                <HeightRounded />
-              </InputAdornment>
-            ),
-            endAdornment: <InputAdornment position="end">cm</InputAdornment>,
-          }}
-        />
+      <Stack gap="14px" sx={{ height: 312 }}>
+        <FieldBlock label="Cân nặng hiện tại">
+          <TextField
+            {...register('weight_kg')}
+            type="number"
+            placeholder="58.5"
+            error={!!errors.weight_kg}
+            helperText={errors.weight_kg?.message}
+            sx={fieldSx}
+            InputProps={{
+              startAdornment: (
+                <InputAdornment position="start">
+                  <ScaleRounded />
+                </InputAdornment>
+              ),
+              endAdornment: <InputAdornment position="end">kg</InputAdornment>,
+            }}
+          />
+        </FieldBlock>
+        <FieldBlock label="Chiều cao">
+          <TextField
+            {...register('height_cm')}
+            type="number"
+            placeholder="162"
+            error={!!errors.height_cm}
+            helperText={errors.height_cm?.message}
+            sx={fieldSx}
+            InputProps={{
+              startAdornment: (
+                <InputAdornment position="start">
+                  <HeightRounded />
+                </InputAdornment>
+              ),
+              endAdornment: <InputAdornment position="end">cm</InputAdornment>,
+            }}
+          />
+        </FieldBlock>
 
         {bmi !== null && weightTip && (
-          <Stack sx={outlinedCardSx} gap={1}>
+          <Stack sx={{ ...outlinedCardSx, height: 120 }} gap="10px">
             <Stack
               direction="row"
               alignItems="center"
               justifyContent="space-between"
             >
-              <Typography variant="body2" color="text.secondary">
+              <Typography
+                color="text.secondary"
+                sx={{ fontSize: 13, lineHeight: '18px' }}
+              >
                 BMI của bạn
               </Typography>
-              <Typography variant="h2" color="text.primary">
+              <Typography
+                color="text.primary"
+                sx={{ fontSize: 28, fontWeight: 700, lineHeight: '32px' }}
+              >
                 {bmi.toFixed(1)}
               </Typography>
             </Stack>
-            <Typography variant="body2" color="text.secondary">
+            <Typography
+              color="text.secondary"
+              sx={{ fontSize: 13, lineHeight: '18px' }}
+            >
               {weightTip}
             </Typography>
           </Stack>
         )}
       </Stack>
 
-      <Box sx={{ flex: 1 }} />
+      <Box sx={{ height: 36 }} />
 
-      <Stack gap={1.5}>
-        <Button
-          type="submit"
-          variant="contained"
-          size="large"
-          disabled={!isValid || isSubmitting}
-        >
-          Tiếp tục
-        </Button>
-        <Button
-          variant="text"
-          size="large"
-          onClick={() => navigate({ to: '/onboarding/baby' })}
-        >
-          Để sau
-        </Button>
-      </Stack>
+      <FooterActions
+        type="submit"
+        disabled={!isValid || isSubmitting}
+        skipLabel="Để sau"
+        onSkip={() => navigate({ to: '/onboarding/baby' })}
+      />
     </Stack>
   );
 }

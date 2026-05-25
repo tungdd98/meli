@@ -1,8 +1,9 @@
 import { useState } from 'react';
 import { createFileRoute, useNavigate } from '@tanstack/react-router';
-import { Box, Button, InputAdornment, Stack, Typography } from '@mui/material';
+import { Box, InputAdornment, Stack, Typography } from '@mui/material';
 import {
   CalendarMonthRounded,
+  ChevronLeftRounded,
   PregnantWomanRounded,
 } from '@mui/icons-material';
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
@@ -12,7 +13,11 @@ import { profilesApi } from '@meli/api';
 import { calcDueDateFromLmp } from '@meli/utils';
 import { useAuthStore } from '../../../stores/auth.store';
 import {
-  fieldAdornmentSx,
+  BackButtonIcon,
+  FieldBlock,
+  fieldSx,
+  FooterActions,
+  InlineLinkRow,
   outlinedCardSx,
   stepPageSx,
   WizardHero,
@@ -51,83 +56,82 @@ function DueDateLmpPage() {
 
   return (
     <Stack sx={stepPageSx} gap="20px">
-      <WizardTopBar step={1} />
+      <WizardTopBar
+        step={1}
+        onBack={() => navigate({ to: '/' })}
+        backIcon={
+          <BackButtonIcon>
+            <ChevronLeftRounded />
+          </BackButtonIcon>
+        }
+      />
       <WizardHero
         icon={<PregnantWomanRounded />}
         title="Ngày dự sinh của bạn"
-        description="Chọn ngày đầu kỳ kinh cuối để Meli ước tính ngày gặp bé."
+        description="Chọn ngày đầu tiên của kỳ kinh cuối để Meli ước tính mốc thai kỳ."
       />
 
-      <Stack gap={2}>
-        <DatePicker
-          label="Ngày đầu kỳ kinh cuối"
-          value={lmp}
-          onChange={setLmp}
-          slotProps={{
-            textField: {
-              InputLabelProps: { shrink: true },
-              InputProps: {
-                startAdornment: (
-                  <InputAdornment position="start" sx={fieldAdornmentSx}>
-                    <CalendarMonthRounded />
-                  </InputAdornment>
-                ),
+      <Stack gap={2} sx={{ height: 238 }}>
+        <FieldBlock label="Ngày đầu kỳ kinh cuối">
+          <DatePicker
+            value={lmp}
+            onChange={setLmp}
+            format="DD/MM/YYYY"
+            slotProps={{
+              textField: {
+                placeholder: '12/09/2025',
+                InputProps: {
+                  startAdornment: (
+                    <InputAdornment position="start">
+                      <CalendarMonthRounded />
+                    </InputAdornment>
+                  ),
+                },
+                fullWidth: true,
+                sx: fieldSx,
               },
-              fullWidth: true,
-            },
-          }}
-        />
+            }}
+          />
+        </FieldBlock>
 
         {dueDateStr && (
-          <Stack sx={outlinedCardSx} gap={0.5}>
+          <Stack sx={{ ...outlinedCardSx, height: 106 }} gap="4px">
             <Typography
-              variant="caption"
               color="primary.main"
-              sx={{ fontWeight: 700 }}
+              sx={{ fontSize: 12, fontWeight: 700, lineHeight: '16px' }}
             >
               Dự sinh ước tính
             </Typography>
-            <Typography variant="h3" color="text.primary">
+            <Typography
+              color="text.primary"
+              sx={{ fontSize: 24, fontWeight: 700, lineHeight: '32px' }}
+            >
               {dayjs(dueDateStr).format('DD/MM/YYYY')}
             </Typography>
-            <Typography variant="body2" color="text.secondary">
+            <Typography
+              color="text.secondary"
+              sx={{ fontSize: 13, lineHeight: '18px' }}
+            >
               Bạn có thể thay đổi thông tin này sau trong hồ sơ.
             </Typography>
           </Stack>
         )}
 
-        <Stack direction="row" alignItems="center" justifyContent="center">
-          <Typography variant="body2" color="text.secondary">
-            Đã có ngày từ bác sĩ?
-          </Typography>
-          <Button
-            variant="text"
-            onClick={() => navigate({ to: '/onboarding/due-date/direct' })}
-          >
-            Nhập trực tiếp
-          </Button>
-        </Stack>
+        <InlineLinkRow
+          label="Đã có ngày từ bác sĩ?"
+          action="Nhập trực tiếp"
+          onClick={() => navigate({ to: '/onboarding/due-date/direct' })}
+        />
       </Stack>
 
-      <Box sx={{ flex: 1 }} />
+      <Box sx={{ height: 110 }} />
 
-      <Stack gap={1.5}>
-        <Button
-          variant="contained"
-          size="large"
-          disabled={!lmp || isSubmitting}
-          onClick={handleContinue}
-        >
-          Tiếp tục
-        </Button>
-        <Button
-          variant="text"
-          size="large"
-          onClick={() => navigate({ to: '/onboarding/weight' })}
-        >
-          Bỏ qua
-        </Button>
-      </Stack>
+      <FooterActions
+        disabled={!lmp || isSubmitting}
+        onSubmit={handleContinue}
+        skipLabel="Bỏ qua"
+        onSkip={() => navigate({ to: '/onboarding/weight' })}
+      />
     </Stack>
   );
 }

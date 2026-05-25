@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { createFileRoute, useNavigate } from '@tanstack/react-router';
-import { Box, Button, InputAdornment, Stack, Typography } from '@mui/material';
+import { Box, InputAdornment, Stack, Typography } from '@mui/material';
 import {
   CalendarMonthRounded,
   ChevronLeftRounded,
@@ -13,7 +13,10 @@ import { profilesApi } from '@meli/api';
 import { useAuthStore } from '../../../stores/auth.store';
 import {
   BackButtonIcon,
-  fieldAdornmentSx,
+  FieldBlock,
+  fieldSx,
+  FooterActions,
+  InlineLinkRow,
   outlinedCardSx,
   stepPageSx,
   WizardHero,
@@ -63,73 +66,63 @@ function DueDateDirectPage() {
       <WizardHero
         icon={<EventAvailableRounded />}
         title="Nhập ngày dự sinh"
-        description="Dùng ngày dự sinh bác sĩ đã xác nhận trong lần khám gần nhất."
+        description="Dùng ngày dự sinh bác sĩ đã thông báo để cá nhân hóa hành trình của bạn."
       />
 
-      <Stack gap={2}>
-        <DatePicker
-          label="Ngày dự sinh"
-          value={dueDate}
-          onChange={setDueDate}
-          slotProps={{
-            textField: {
-              InputLabelProps: { shrink: true },
-              InputProps: {
-                startAdornment: (
-                  <InputAdornment position="start" sx={fieldAdornmentSx}>
-                    <CalendarMonthRounded />
-                  </InputAdornment>
-                ),
+      <Stack gap={2} sx={{ height: 200 }}>
+        <FieldBlock label="Ngày dự sinh">
+          <DatePicker
+            value={dueDate}
+            onChange={setDueDate}
+            format="DD/MM/YYYY"
+            slotProps={{
+              textField: {
+                placeholder: '19/06/2026',
+                InputProps: {
+                  startAdornment: (
+                    <InputAdornment position="start">
+                      <CalendarMonthRounded />
+                    </InputAdornment>
+                  ),
+                },
+                fullWidth: true,
+                sx: fieldSx,
               },
-              fullWidth: true,
-            },
-          }}
-        />
+            }}
+          />
+        </FieldBlock>
 
         <Stack
           direction="row"
           gap={1.5}
-          sx={{ ...outlinedCardSx, bgcolor: '#FFF0F0' }}
+          alignItems="center"
+          sx={{ ...outlinedCardSx, bgcolor: '#FFF0F0', height: 68 }}
         >
-          <MedicalInformationRounded color="primary" />
-          <Typography variant="body2" color="text.secondary">
+          <MedicalInformationRounded color="primary" sx={{ fontSize: 22 }} />
+          <Typography
+            color="text.secondary"
+            sx={{ fontSize: 13, lineHeight: '18px' }}
+          >
             Nếu ngày này thay đổi sau lần khám tiếp theo, bạn vẫn có thể cập
             nhật trong hồ sơ.
           </Typography>
         </Stack>
 
-        <Stack direction="row" alignItems="center" justifyContent="center">
-          <Typography variant="body2" color="text.secondary">
-            Muốn tính từ kỳ kinh cuối?
-          </Typography>
-          <Button
-            variant="text"
-            onClick={() => navigate({ to: '/onboarding/due-date' })}
-          >
-            Tính ngày dự sinh
-          </Button>
-        </Stack>
+        <InlineLinkRow
+          label="Muốn tính từ kỳ kinh cuối?"
+          action="Tính ngày dự sinh"
+          onClick={() => navigate({ to: '/onboarding/due-date' })}
+        />
       </Stack>
 
-      <Box sx={{ flex: 1 }} />
+      <Box sx={{ height: 148 }} />
 
-      <Stack gap={1.5}>
-        <Button
-          variant="contained"
-          size="large"
-          disabled={!dueDate || isSubmitting}
-          onClick={handleContinue}
-        >
-          Tiếp tục
-        </Button>
-        <Button
-          variant="text"
-          size="large"
-          onClick={() => navigate({ to: '/onboarding/weight' })}
-        >
-          Bỏ qua
-        </Button>
-      </Stack>
+      <FooterActions
+        disabled={!dueDate || isSubmitting}
+        onSubmit={handleContinue}
+        skipLabel="Bỏ qua"
+        onSkip={() => navigate({ to: '/onboarding/weight' })}
+      />
     </Stack>
   );
 }
