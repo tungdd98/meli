@@ -5,7 +5,7 @@ import { RouterProvider } from '@tanstack/react-router';
 import { Box, CircularProgress, CssBaseline } from '@mui/material';
 import { ThemeProvider } from '@mui/material/styles';
 import { theme } from '@meli/ui';
-import { supabase } from '@meli/api';
+import { profilesApi, supabase } from '@meli/api';
 import { useAuthStore } from '../stores/auth.store';
 import { router } from './router';
 
@@ -22,15 +22,25 @@ function AuthInitializer({ children }: { children: ReactNode }) {
   const [authReady, setAuthReady] = useState(false);
 
   useEffect(() => {
-    supabase.auth.getSession().then(({ data: { session } }) => {
+    supabase.auth.getSession().then(async ({ data: { session } }) => {
       useAuthStore.getState()._setSession(session);
+      if (session) {
+        const { data: profile } = await profilesApi.get(session.user.id);
+        useAuthStore.getState()._setProfile(profile);
+      }
       setAuthReady(true);
     });
 
     const {
       data: { subscription },
-    } = supabase.auth.onAuthStateChange((_, session) => {
+    } = supabase.auth.onAuthStateChange(async (_, session) => {
       useAuthStore.getState()._setSession(session);
+      if (session) {
+        const { data: profile } = await profilesApi.get(session.user.id);
+        useAuthStore.getState()._setProfile(profile);
+      } else {
+        useAuthStore.getState()._setProfile(null);
+      }
     });
 
     return () => subscription.unsubscribe();
