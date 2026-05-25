@@ -196,7 +196,7 @@ function BabyPage() {
                     width: 22,
                   },
                   '& .MuiSwitch-track': {
-                    bgcolor: '#F08180',
+                    bgcolor: 'coral.100',
                     borderRadius: shape.full,
                     opacity: 1,
                   },

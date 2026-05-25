@@ -96,7 +96,7 @@ function DueDateDirectPage() {
           direction="row"
           gap={1.5}
           alignItems="center"
-          sx={{ ...outlinedCardSx, bgcolor: '#FFF0F0', height: 68 }}
+          sx={{ ...outlinedCardSx, bgcolor: 'coral.50', height: 68 }}
         >
           <MedicalInformationRounded color="primary" sx={{ fontSize: 22 }} />
           <Typography

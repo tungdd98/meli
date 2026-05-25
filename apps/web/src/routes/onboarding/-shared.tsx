@@ -2,9 +2,6 @@ import type { ReactNode } from 'react';
 import { Box, Button, IconButton, Stack, Typography } from '@mui/material';
 import { shape } from '@meli/ui';
 
-export const coralStroke = '#FFE0E0';
-export const coralPrimary = '#F08180';
-
 export function OnboardingProgress({ step }: { step: 1 | 2 | 3 }) {
   return (
     <Stack direction="row" gap="6px" justifyContent="center">
@@ -12,7 +9,7 @@ export function OnboardingProgress({ step }: { step: 1 | 2 | 3 }) {
         <Box
           key={item}
           sx={{
-            bgcolor: item === step ? 'primary.main' : coralStroke,
+            bgcolor: item === step ? 'primary.main' : 'coral.100',
             borderRadius: shape.full,
             height: 8,
             width: item === step ? 28 : 8,
@@ -47,8 +44,9 @@ export function WizardTopBar({
           onClick={onBack}
           sx={{
             bgcolor: 'background.paper',
+            border: 1,
+            borderColor: 'divider',
             borderRadius: shape.full,
-            boxShadow: '0 0 0 1px #00000014',
             color: 'primary.main',
             height: 40,
             minHeight: 40,
@@ -61,8 +59,9 @@ export function WizardTopBar({
         <Box
           sx={{
             bgcolor: 'background.paper',
+            border: 1,
+            borderColor: 'divider',
             borderRadius: shape.full,
-            boxShadow: '0 0 0 1px #00000014',
             height: 40,
             width: 40,
           }}
@@ -106,7 +105,8 @@ export function WizardHero({
         sx={{
           alignItems: 'center',
           bgcolor: 'background.paper',
-          border: `3px solid ${coralStroke}`,
+          border: 3,
+          borderColor: 'coral.100',
           borderRadius: shape.full,
           color: 'primary.main',
           display: 'flex',
@@ -153,7 +153,9 @@ export const fieldAdornmentSx = {
 
 export const outlinedCardSx = {
   bgcolor: 'background.paper',
-  border: `3px solid ${coralStroke}`,
+  border: 3,
+  borderColor: 'coral.100',
+  borderStyle: 'solid',
   borderRadius: shape.xl,
   p: 2,
 };
