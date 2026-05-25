@@ -18,26 +18,63 @@ const queryClient = new QueryClient({
   },
 });
 
+function withTimeout<T>(
+  promise: PromiseLike<T>,
+  timeoutMs: number,
+): Promise<T> {
+  return Promise.race([
+    Promise.resolve(promise),
+    new Promise<T>((_, reject) => {
+      window.setTimeout(() => {
+        reject(new Error('Profile request timed out'));
+      }, timeoutMs);
+    }),
+  ]);
+}
+
+async function loadProfile(userId: string) {
+  const { data: profile, error } = await withTimeout(
+    profilesApi.get(userId),
+    5000,
+  );
+  if (error) {
+    console.error('Failed to load profile', error);
+    useAuthStore.getState()._setProfile(null);
+    return;
+  }
+
+  useAuthStore.getState()._setProfile(profile);
+}
+
 function AuthInitializer({ children }: { children: ReactNode }) {
   const [authReady, setAuthReady] = useState(false);
 
   useEffect(() => {
-    supabase.auth.getSession().then(async ({ data: { session } }) => {
-      useAuthStore.getState()._setSession(session);
-      if (session) {
-        const { data: profile } = await profilesApi.get(session.user.id);
-        useAuthStore.getState()._setProfile(profile);
-      }
-      setAuthReady(true);
-    });
+    supabase.auth
+      .getSession()
+      .then(async ({ data: { session } }) => {
+        useAuthStore.getState()._setSession(session);
+        if (session) {
+          await loadProfile(session.user.id);
+        } else {
+          useAuthStore.getState()._setProfile(null);
+        }
+      })
+      .catch((error: unknown) => {
+        console.error('Failed to initialize auth', error);
+        useAuthStore.getState()._setSession(null);
+        useAuthStore.getState()._setProfile(null);
+      })
+      .finally(() => {
+        setAuthReady(true);
+      });
 
     const {
       data: { subscription },
-    } = supabase.auth.onAuthStateChange(async (_, session) => {
+    } = supabase.auth.onAuthStateChange((_, session) => {
       useAuthStore.getState()._setSession(session);
       if (session) {
-        const { data: profile } = await profilesApi.get(session.user.id);
-        useAuthStore.getState()._setProfile(profile);
+        void loadProfile(session.user.id);
       } else {
         useAuthStore.getState()._setProfile(null);
       }
