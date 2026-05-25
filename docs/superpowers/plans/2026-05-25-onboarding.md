@@ -16,6 +16,7 @@
 
 ```
 # TẠO MỚI
+supabase/migrations/<timestamp>_create_profiles_table.sql  — migration schema
 libs/utils/src/lib/bmi.ts                              — calcBmi(), calcWeightGainTip()
 libs/utils/src/lib/bmi.spec.ts                        — tests
 libs/utils/src/lib/lmp.ts                              — calcDueDateFromLmp(), calcPregnancyWeek()
@@ -33,6 +34,86 @@ libs/api/src/index.ts                                  — re-export profilesApi
 apps/web/src/stores/auth.store.ts                      — thêm profile state + _setProfile
 apps/web/src/app/providers.tsx                         — fetch profile trong AuthInitializer
 apps/web/src/routes/_auth.tsx                          — thêm onboarding redirect guard
+```
+
+---
+
+## Task 0: Database — tạo migration và push lên Supabase
+
+**Files:**
+
+- Create: `supabase/migrations/<timestamp>_create_profiles_table.sql`
+
+- [ ] **Step 1: Tạo migration file**
+
+```bash
+supabase migration new create_profiles_table
+```
+
+Expected: tạo file `supabase/migrations/<timestamp>_create_profiles_table.sql`
+
+- [ ] **Step 2: Viết SQL vào migration file vừa tạo**
+
+```sql
+create table profiles (
+  id            uuid primary key references auth.users(id) on delete cascade,
+  due_date      date,
+  weight_kg     numeric(5,1),
+  height_cm     numeric(5,1),
+  baby_name     text,
+  baby_gender   text check (baby_gender in ('male', 'female', 'unknown')),
+  is_twins      boolean not null default false,
+  onboarding_completed boolean not null default false,
+  created_at    timestamptz not null default now(),
+  updated_at    timestamptz not null default now()
+);
+
+alter table profiles enable row level security;
+
+create policy "Users manage own profile"
+  on profiles for all
+  using (auth.uid() = id)
+  with check (auth.uid() = id);
+
+create or replace function handle_new_user()
+returns trigger
+language plpgsql
+security definer set search_path = ''
+as $$
+begin
+  insert into public.profiles (id) values (new.id);
+  return new;
+end;
+$$;
+
+create trigger on_auth_user_created
+  after insert on auth.users
+  for each row execute procedure handle_new_user();
+```
+
+- [ ] **Step 3: Push migration lên Supabase remote**
+
+```bash
+supabase db push
+```
+
+Expected output: `Applying migration <timestamp>_create_profiles_table.sql... done`
+
+Nếu gặp lỗi xác thực, chạy `supabase login` trước.
+
+- [ ] **Step 4: Verify bảng đã tạo**
+
+```bash
+supabase db diff
+```
+
+Expected: `No schema changes found` (migration đã được apply, không còn diff)
+
+- [ ] **Step 5: Commit**
+
+```bash
+git add supabase/migrations/
+git commit -m "feat(db): add profiles table migration with RLS and new user trigger"
 ```
 
 ---
@@ -991,12 +1072,7 @@ git commit -m "feat(onboarding): complete onboarding flow"
 
 ## Notes cho implementer
 
-**Supabase setup trước khi test:**
-Chạy SQL sau trong Supabase dashboard (SQL Editor) — lấy từ design doc `docs/features/onboarding/2026-05-24-onboarding-design.md` phần 2:
-
-- Tạo bảng `profiles`
-- Tạo RLS policy
-- Tạo trigger `handle_new_user`
+**Supabase:** Schema được apply tự động qua Task 0 (`supabase db push`). Không cần thao tác tay trong dashboard.
 
 **LocalizationProvider:** Có thể đặt trong `onboarding.tsx` layout thay vì từng screen để dùng chung.
 
