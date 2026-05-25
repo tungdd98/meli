@@ -13,7 +13,7 @@ interface AuthState {
   isLoading: boolean;
   _setSession: (session: Session | null) => void;
   _setProfile: (profile: Profile | null) => void;
-  signIn: (email: string, password: string) => Promise<void>;
+  signIn: (email: string, password: string) => Promise<Profile | null>;
   signOut: () => Promise<void>;
 }
 
@@ -37,6 +37,7 @@ export const useAuthStore = create<AuthState>((set) => ({
         : { data: null };
       set({ session: data.session, user: data.session?.user ?? null });
       set({ profile });
+      return profile;
     } finally {
       set({ isLoading: false });
     }

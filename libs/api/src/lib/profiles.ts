@@ -1,3 +1,4 @@
+import type { PostgrestSingleResponse } from '@supabase/supabase-js';
 import { supabase } from './supabase.js';
 
 export type Profile = {
@@ -23,10 +24,29 @@ export type ProfileUpdate = {
   onboarding_completed?: boolean;
 };
 
-export const profilesApi = {
-  get: (userId: string) =>
-    supabase.from('profiles').select('*').eq('id', userId).single<Profile>(),
+type ProfileResponse = Promise<PostgrestSingleResponse<Profile | null>>;
 
-  update: (userId: string, data: ProfileUpdate) =>
-    supabase.from('profiles').update(data).eq('id', userId),
+export const profilesApi = {
+  get: async (userId: string): ProfileResponse => {
+    const result = await supabase
+      .from('profiles')
+      .select('*')
+      .eq('id', userId)
+      .maybeSingle<Profile>();
+
+    if (result.data || result.error) return result;
+
+    return supabase
+      .from('profiles')
+      .upsert({ id: userId }, { onConflict: 'id' })
+      .select('*')
+      .single<Profile>();
+  },
+
+  update: async (userId: string, data: ProfileUpdate): ProfileResponse =>
+    supabase
+      .from('profiles')
+      .upsert({ id: userId, ...data }, { onConflict: 'id' })
+      .select('*')
+      .single<Profile>(),
 };

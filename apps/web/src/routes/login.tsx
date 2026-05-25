@@ -29,8 +29,12 @@ type LoginFormValues = z.infer<typeof loginSchema>;
 
 export const Route = createFileRoute('/login')({
   beforeLoad: () => {
-    const { session } = useAuthStore.getState();
-    if (session) throw redirect({ to: '/' });
+    const { profile, session } = useAuthStore.getState();
+    if (!session) return;
+    if (profile && !profile.onboarding_completed) {
+      throw redirect({ to: '/onboarding/due-date' });
+    }
+    throw redirect({ to: '/' });
   },
   component: LoginPage,
 });
@@ -49,8 +53,10 @@ function LoginPage() {
   const onSubmit = async (values: LoginFormValues) => {
     setError(null);
     try {
-      await signIn(values.email, values.password);
-      navigate({ to: '/' });
+      const profile = await signIn(values.email, values.password);
+      navigate({
+        to: profile?.onboarding_completed ? '/' : '/onboarding/due-date',
+      });
     } catch (err) {
       const message =
         err instanceof Error &&
