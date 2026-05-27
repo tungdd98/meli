@@ -29,6 +29,7 @@ type FormValues = z.infer<typeof schema>;
 function DueDateLmpPage() {
   const navigate = useNavigate();
   const user = useAuthStore((state) => state.user);
+  const onboardingLmp = useAuthStore((state) => state.onboardingLmp);
 
   const {
     control,
@@ -37,7 +38,7 @@ function DueDateLmpPage() {
     watch,
   } = useForm<FormValues>({
     resolver: zodResolver(schema),
-    defaultValues: { lmp: null },
+    defaultValues: { lmp: onboardingLmp ? dayjs(onboardingLmp) : null },
   });
 
   const lmp = watch('lmp');
@@ -54,6 +55,7 @@ function DueDateLmpPage() {
         .getState()
         ._setProfile({ ...profile, due_date: nextDueDate });
     }
+    useAuthStore.getState()._setOnboardingLmp(values.lmp.format('YYYY-MM-DD'));
     navigate({ to: '/onboarding/weight' });
   };
 
