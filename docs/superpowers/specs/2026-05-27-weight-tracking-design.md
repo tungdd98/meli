@@ -83,7 +83,7 @@ Thêm widget "CÂN NẶNG" dạng card trong horizontal scroll row (theo mockup 
 - **Label**: "CÂN NẶNG ▶"
 - **Value**: cân nặng lần đo gần nhất (kg), ví dụ "52.5 kg"; hoặc "—" nếu chưa có entry
 - **Tap**: navigate đến `/_auth/weight`
-- Data: `useQuery(['weightEntries', userId])`, lấy phần tử cuối cùng (newest by `measured_at`)
+- Data: `useQuery(['weightEntries', userId])`, lấy entry có `measured_at` lớn nhất (list trả về order asc, nên lấy phần tử cuối mảng)
 
 ### Màn hình cân nặng (`/_auth/weight.tsx`)
 
@@ -181,7 +181,7 @@ z.object({
 **Fields:**
 
 - `measured_at`: `FormDatePicker`, default = hôm nay (add) hoặc `entry.measured_at` (edit)
-- `weight_kg`: `FormTextField` type="number", default = `profile.weight_kg` (add lần đầu) hoặc `entry.weight_kg` (edit)
+- `weight_kg`: `FormTextField` type="number", default = entry gần nhất nếu đã có (add) hoặc `entry.weight_kg` (edit); fallback về `profile.weight_kg` nếu chưa có entry nào
 
 **Submit:**
 
