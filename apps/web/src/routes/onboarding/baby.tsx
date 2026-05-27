@@ -30,13 +30,18 @@ export const Route = createFileRoute('/onboarding/baby')({
 function BabyPage() {
   const navigate = useNavigate();
   const user = useAuthStore((state) => state.user);
+  const profile = useAuthStore((state) => state.profile);
 
   const {
     control,
     formState: { isSubmitting },
     handleSubmit,
   } = useForm<BabyFormValues>({
-    defaultValues: { baby_gender: 'unknown', baby_name: '', is_twins: false },
+    defaultValues: {
+      baby_gender: profile?.baby_gender ?? 'unknown',
+      baby_name: profile?.baby_name ?? '',
+      is_twins: profile?.is_twins ?? false,
+    },
     resolver: zodResolver(babySchema),
   });
 
