@@ -1,0 +1,647 @@
+{
+  "version": "2.11",
+  "children": [
+    {
+      "type": "frame",
+      "id": "qPagb",
+      "x": 0,
+      "y": 0,
+      "name": "Trang Chủ",
+      "clip": true,
+      "width": 390,
+      "height": 844,
+      "fill": "$meli-background",
+      "layout": "vertical",
+      "children": [
+        {
+          "type": "frame",
+          "id": "iB8SP",
+          "name": "WeekHeader",
+          "width": "fill_container",
+          "height": 44,
+          "fill": "$meli-paper",
+          "stroke": {
+            "thickness": {
+              "bottom": 1
+            },
+            "fill": "#FFE0E0"
+          },
+          "justifyContent": "center",
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "text",
+              "id": "cxGBq",
+              "fill": "$meli-text-primary",
+              "content": "Tuần thứ 22, ngày 3",
+              "fontFamily": "Plus Jakarta Sans",
+              "fontSize": 14,
+              "fontWeight": "600"
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "hrdmw",
+          "name": "HeroSection",
+          "width": "fill_container",
+          "height": 175,
+          "fill": "$meli-primary",
+          "layout": "none",
+          "children": [
+            {
+              "type": "ellipse",
+              "id": "J2jfs",
+              "x": 16,
+              "y": 48,
+              "name": "AvatarBg",
+              "fill": "#FFFFFF33",
+              "width": 80,
+              "height": 80
+            },
+            {
+              "type": "ellipse",
+              "id": "F7RTG",
+              "x": 24,
+              "y": 56,
+              "name": "BabyAvatar",
+              "fill": "#FFFFFF55",
+              "width": 64,
+              "height": 64
+            },
+            {
+              "type": "icon_font",
+              "id": "FK2jp",
+              "x": 42,
+              "y": 74,
+              "name": "BabyIconGlyph",
+              "width": 28,
+              "height": 28,
+              "iconFontName": "child_care",
+              "iconFontFamily": "Material Symbols Rounded",
+              "fill": "#FFFFFF"
+            },
+            {
+              "type": "frame",
+              "id": "PFHIp",
+              "x": 112,
+              "y": 44,
+              "name": "GreetingBlock",
+              "width": 190,
+              "height": 90,
+              "layout": "vertical",
+              "gap": 4,
+              "children": [
+                {
+                  "type": "text",
+                  "id": "V0qWo",
+                  "name": "GreetingTitle",
+                  "fill": "#FFFFFF",
+                  "content": "Chào mẹ",
+                  "fontFamily": "Plus Jakarta Sans",
+                  "fontSize": 24,
+                  "fontWeight": "700"
+                },
+                {
+                  "type": "text",
+                  "id": "W6foq",
+                  "name": "GreetingSubtitle",
+                  "fill": "#FFFFFFCC",
+                  "textGrowth": "fixed-width",
+                  "width": "fill_container",
+                  "content": "Chúc mẹ có một buổi tối tốt lành",
+                  "fontFamily": "Plus Jakarta Sans",
+                  "fontSize": 13
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "Z6VoVw",
+              "x": 316,
+              "y": 12,
+              "name": "FamilyBadge",
+              "width": 56,
+              "height": 52,
+              "fill": "#FFFFFF22",
+              "cornerRadius": 12,
+              "justifyContent": "center",
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "icon_font",
+                  "id": "cPc58",
+                  "width": 28,
+                  "height": 28,
+                  "iconFontName": "family_restroom",
+                  "iconFontFamily": "Material Symbols Rounded",
+                  "fill": "#FFFFFF"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "gcWnD",
+              "x": 334,
+              "y": 130,
+              "name": "CameraBtn",
+              "width": 36,
+              "height": 36,
+              "fill": "#FFFFFF33",
+              "cornerRadius": 18,
+              "justifyContent": "center",
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "icon_font",
+                  "id": "YVqkH",
+                  "width": 20,
+                  "height": 20,
+                  "iconFontName": "photo_camera",
+                  "iconFontFamily": "Material Symbols Rounded",
+                  "fill": "#FFFFFF"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "mfE2Y",
+          "name": "WidgetGrid",
+          "width": "fill_container",
+          "fill": "#FFF5F5",
+          "layout": "vertical",
+          "gap": 12,
+          "padding": [
+            12,
+            16
+          ],
+          "children": [
+            {
+              "type": "frame",
+              "id": "VoySi",
+              "name": "WidgetRow1",
+              "width": "fill_container",
+              "gap": 12,
+              "children": [
+                {
+                  "id": "T4WSk",
+                  "type": "ref",
+                  "ref": "r5zgXG",
+                  "name": "WeightCard",
+                  "width": "fill_container",
+                  "height": 130,
+                  "descendants": {
+                    "U09fnz": {
+                      "content": "CÂN NẶNG"
+                    },
+                    "sxJUw": {
+                      "type": "frame",
+                      "id": "J2UX5",
+                      "name": "ContentSlot",
+                      "slot": [],
+                      "width": "fill_container",
+                      "height": "fill_container",
+                      "layout": "vertical",
+                      "justifyContent": "center",
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "ZuaTe",
+                          "fill": "#1A1A2E",
+                          "content": "52.5 kg",
+                          "fontFamily": "Plus Jakarta Sans",
+                          "fontSize": 22,
+                          "fontWeight": "700"
+                        }
+                      ]
+                    }
+                  }
+                },
+                {
+                  "id": "CwE7I",
+                  "type": "ref",
+                  "ref": "r5zgXG",
+                  "name": "CountdownCard",
+                  "width": "fill_container",
+                  "height": 130,
+                  "descendants": {
+                    "U09fnz": {
+                      "content": "ĐẾM NGƯỢC"
+                    },
+                    "sxJUw": {
+                      "type": "frame",
+                      "id": "SdpfE",
+                      "name": "ContentSlot",
+                      "slot": [],
+                      "width": "fill_container",
+                      "height": "fill_container",
+                      "gap": 8,
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "frame",
+                          "id": "yXlAY",
+                          "layout": "vertical",
+                          "gap": 2,
+                          "children": [
+                            {
+                              "type": "text",
+                              "id": "O783C",
+                              "fill": "#1A1A2E",
+                              "content": "126",
+                              "fontFamily": "Plus Jakarta Sans",
+                              "fontSize": 22,
+                              "fontWeight": "700"
+                            },
+                            {
+                              "type": "text",
+                              "id": "E6Ers",
+                              "fill": "#6B7280",
+                              "content": "ngày",
+                              "fontFamily": "Plus Jakarta Sans",
+                              "fontSize": 12,
+                              "fontWeight": "normal"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "frame",
+                          "id": "mxHGQ",
+                          "width": 52,
+                          "height": 52,
+                          "layout": "none",
+                          "children": [
+                            {
+                              "type": "ellipse",
+                              "id": "b6Vyd",
+                              "x": 0,
+                              "y": 0,
+                              "innerRadius": 0.72,
+                              "fill": "#FFE0E0",
+                              "width": 52,
+                              "height": 52
+                            },
+                            {
+                              "type": "ellipse",
+                              "id": "c8He0",
+                              "x": 0,
+                              "y": 0,
+                              "innerRadius": 0.72,
+                              "startAngle": 90,
+                              "sweepAngle": -198,
+                              "fill": "#F08180",
+                              "width": 52,
+                              "height": 52
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "Mtuoy",
+          "name": "ContentSpacer",
+          "width": "fill_container",
+          "height": "fill_container",
+          "fill": "$meli-background",
+          "layout": "vertical"
+        },
+        {
+          "type": "frame",
+          "id": "cjeh4",
+          "name": "BottomNav",
+          "width": "fill_container",
+          "height": 80,
+          "fill": "$meli-paper",
+          "stroke": {
+            "thickness": {
+              "top": 1
+            },
+            "fill": "$meli-coral-100"
+          },
+          "padding": [
+            8,
+            16,
+            0,
+            16
+          ],
+          "justifyContent": "space_between",
+          "children": [
+            {
+              "type": "frame",
+              "id": "GWmcl",
+              "name": "Nav_Trang chủ",
+              "width": "fill_container",
+              "layout": "vertical",
+              "gap": 4,
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "TxQoW",
+                  "name": "NavIconWrap_Trang chủ",
+                  "width": 48,
+                  "height": 32,
+                  "fill": "#F0818022",
+                  "cornerRadius": 16,
+                  "justifyContent": "center",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "icon_font",
+                      "id": "ZWR3v",
+                      "width": 22,
+                      "height": 22,
+                      "iconFontName": "home",
+                      "iconFontFamily": "Material Symbols Rounded",
+                      "fill": "#F08180"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "id": "O1v18E",
+                  "fill": "#F08180",
+                  "content": "Trang chủ",
+                  "fontFamily": "Plus Jakarta Sans",
+                  "fontSize": 11,
+                  "fontWeight": "600"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "YQ5t6",
+              "name": "Nav_Hướng dẫn",
+              "width": "fill_container",
+              "layout": "vertical",
+              "gap": 4,
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "D4LYB",
+                  "name": "NavIconWrap_Hướng dẫn",
+                  "width": 32,
+                  "height": 32,
+                  "fill": "#00000000",
+                  "cornerRadius": 16,
+                  "justifyContent": "center",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "icon_font",
+                      "id": "L9l92",
+                      "width": 22,
+                      "height": 22,
+                      "iconFontName": "menu_book",
+                      "iconFontFamily": "Material Symbols Rounded",
+                      "fill": "#6B7280"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "id": "raBM6",
+                  "fill": "#6B7280",
+                  "content": "Hướng dẫn",
+                  "fontFamily": "Plus Jakarta Sans",
+                  "fontSize": 11
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "gd2WY",
+              "name": "Nav_AI",
+              "width": "fill_container",
+              "layout": "vertical",
+              "gap": 4,
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "ZvowM",
+                  "name": "NavIconWrap_AI",
+                  "width": 32,
+                  "height": 32,
+                  "fill": "#00000000",
+                  "cornerRadius": 16,
+                  "justifyContent": "center",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "icon_font",
+                      "id": "ZzDhF",
+                      "width": 22,
+                      "height": 22,
+                      "iconFontName": "psychology",
+                      "iconFontFamily": "Material Symbols Rounded",
+                      "fill": "#6B7280"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "id": "irru2",
+                  "fill": "#6B7280",
+                  "content": "AI",
+                  "fontFamily": "Plus Jakarta Sans",
+                  "fontSize": 11
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "RqH38",
+              "name": "Nav_Cài đặt",
+              "width": "fill_container",
+              "layout": "vertical",
+              "gap": 4,
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "S2m6x",
+                  "name": "NavIconWrap_Cài đặt",
+                  "width": 32,
+                  "height": 32,
+                  "fill": "#00000000",
+                  "cornerRadius": 16,
+                  "justifyContent": "center",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "icon_font",
+                      "id": "A2kPKj",
+                      "width": 22,
+                      "height": 22,
+                      "iconFontName": "settings",
+                      "iconFontFamily": "Material Symbols Rounded",
+                      "fill": "#6B7280"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "id": "gC5FE",
+                  "fill": "#6B7280",
+                  "content": "Cài đặt",
+                  "fontFamily": "Plus Jakarta Sans",
+                  "fontSize": 11
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "r5zgXG",
+      "x": 450,
+      "y": 100,
+      "name": "component/WidgetCard",
+      "reusable": true,
+      "width": 165,
+      "height": 130,
+      "fill": "#FFFFFF",
+      "cornerRadius": 20,
+      "stroke": {
+        "thickness": 3,
+        "fill": "$meli-coral-100"
+      },
+      "effect": {
+        "type": "shadow",
+        "shadowType": "outer",
+        "color": "#F0818026",
+        "offset": {
+          "x": 6,
+          "y": 6
+        }
+      },
+      "layout": "vertical",
+      "gap": 10,
+      "padding": 16,
+      "children": [
+        {
+          "type": "frame",
+          "id": "mz52b",
+          "name": "LabelRow",
+          "width": "fill_container",
+          "gap": 4,
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "text",
+              "id": "U09fnz",
+              "name": "LabelText",
+              "fill": "$meli-primary",
+              "content": "TIÊU ĐỀ",
+              "fontFamily": "Plus Jakarta Sans",
+              "fontSize": 11,
+              "fontWeight": "700"
+            },
+            {
+              "type": "frame",
+              "id": "VOGcC",
+              "name": "LabelSpacer",
+              "width": "fill_container",
+              "height": 1
+            },
+            {
+              "type": "icon_font",
+              "id": "JJvjV",
+              "name": "ChevronIcon",
+              "width": 14,
+              "height": 14,
+              "iconFontName": "chevron_right",
+              "iconFontFamily": "Material Symbols Rounded",
+              "fill": "$meli-primary"
+            }
+          ]
+        },
+        {
+          "type": "rectangle",
+          "id": "ANPX9",
+          "name": "CardDivider",
+          "fill": "$meli-coral-100",
+          "width": "fill_container",
+          "height": 1
+        },
+        {
+          "type": "frame",
+          "id": "sxJUw",
+          "name": "ContentSlot",
+          "slot": [],
+          "width": "fill_container",
+          "height": "fill_container",
+          "layout": "vertical",
+          "justifyContent": "center",
+          "children": [
+            {
+              "type": "text",
+              "id": "hyRp7",
+              "name": "DefaultValue",
+              "fill": "#1A1A2E",
+              "content": "—",
+              "fontFamily": "Plus Jakarta Sans",
+              "fontSize": 22,
+              "fontWeight": "700"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "variables": {
+    "meli-background": {
+      "type": "color",
+      "value": "#FFF5F5"
+    },
+    "meli-coral-100": {
+      "type": "color",
+      "value": "#FFE0E0"
+    },
+    "meli-error": {
+      "type": "color",
+      "value": "#EF4444"
+    },
+    "meli-font": {
+      "type": "string",
+      "value": "Plus Jakarta Sans"
+    },
+    "meli-paper": {
+      "type": "color",
+      "value": "#FFFFFF"
+    },
+    "meli-primary": {
+      "type": "color",
+      "value": "#F08180"
+    },
+    "meli-primary-light": {
+      "type": "color",
+      "value": "#F7ADAC"
+    },
+    "meli-secondary": {
+      "type": "color",
+      "value": "#5BBCB4"
+    },
+    "meli-text-primary": {
+      "type": "color",
+      "value": "#1A1A2E"
+    },
+    "meli-text-secondary": {
+      "type": "color",
+      "value": "#6B7280"
+    }
+  }
+}
