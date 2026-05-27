@@ -481,7 +481,10 @@ import {
   Box,
   Typography,
   Stack,
-  Paper,
+  Card,
+  CardActionArea,
+  CardContent,
+  Divider,
   IconButton,
   CircularProgress,
 } from '@mui/material';
@@ -718,22 +721,9 @@ function WidgetCard({
   onClick?: () => void;
   sx?: object;
 }) {
-  return (
-    <Paper
-      onClick={onClick}
-      elevation={0}
-      sx={{
-        borderRadius: shape.xl,
-        border: '3px solid',
-        borderColor: 'coral.100',
-        p: 2,
-        cursor: onClick ? 'pointer' : 'default',
-        display: 'flex',
-        flexDirection: 'column',
-        gap: 1,
-        minHeight: 120,
-        ...sx,
-      }}
+  const inner = (
+    <CardContent
+      sx={{ display: 'flex', flexDirection: 'column', gap: 1, height: '100%' }}
     >
       <Stack direction="row" alignItems="center">
         <Typography
@@ -751,11 +741,23 @@ function WidgetCard({
           <ChevronRightRounded sx={{ color: 'primary.main', fontSize: 16 }} />
         )}
       </Stack>
-      <Box sx={{ height: 1, bgcolor: 'coral.100' }} />
+      <Divider sx={{ borderColor: 'coral.100' }} />
       <Box sx={{ flex: 1, display: 'flex', alignItems: 'center' }}>
         {children}
       </Box>
-    </Paper>
+    </CardContent>
+  );
+
+  return (
+    <Card sx={{ minHeight: 120, ...sx }}>
+      {onClick ? (
+        <CardActionArea onClick={onClick} sx={{ height: '100%' }}>
+          {inner}
+        </CardActionArea>
+      ) : (
+        inner
+      )}
+    </Card>
   );
 }
 ```
