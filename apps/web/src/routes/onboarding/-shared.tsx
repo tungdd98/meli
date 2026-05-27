@@ -1,10 +1,11 @@
 import type { ReactNode } from 'react';
 import { Box, Button, IconButton, Stack, Typography } from '@mui/material';
 import { shape } from '@meli/ui';
+import { ChevronLeftRounded } from '@mui/icons-material';
 
 export function OnboardingProgress({ step }: { step: 1 | 2 | 3 }) {
   return (
-    <Stack direction="row" gap="6px" justifyContent="center">
+    <Stack direction="row" gap={1} justifyContent="center">
       {[1, 2, 3].map((item) => (
         <Box
           key={item}
@@ -21,11 +22,9 @@ export function OnboardingProgress({ step }: { step: 1 | 2 | 3 }) {
 }
 
 export function WizardTopBar({
-  backIcon,
   onBack,
   step,
 }: {
-  backIcon?: ReactNode;
   onBack?: () => void;
   step: 1 | 2 | 3;
 }) {
@@ -44,48 +43,22 @@ export function WizardTopBar({
           onClick={onBack}
           sx={{
             bgcolor: 'background.paper',
-            border: 1,
-            borderColor: 'divider',
+            border: 2,
+            borderColor: 'primary.light',
             borderRadius: shape.full,
-            color: 'primary.main',
             height: 40,
             minHeight: 40,
             width: 40,
           }}
         >
-          {backIcon}
+          <ChevronLeftRounded />
         </IconButton>
       ) : (
-        <Box
-          sx={{
-            bgcolor: 'background.paper',
-            border: 1,
-            borderColor: 'divider',
-            borderRadius: shape.full,
-            height: 40,
-            width: 40,
-          }}
-        />
+        <Box />
       )}
       <Box sx={{ justifySelf: 'end' }}>
         <OnboardingProgress step={step} />
       </Box>
-    </Box>
-  );
-}
-
-export function BackButtonIcon({ children }: { children: ReactNode }) {
-  return (
-    <Box
-      component="span"
-      sx={{
-        display: 'inline-flex',
-        '& .MuiSvgIcon-root': {
-          fontSize: 22,
-        },
-      }}
-    >
-      {children}
     </Box>
   );
 }
@@ -116,75 +89,22 @@ export function WizardHero({
           '& .MuiSvgIcon-root': {
             fontSize: 54,
           },
+          boxShadow: (theme) => theme.shadows[2],
         }}
       >
         {icon}
       </Box>
-      <Stack alignItems="center" gap="4px" sx={{ width: '100%' }}>
-        <Typography
-          component="h1"
-          textAlign="center"
-          sx={{ fontSize: 24, fontWeight: 700, lineHeight: '32px' }}
-        >
+      <Stack alignItems="center" gap={1} sx={{ width: '100%' }}>
+        <Typography variant="h1" textAlign="center">
           {title}
         </Typography>
-        <Typography
-          color="text.secondary"
-          textAlign="center"
-          sx={{
-            fontSize: 14,
-            lineHeight: '19px',
-            maxWidth: 300,
-          }}
-        >
+        <Typography color="text.secondary" textAlign="center" variant="body2">
           {description}
         </Typography>
       </Stack>
     </Stack>
   );
 }
-
-export const fieldAdornmentSx = {
-  color: 'primary.main',
-  '& .MuiSvgIcon-root': {
-    fontSize: 22,
-  },
-};
-
-export const outlinedCardSx = {
-  bgcolor: 'background.paper',
-  border: 3,
-  borderColor: 'coral.100',
-  borderStyle: 'solid',
-  borderRadius: shape.xl,
-  p: 2,
-};
-
-export const fieldSx = {
-  '& .MuiOutlinedInput-root': {
-    borderRadius: shape.lg,
-    height: 56,
-  },
-  '& .MuiInputBase-input': {
-    fontSize: 14,
-    fontWeight: 500,
-    lineHeight: '20px',
-    py: 0,
-  },
-  '& .MuiInputAdornment-root': {
-    color: 'text.primary',
-    '& .MuiSvgIcon-root': {
-      fontSize: 22,
-    },
-  },
-};
-
-export const stepPageSx = {
-  height: 844,
-  maxHeight: '100dvh',
-  p: '32px 24px 24px',
-  width: '100%',
-};
 
 export function FieldBlock({
   children,
@@ -194,13 +114,8 @@ export function FieldBlock({
   label: string;
 }) {
   return (
-    <Stack gap="8px">
-      <Typography
-        color="text.primary"
-        sx={{ fontSize: 13, fontWeight: 700, lineHeight: '18px' }}
-      >
-        {label}
-      </Typography>
+    <Stack gap={1}>
+      <Typography variant="caption">{label}</Typography>
       {children}
     </Stack>
   );
@@ -222,31 +137,17 @@ export function FooterActions({
   type?: 'button' | 'submit';
 }) {
   return (
-    <Stack gap="10px">
+    <Stack gap={2}>
       <Button
         type={type}
         variant="contained"
         disabled={disabled}
         onClick={onSubmit}
-        sx={{
-          borderRadius: shape.lg,
-          fontSize: 15,
-          fontWeight: 700,
-          height: 52,
-        }}
+        size="large"
       >
         {submitLabel}
       </Button>
-      <Button
-        type="button"
-        variant="text"
-        onClick={onSkip}
-        sx={{
-          fontSize: 14,
-          fontWeight: 500,
-          height: 52,
-        }}
-      >
+      <Button type="button" variant="text" onClick={onSkip} size="large">
         {skipLabel}
       </Button>
     </Stack>
@@ -269,10 +170,7 @@ export function InlineLinkRow({
       justifyContent="space-between"
       sx={{ height: 18 }}
     >
-      <Typography
-        color="text.secondary"
-        sx={{ fontSize: 12, lineHeight: '18px' }}
-      >
+      <Typography color="text.secondary" variant="caption">
         {label}
       </Typography>
       <Button

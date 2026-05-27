@@ -112,9 +112,6 @@ export const components: ThemeOptions['components'] = {
       paper: {
         borderRadius: shape.lg,
         boxShadow: shadows[3],
-        padding: 24,
-        maxWidth: '90vw',
-        margin: 16,
       },
     },
   },
@@ -126,28 +123,6 @@ export const components: ThemeOptions['components'] = {
         fontWeight: 600,
         padding: 0,
         paddingBottom: 16,
-      },
-    },
-  },
-
-  MuiDialogContent: {
-    styleOverrides: {
-      root: {
-        padding: 0,
-        paddingBottom: 16,
-      },
-    },
-  },
-
-  MuiDialogActions: {
-    styleOverrides: {
-      root: {
-        padding: 0,
-        flexDirection: 'column',
-        gap: 8,
-        '& > :not(style) ~ :not(style)': {
-          marginLeft: 0,
-        },
       },
     },
   },

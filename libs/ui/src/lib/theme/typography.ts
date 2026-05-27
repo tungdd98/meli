@@ -15,4 +15,6 @@ export const typography: ThemeOptions['typography'] = {
     lineHeight: 1.75,
     textTransform: 'none',
   },
+  subtitle1: { fontSize: '1rem', fontWeight: 600, lineHeight: 1.5 },
+  subtitle2: { fontSize: '0.875rem', fontWeight: 600, lineHeight: 1.5 },
 };

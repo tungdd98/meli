@@ -503,7 +503,7 @@ function AuthInitializer({ children }: { children: ReactNode }) {
 
   if (!authReady) {
     return (
-      <Box sx={{ alignItems: 'center', display: 'flex', height: '100vh', justifyContent: 'center' }}>
+      <Box sx={{ alignItems: 'center', display: 'flex', height: '100dvh', justifyContent: 'center' }}>
         <CircularProgress />
       </Box>
     )
@@ -595,7 +595,7 @@ export const Route = createFileRoute('/onboarding')({
 
 function OnboardingLayout() {
   return (
-    <Box sx={{ bgcolor: 'background.default', display: 'flex', justifyContent: 'center', minHeight: '100vh' }}>
+    <Box sx={{ bgcolor: 'background.default', display: 'flex', justifyContent: 'center', minHeight: '100dvh' }}>
       <Box sx={{ maxWidth: 390, width: '100%' }}>
         <Outlet />
       </Box>
@@ -678,7 +678,7 @@ function DueDateLmpPage() {
 
   return (
     <LocalizationProvider dateAdapter={AdapterDayjs}>
-      <Stack sx={{ height: '100vh', p: '32px 24px 24px' }} gap="20px">
+      <Stack sx={{ height: '100dvh', p: '32px 24px 24px' }} gap="20px">
         {/* Top bar: progress dots only (no back button — first step) */}
         {/* Hero: PregnantWomanRounded trong vòng tròn, title "Ngày dự sinh của bạn", description */}
         {/* Form:
@@ -764,7 +764,7 @@ function DueDateDirectPage() {
 
   return (
     <LocalizationProvider dateAdapter={AdapterDayjs}>
-      <Stack sx={{ height: '100vh', p: '32px 24px 24px' }} gap="20px">
+      <Stack sx={{ height: '100dvh', p: '32px 24px 24px' }} gap="20px">
         {/* Top bar: back button (→ /onboarding/due-date) + progress bước 1 active */}
         {/* Hero: EventAvailableRounded icon, title "Nhập ngày dự sinh", description */}
         {/* Form:
@@ -868,7 +868,7 @@ function WeightPage() {
     <Stack
       component="form"
       onSubmit={handleSubmit(onSubmit)}
-      sx={{ height: '100vh', p: '32px 24px 24px' }}
+      sx={{ height: '100dvh', p: '32px 24px 24px' }}
       gap="20px"
     >
       {/* Top bar: back button (→ /onboarding/due-date) + progress bước 2 active */}
@@ -994,7 +994,7 @@ function BabyPage() {
     <Stack
       component="form"
       onSubmit={handleSubmit(onSubmit)}
-      sx={{ height: '100vh', p: '32px 24px 24px' }}
+      sx={{ height: '100dvh', p: '32px 24px 24px' }}
       gap="20px"
     >
       {/* Top bar: back button (→ /onboarding/weight) + progress bước 3 active */}

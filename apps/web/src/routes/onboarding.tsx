@@ -20,12 +20,12 @@ function OnboardingLayout() {
           bgcolor: 'background.default',
           display: 'flex',
           justifyContent: 'center',
-          minHeight: '100vh',
+          minHeight: '100dvh',
+          p: 2,
+          width: '100%',
         }}
       >
-        <Box sx={{ maxWidth: 390, width: '100%' }}>
-          <Outlet />
-        </Box>
+        <Outlet />
       </Box>
     </LocalizationProvider>
   );

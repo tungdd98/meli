@@ -1,25 +1,17 @@
-import { useState } from 'react';
 import { createFileRoute, useNavigate } from '@tanstack/react-router';
-import { Box, InputAdornment, Stack, Typography } from '@mui/material';
-import {
-  CalendarMonthRounded,
-  ChevronLeftRounded,
-  PregnantWomanRounded,
-} from '@mui/icons-material';
-import { DatePicker } from '@mui/x-date-pickers/DatePicker';
-import type { Dayjs } from 'dayjs';
-import dayjs from 'dayjs';
+import { Card, CardContent, Stack, Typography } from '@mui/material';
+import { PregnantWomanRounded } from '@mui/icons-material';
+import dayjs, { type Dayjs } from 'dayjs';
+import { zodResolver } from '@hookform/resolvers/zod';
+import { FormDatePicker } from '@meli/ui';
 import { profilesApi } from '@meli/api';
 import { calcDueDateFromLmp } from '@meli/utils';
+import { useForm } from 'react-hook-form';
+import { z } from 'zod';
 import { useAuthStore } from '../../../stores/auth.store';
 import {
-  BackButtonIcon,
-  FieldBlock,
-  fieldSx,
   FooterActions,
   InlineLinkRow,
-  outlinedCardSx,
-  stepPageSx,
   WizardHero,
   WizardTopBar,
 } from '../-shared';
@@ -28,93 +20,80 @@ export const Route = createFileRoute('/onboarding/due-date/')({
   component: DueDateLmpPage,
 });
 
+const schema = z.object({
+  lmp: z.custom<Dayjs>().nullable(),
+});
+
+type FormValues = z.infer<typeof schema>;
+
 function DueDateLmpPage() {
   const navigate = useNavigate();
   const user = useAuthStore((state) => state.user);
-  const [lmp, setLmp] = useState<Dayjs | null>(null);
-  const [isSubmitting, setIsSubmitting] = useState(false);
 
+  const {
+    control,
+    formState: { isSubmitting },
+    handleSubmit,
+    watch,
+  } = useForm<FormValues>({
+    resolver: zodResolver(schema),
+    defaultValues: { lmp: null },
+  });
+
+  const lmp = watch('lmp');
   const dueDateStr = lmp ? calcDueDateFromLmp(lmp.format('YYYY-MM-DD')) : null;
 
-  const handleContinue = async () => {
-    if (!dueDateStr || !user) return;
+  const onSubmit = async (values: FormValues) => {
+    if (!values.lmp || !user) return;
 
-    setIsSubmitting(true);
-    try {
-      await profilesApi.update(user.id, { due_date: dueDateStr });
-      const profile = useAuthStore.getState().profile;
-      if (profile) {
-        useAuthStore
-          .getState()
-          ._setProfile({ ...profile, due_date: dueDateStr });
-      }
-      navigate({ to: '/onboarding/weight' });
-    } finally {
-      setIsSubmitting(false);
+    const nextDueDate = calcDueDateFromLmp(values.lmp.format('YYYY-MM-DD'));
+    await profilesApi.update(user.id, { due_date: nextDueDate });
+    const profile = useAuthStore.getState().profile;
+    if (profile) {
+      useAuthStore
+        .getState()
+        ._setProfile({ ...profile, due_date: nextDueDate });
     }
+    navigate({ to: '/onboarding/weight' });
   };
 
   return (
-    <Stack sx={stepPageSx} gap="20px">
-      <WizardTopBar
-        step={1}
-        onBack={() => navigate({ to: '/' })}
-        backIcon={
-          <BackButtonIcon>
-            <ChevronLeftRounded />
-          </BackButtonIcon>
-        }
-      />
+    <Stack
+      gap={3}
+      component="form"
+      onSubmit={handleSubmit(onSubmit)}
+      noValidate
+    >
+      <WizardTopBar step={1} />
       <WizardHero
         icon={<PregnantWomanRounded />}
         title="Ngày dự sinh của bạn"
         description="Chọn ngày đầu tiên của kỳ kinh cuối để Meli ước tính mốc thai kỳ."
       />
 
-      <Stack gap={2} sx={{ height: 238 }}>
-        <FieldBlock label="Ngày đầu kỳ kinh cuối">
-          <DatePicker
-            value={lmp}
-            onChange={setLmp}
-            format="DD/MM/YYYY"
-            slotProps={{
-              textField: {
-                placeholder: '12/09/2025',
-                InputProps: {
-                  startAdornment: (
-                    <InputAdornment position="start">
-                      <CalendarMonthRounded />
-                    </InputAdornment>
-                  ),
-                },
-                fullWidth: true,
-                sx: fieldSx,
-              },
-            }}
-          />
-        </FieldBlock>
+      <Stack gap={2} sx={{ flex: 1 }}>
+        <FormDatePicker
+          name="lmp"
+          control={control}
+          label="Ngày đầu kỳ kinh cuối"
+        />
 
         {dueDateStr && (
-          <Stack sx={{ ...outlinedCardSx, height: 106 }} gap="4px">
-            <Typography
-              color="primary.main"
-              sx={{ fontSize: 12, fontWeight: 700, lineHeight: '16px' }}
-            >
-              Dự sinh ước tính
-            </Typography>
-            <Typography
-              color="text.primary"
-              sx={{ fontSize: 24, fontWeight: 700, lineHeight: '32px' }}
-            >
-              {dayjs(dueDateStr).format('DD/MM/YYYY')}
-            </Typography>
-            <Typography
-              color="text.secondary"
-              sx={{ fontSize: 13, lineHeight: '18px' }}
-            >
-              Bạn có thể thay đổi thông tin này sau trong hồ sơ.
-            </Typography>
-          </Stack>
+          <Card>
+            <CardContent>
+              <Stack gap={1}>
+                <Typography color="primary.main" variant="subtitle2">
+                  Dự sinh ước tính
+                </Typography>
+                <Typography variant="h2">
+                  {dayjs(dueDateStr).format('DD/MM/YYYY')}
+                </Typography>
+                <Typography color="text.secondary" variant="caption">
+                  Bạn có thể thay đổi thông tin này sau trong hồ sơ.
+                </Typography>
+              </Stack>
+            </CardContent>
+          </Card>
         )}
 
         <InlineLinkRow
@@ -124,11 +103,9 @@ function DueDateLmpPage() {
         />
       </Stack>
 
-      <Box sx={{ height: 110 }} />
-
       <FooterActions
+        type="submit"
         disabled={!lmp || isSubmitting}
-        onSubmit={handleContinue}
         skipLabel="Bỏ qua"
         onSkip={() => navigate({ to: '/onboarding/weight' })}
       />

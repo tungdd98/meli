@@ -74,19 +74,14 @@ function LoginPage() {
         bgcolor: 'background.default',
         display: 'flex',
         justifyContent: 'center',
-        minHeight: '100vh',
-        p: 3,
+        minHeight: '100dvh',
+        p: 2,
       }}
     >
-      <Card
-        sx={{
-          maxWidth: 390,
-          width: '100%',
-        }}
-      >
+      <Card>
         <CardContent>
           <Stack alignItems="center" gap={3}>
-            <Stack alignItems="center" gap="10px" sx={{ width: '100%' }}>
+            <Stack alignItems="center" gap={2}>
               <Box
                 component="img"
                 src={babyLogo}
@@ -98,22 +93,11 @@ function LoginPage() {
                   width: 124,
                 }}
               />
-              <Typography
-                variant="h4"
-                color="text.primary"
-                sx={{ fontWeight: 700 }}
-              >
-                Meli
-              </Typography>
+              <Typography variant="h4">Meli</Typography>
             </Stack>
 
-            <Stack alignItems="center" gap={1} sx={{ width: '100%' }}>
-              <Typography
-                component="h1"
-                variant="h2"
-                color="text.primary"
-                textAlign="center"
-              >
+            <Stack alignItems="center" gap={1}>
+              <Typography variant="h2" textAlign="center">
                 Đăng nhập
               </Typography>
               <Typography
@@ -131,23 +115,21 @@ function LoginPage() {
               onSubmit={handleSubmit(onSubmit)}
               sx={{ width: '100%' }}
             >
-              <FormTextField<LoginFormValues>
+              <FormTextField
                 name="email"
                 control={control}
                 label="Email"
                 type="email"
                 placeholder="name@company.com"
                 autoComplete="email"
-                fullWidth
               />
-              <FormTextField<LoginFormValues>
+              <FormTextField
                 name="password"
                 control={control}
                 label="Mật khẩu"
                 type={showPassword ? 'text' : 'password'}
                 placeholder="••••••••"
                 autoComplete="current-password"
-                fullWidth
                 InputProps={{
                   endAdornment: (
                     <InputAdornment position="end">

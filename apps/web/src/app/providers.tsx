@@ -89,7 +89,7 @@ function AuthInitializer({ children }: { children: ReactNode }) {
         sx={{
           alignItems: 'center',
           display: 'flex',
-          height: '100vh',
+          height: '100dvh',
           justifyContent: 'center',
         }}
       >
