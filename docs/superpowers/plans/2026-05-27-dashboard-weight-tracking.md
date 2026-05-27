@@ -6,7 +6,7 @@
 
 **Architecture:** Dashboard (`/_auth/index.tsx`) được redesign hoàn toàn với hero section, widget cards (cân nặng + đếm ngược) và bottom nav 4 tab. Trang cân nặng (`/_auth/weight.tsx`) dùng Recharts để vẽ biểu đồ tăng cân theo IOM guidelines, kèm danh sách lịch sử CRUD. Dữ liệu cân nặng lưu trong bảng Supabase `weight_entries`, truy cập qua React Query.
 
-**Tech Stack:** React 19, MUI v6, TanStack Router, React Query, Zustand (auth), Supabase, Recharts, dayjs, react-hook-form + zod, Plus Jakarta Sans (Google Fonts)
+**Tech Stack:** React 19, MUI v6, TanStack Router, React Query, Zustand (auth), Supabase, Recharts, dayjs, react-hook-form + zod
 
 **Design files:**
 
@@ -25,7 +25,6 @@
 | `libs/utils/src/lib/weight-gain.ts`                        | Create | Tính IOM ideal range + chart data points               |
 | `libs/utils/src/lib/weight-gain.spec.ts`                   | Create | Tests cho IOM calculation                              |
 | `libs/utils/src/index.ts`                                  | Modify | Export weight-gain utilities                           |
-| `apps/web/src/styles.css`                                  | Modify | Import Google Fonts (Plus Jakarta Sans)                |
 | `apps/web/src/routes/_auth/index.tsx`                      | Modify | Dashboard redesign                                     |
 | `apps/web/src/routes/_auth/guide.tsx`                      | Create | Stub: Hướng dẫn tab                                    |
 | `apps/web/src/routes/_auth/ai.tsx`                         | Create | Stub: AI tab                                           |
@@ -34,36 +33,7 @@
 
 ---
 
-## Task 1: Google Fonts — Plus Jakarta Sans
-
-**Files:**
-
-- Modify: `apps/web/src/styles.css`
-
-- [ ] **Thêm Google Fonts import vào styles.css**
-
-```css
-@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap');
-```
-
-- [ ] **Chạy dev server để kiểm tra font load thành công**
-
-```bash
-pnpm nx dev web
-```
-
-Mở http://localhost:4200 trong trình duyệt, kiểm tra DevTools → Network → tìm request đến `fonts.googleapis.com`.
-
-- [ ] **Commit**
-
-```bash
-git add apps/web/src/styles.css
-git commit -m "feat(web): load Plus Jakarta Sans via Google Fonts"
-```
-
----
-
-## Task 2: Database migration — weight_entries
+## Task 1: Database migration — weight_entries
 
 **Files:**
 
@@ -114,7 +84,7 @@ git commit -m "feat(db): add weight_entries table with RLS"
 
 ---
 
-## Task 3: Install recharts
+## Task 2: Install recharts
 
 **Files:** không thay đổi source code
 
@@ -141,7 +111,7 @@ git commit -m "feat(web): add recharts dependency"
 
 ---
 
-## Task 4: weightEntriesApi trong @meli/api
+## Task 3: weightEntriesApi trong @meli/api
 
 **Files:**
 
@@ -231,7 +201,7 @@ git commit -m "feat(api): add weightEntriesApi with CRUD operations"
 
 ---
 
-## Task 5: IOM weight gain calculation utility + tests
+## Task 4: IOM weight gain calculation utility + tests
 
 **Files:**
 
@@ -380,7 +350,7 @@ git commit -m "feat(utils): add IOM weight gain calculation with tests"
 
 ---
 
-## Task 6: Stub routes — Hướng dẫn, AI, Cài đặt
+## Task 5: Stub routes — Hướng dẫn, AI, Cài đặt
 
 **Files:**
 
@@ -464,7 +434,7 @@ git commit -m "feat(web): add stub routes for guide, ai, settings tabs"
 
 ---
 
-## Task 7: Dashboard redesign
+## Task 6: Dashboard redesign
 
 **Files:**
 
@@ -872,7 +842,7 @@ git commit -m "feat(dashboard): redesign home page with hero, widgets, and botto
 
 ---
 
-## Task 8: WeightEntryDialog — add/edit
+## Task 7: Màn hình cân nặng + WeightEntryDialog
 
 **Files:**
 
