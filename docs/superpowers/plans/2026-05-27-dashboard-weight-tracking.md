@@ -499,18 +499,17 @@ import { useQuery } from '@tanstack/react-query';
 import dayjs from 'dayjs';
 import { useAuthStore } from '../../stores/auth.store';
 import { weightEntriesApi } from '@meli/api';
-import { BottomNav } from '@meli/ui';
-import { shape } from '@meli/ui';
+import { BottomNav, shape } from '@meli/ui';
 
 export const Route = createFileRoute('/_auth/')({
   component: HomePage,
 });
 
 const NAV_ITEMS = [
-  { label: 'Trang chủ', icon: <HomeRounded sx={{ fontSize: 22 }} /> },
-  { label: 'Hướng dẫn', icon: <MenuBookRounded sx={{ fontSize: 22 }} /> },
-  { label: 'AI', icon: <PsychologyRounded sx={{ fontSize: 22 }} /> },
-  { label: 'Cài đặt', icon: <SettingsRounded sx={{ fontSize: 22 }} /> },
+  { label: 'Trang chủ', icon: <HomeRounded /> },
+  { label: 'Hướng dẫn', icon: <MenuBookRounded /> },
+  { label: 'AI', icon: <PsychologyRounded /> },
+  { label: 'Cài đặt', icon: <SettingsRounded /> },
 ];
 
 const NAV_ROUTES = ['/', '/guide', '/ai', '/settings'];
@@ -566,15 +565,13 @@ function HomePage() {
       <Box
         sx={{
           bgcolor: 'background.paper',
-          borderBottom: '1px solid',
+          borderBottom: 1,
           borderColor: 'coral.100',
-          height: 44,
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
+          py: 1.5,
+          textAlign: 'center',
         }}
       >
-        <Typography variant="subtitle2" sx={{ fontSize: 14 }}>
+        <Typography variant="subtitle2">
           Tuần thứ {week}, ngày {dayOfWeek}
         </Typography>
       </Box>
@@ -582,174 +579,121 @@ function HomePage() {
       {/* Scrollable content */}
       <Box sx={{ flex: 1, overflowY: 'auto', pb: '80px' }}>
         {/* HeroSection */}
-        <Box
-          sx={{
-            bgcolor: 'primary.main',
-            height: 175,
-            position: 'relative',
-            overflow: 'hidden',
-          }}
-        >
-          {/* Avatar circles */}
-          <Box
-            sx={{
-              position: 'absolute',
-              width: 80,
-              height: 80,
-              borderRadius: '50%',
-              bgcolor: 'rgba(255,255,255,0.2)',
-              top: 48,
-              left: 16,
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-            }}
-          >
+        <Box sx={{ bgcolor: 'primary.main', px: 2, py: 3 }}>
+          <Stack direction="row" alignItems="center" spacing={2}>
+            {/* Baby avatar */}
             <Box
               sx={{
                 width: 64,
                 height: 64,
                 borderRadius: '50%',
-                bgcolor: 'rgba(255,255,255,0.35)',
+                bgcolor: 'rgba(255,255,255,0.3)',
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
+                flexShrink: 0,
               }}
             >
-              <ChildCareRounded sx={{ color: '#fff', fontSize: 28 }} />
+              <ChildCareRounded
+                sx={{ color: 'primary.contrastText', fontSize: 32 }}
+              />
             </Box>
-          </Box>
 
-          {/* Greeting */}
-          <Stack
-            spacing={0.5}
-            sx={{
-              position: 'absolute',
-              top: 44,
-              left: 112,
-              width: 190,
-              justifyContent: 'center',
-              height: 90,
-            }}
-          >
-            <Typography
-              sx={{
-                color: '#fff',
-                fontWeight: 700,
-                fontSize: 24,
-                lineHeight: 1.2,
-              }}
-            >
-              Chào mẹ
-            </Typography>
-            <Typography
-              sx={{
-                color: 'rgba(255,255,255,0.8)',
-                fontSize: 13,
-                lineHeight: 1.4,
-              }}
-            >
-              {greeting}
-            </Typography>
+            {/* Greeting */}
+            <Stack spacing={0.5} sx={{ flex: 1 }}>
+              <Typography
+                variant="h4"
+                sx={{ color: 'primary.contrastText', fontWeight: 700 }}
+              >
+                Chào mẹ
+              </Typography>
+              <Typography
+                variant="body2"
+                sx={{ color: 'rgba(255,255,255,0.8)' }}
+              >
+                {greeting}
+              </Typography>
+            </Stack>
+
+            {/* Right actions */}
+            <Stack spacing={1} alignItems="center">
+              <IconButton
+                size="small"
+                sx={{
+                  bgcolor: 'rgba(255,255,255,0.2)',
+                  color: 'primary.contrastText',
+                }}
+              >
+                <FamilyRestroomRounded />
+              </IconButton>
+              <IconButton
+                size="small"
+                sx={{
+                  bgcolor: 'rgba(255,255,255,0.2)',
+                  color: 'primary.contrastText',
+                }}
+              >
+                <PhotoCameraRounded />
+              </IconButton>
+            </Stack>
           </Stack>
-
-          {/* Family badge */}
-          <Box
-            sx={{
-              position: 'absolute',
-              top: 12,
-              right: 16,
-              width: 56,
-              height: 52,
-              borderRadius: shape.md,
-              bgcolor: 'rgba(255,255,255,0.13)',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-            }}
-          >
-            <FamilyRestroomRounded sx={{ color: '#fff', fontSize: 28 }} />
-          </Box>
-
-          {/* Camera button */}
-          <IconButton
-            size="small"
-            sx={{
-              position: 'absolute',
-              bottom: 16,
-              right: 16,
-              bgcolor: 'rgba(255,255,255,0.2)',
-              width: 36,
-              height: 36,
-              '&:hover': { bgcolor: 'rgba(255,255,255,0.3)' },
-            }}
-          >
-            <PhotoCameraRounded sx={{ color: '#fff', fontSize: 20 }} />
-          </IconButton>
         </Box>
 
         {/* Widget Grid */}
-        <Stack spacing={1.5} sx={{ p: '12px 16px' }}>
-          {/* Widget Row 1 */}
-          <Stack direction="row" spacing={1.5}>
-            {/* CÂN NẶNG card */}
-            <WidgetCard
-              label="CÂN NẶNG"
-              onClick={() => navigate({ to: '/weight' })}
-              sx={{ flex: 1 }}
-            >
-              <Typography
-                sx={{ fontWeight: 700, fontSize: 22, color: 'text.primary' }}
-              >
-                {latestWeight != null ? `${latestWeight} kg` : '—'}
-              </Typography>
-            </WidgetCard>
+        <Stack direction="row" spacing={1.5} sx={{ p: 2 }}>
+          {/* CÂN NẶNG card */}
+          <WidgetCard
+            label="CÂN NẶNG"
+            onClick={() => navigate({ to: '/weight' })}
+            sx={{ flex: 1 }}
+          >
+            <Typography variant="h4" sx={{ fontWeight: 700 }}>
+              {latestWeight != null ? `${latestWeight} kg` : '—'}
+            </Typography>
+          </WidgetCard>
 
-            {/* ĐẾM NGƯỢC card */}
-            <WidgetCard label="ĐẾM NGƯỢC" sx={{ flex: 1 }}>
-              <Stack direction="row" alignItems="center" spacing={1}>
-                <Stack spacing={0.25}>
-                  <Typography
-                    sx={{
-                      fontWeight: 700,
-                      fontSize: 22,
-                      color: 'text.primary',
-                    }}
-                  >
-                    {daysLeft}
-                  </Typography>
-                  <Typography
-                    variant="caption"
-                    sx={{ color: 'text.secondary', fontSize: 12 }}
-                  >
-                    ngày
-                  </Typography>
-                </Stack>
-                {/* Donut ring */}
-                <Box sx={{ position: 'relative', width: 52, height: 52 }}>
-                  <CircularProgress
-                    variant="determinate"
-                    value={100}
-                    size={52}
-                    thickness={5}
-                    sx={{
-                      color: 'coral.100',
-                      position: 'absolute',
-                      top: 0,
-                      left: 0,
-                    }}
-                  />
-                  <CircularProgress
-                    variant="determinate"
-                    value={pct * 100}
-                    size={52}
-                    thickness={5}
-                    sx={{ color: 'primary.main' }}
-                  />
-                </Box>
+          {/* ĐẾM NGƯỢC card */}
+          <WidgetCard label="ĐẾM NGƯỢC" sx={{ flex: 1 }}>
+            <Stack direction="row" alignItems="center" spacing={1.5}>
+              <Stack spacing={0}>
+                <Typography variant="h4" sx={{ fontWeight: 700 }}>
+                  {daysLeft}
+                </Typography>
+                <Typography variant="caption" color="text.secondary">
+                  ngày
+                </Typography>
               </Stack>
-            </WidgetCard>
-          </Stack>
+              {/* Donut ring */}
+              <Box
+                sx={{
+                  position: 'relative',
+                  width: 48,
+                  height: 48,
+                  flexShrink: 0,
+                }}
+              >
+                <CircularProgress
+                  variant="determinate"
+                  value={100}
+                  size={48}
+                  thickness={5}
+                  sx={{
+                    color: 'coral.100',
+                    position: 'absolute',
+                    top: 0,
+                    left: 0,
+                  }}
+                />
+                <CircularProgress
+                  variant="determinate"
+                  value={pct * 100}
+                  size={48}
+                  thickness={5}
+                  sx={{ color: 'primary.main' }}
+                />
+              </Box>
+            </Stack>
+          </WidgetCard>
         </Stack>
       </Box>
 
@@ -782,22 +726,20 @@ function WidgetCard({
         borderRadius: shape.xl,
         border: '3px solid',
         borderColor: 'coral.100',
-        boxShadow: '6px 6px 0 rgba(240,129,128,0.15)',
         p: 2,
         cursor: onClick ? 'pointer' : 'default',
         display: 'flex',
         flexDirection: 'column',
         gap: 1,
-        minHeight: 130,
+        minHeight: 120,
         ...sx,
       }}
     >
-      {/* Label row */}
-      <Stack direction="row" alignItems="center" spacing={0.5}>
+      <Stack direction="row" alignItems="center">
         <Typography
+          variant="caption"
           sx={{
             color: 'primary.main',
-            fontSize: 11,
             fontWeight: 700,
             letterSpacing: 0.5,
             flex: 1,
@@ -806,12 +748,10 @@ function WidgetCard({
           {label}
         </Typography>
         {onClick && (
-          <ChevronRightRounded sx={{ color: 'primary.main', fontSize: 14 }} />
+          <ChevronRightRounded sx={{ color: 'primary.main', fontSize: 16 }} />
         )}
       </Stack>
-      {/* Divider */}
       <Box sx={{ height: 1, bgcolor: 'coral.100' }} />
-      {/* Content */}
       <Box sx={{ flex: 1, display: 'flex', alignItems: 'center' }}>
         {children}
       </Box>
@@ -867,6 +807,8 @@ pnpm add --save-exact @hookform/resolvers --filter web
 ```tsx
 import { createFileRoute, useNavigate } from '@tanstack/react-router';
 import {
+  AppBar,
+  Toolbar,
   Box,
   Typography,
   Stack,
@@ -879,7 +821,6 @@ import {
   DialogContentText,
   DialogActions,
   Button,
-  Divider,
   Alert,
   List,
   ListItem,
@@ -891,6 +832,7 @@ import {
   AddRounded,
   ScaleRounded,
 } from '@mui/icons-material';
+import { useTheme } from '@mui/material/styles';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
@@ -1085,6 +1027,7 @@ function WeightChart({
   preHeight: number;
   dueDate: string;
 }) {
+  const theme = useTheme();
   const bmi = calcBmi(preWeight, preHeight);
   const idealData = buildIdealChartData(bmi);
 
@@ -1097,90 +1040,85 @@ function WeightChart({
     ),
   }));
   const actualData = buildActualChartData(entriesWithWeek, preWeight);
-
   const currentWeek = Math.max(
     0,
     Math.min(40, dayjs().diff(pregnancyStart, 'week')),
   );
 
-  // Merge ideal + actual by week
   const chartData = idealData.map((point) => {
     const actual = actualData.find((a) => a.week === point.week);
     return { ...point, actualGain: actual?.actualGain };
   });
 
   return (
-    <ResponsiveContainer width="100%" height={280}>
+    <ResponsiveContainer width="100%" height={240}>
       <ComposedChart
         data={chartData}
         margin={{ top: 8, right: 8, left: -16, bottom: 0 }}
       >
-        <CartesianGrid strokeDasharray="3 3" stroke="#F3F4F6" />
+        <CartesianGrid strokeDasharray="3 3" stroke={theme.palette.divider} />
         <XAxis
           dataKey="week"
-          tick={{ fontSize: 9, fill: '#6B7280' }}
+          tick={{ fontSize: 9, fill: theme.palette.text.secondary }}
           label={{
             value: 'Tuần',
             position: 'insideBottomRight',
             offset: -4,
             fontSize: 9,
-            fill: '#9CA3AF',
+            fill: theme.palette.text.disabled,
           }}
         />
         <YAxis
-          tick={{ fontSize: 9, fill: '#6B7280' }}
+          tick={{ fontSize: 9, fill: theme.palette.text.secondary }}
           label={{
             value: 'kg',
             angle: -90,
             position: 'insideTopLeft',
             offset: 16,
             fontSize: 9,
-            fill: '#9CA3AF',
+            fill: theme.palette.text.disabled,
           }}
         />
         <Tooltip
-          formatter={(value: number, name: string) => {
-            if (name === 'actualGain') return [`${value} kg`, 'Cân nặng'];
-            return null;
-          }}
+          formatter={(value: number, name: string) =>
+            name === 'actualGain' ? [`${value} kg`, 'Cân nặng'] : null
+          }
           labelFormatter={(label) => `Tuần ${label}`}
         />
-        {/* Ideal range — shaded area */}
+        {/* Dải lý tưởng */}
         <Area
           dataKey="idealMax"
-          fill="#8DD4CE55"
+          fill={theme.palette.secondary.light}
+          fillOpacity={0.35}
           stroke="none"
-          name="idealMax"
           legendType="none"
           activeDot={false}
         />
         <Area
           dataKey="idealMin"
-          fill="#FFF5F5"
+          fill={theme.palette.background.default}
+          fillOpacity={1}
           stroke="none"
-          name="idealMin"
           legendType="none"
           activeDot={false}
-          fillOpacity={1}
         />
-        {/* Actual weight line */}
+        {/* Đường cân thực tế */}
         <Line
           type="monotone"
           dataKey="actualGain"
-          stroke="#3D9B93"
+          stroke={theme.palette.secondary.dark}
           strokeWidth={2}
-          dot={{ fill: '#3D9B93', r: 4 }}
+          dot={{ fill: theme.palette.secondary.dark, r: 4 }}
           connectNulls={false}
-          name="actualGain"
         />
-        {/* Current week reference */}
+        {/* Tuần hiện tại */}
         <ReferenceLine
           x={currentWeek}
-          stroke="#F0818099"
+          stroke={theme.palette.primary.light}
           label={{
             value: `tuần ${currentWeek}`,
             fontSize: 8,
-            fill: '#F08180',
+            fill: theme.palette.primary.main,
             position: 'top',
           }}
         />
@@ -1232,34 +1170,23 @@ function WeightPage() {
         flexDirection: 'column',
         height: '100dvh',
         bgcolor: 'background.default',
-        overflow: 'hidden',
       }}
     >
       {/* AppBar */}
-      <Paper
-        elevation={1}
-        square
-        sx={{
-          display: 'flex',
-          alignItems: 'center',
-          gap: 0.5,
-          px: 1,
-          height: 56,
-          bgcolor: 'background.paper',
-          flexShrink: 0,
-        }}
-      >
-        <IconButton onClick={() => navigate({ to: '/' })}>
-          <ArrowBackRounded />
-        </IconButton>
-        <Typography
-          variant="subtitle1"
-          sx={{ flex: 1, textAlign: 'center', fontWeight: 600, fontSize: 16 }}
-        >
-          CÂN NẶNG CỦA MẸ
-        </Typography>
-        <Box sx={{ width: 40 }} />
-      </Paper>
+      <AppBar position="static" color="default" elevation={1}>
+        <Toolbar>
+          <IconButton edge="start" onClick={() => navigate({ to: '/' })}>
+            <ArrowBackRounded />
+          </IconButton>
+          <Typography
+            variant="subtitle1"
+            sx={{ flex: 1, textAlign: 'center', fontWeight: 600 }}
+          >
+            CÂN NẶNG CỦA MẸ
+          </Typography>
+          <Box sx={{ width: 40 }} />
+        </Toolbar>
+      </AppBar>
 
       {/* Scrollable content */}
       <Box sx={{ flex: 1, overflowY: 'auto', pb: '80px' }}>
