@@ -6,7 +6,7 @@ import {
 } from '@mui/icons-material';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { FormDatePicker } from '@meli/ui';
-import type { Dayjs } from 'dayjs';
+import dayjs, { type Dayjs } from 'dayjs';
 import { useForm } from 'react-hook-form';
 import { z } from 'zod';
 import { profilesApi } from '@meli/api';
@@ -31,6 +31,7 @@ type FormValues = z.infer<typeof schema>;
 function DueDateDirectPage() {
   const navigate = useNavigate();
   const user = useAuthStore((state) => state.user);
+  const profile = useAuthStore((state) => state.profile);
 
   const {
     control,
@@ -39,7 +40,9 @@ function DueDateDirectPage() {
     watch,
   } = useForm<FormValues>({
     resolver: zodResolver(schema),
-    defaultValues: { dueDate: null },
+    defaultValues: {
+      dueDate: profile?.due_date ? dayjs(profile.due_date) : null,
+    },
   });
 
   const dueDate = watch('dueDate');
@@ -49,9 +52,11 @@ function DueDateDirectPage() {
 
     const dueDateStr = values.dueDate.format('YYYY-MM-DD');
     await profilesApi.update(user.id, { due_date: dueDateStr });
-    const profile = useAuthStore.getState().profile;
-    if (profile) {
-      useAuthStore.getState()._setProfile({ ...profile, due_date: dueDateStr });
+    const currentProfile = useAuthStore.getState().profile;
+    if (currentProfile) {
+      useAuthStore
+        .getState()
+        ._setProfile({ ...currentProfile, due_date: dueDateStr });
     }
     navigate({ to: '/onboarding/weight' });
   };
