@@ -55,7 +55,10 @@ function WeightPage() {
     watch,
   } = useForm<WeightFormValues>({
     resolver: zodResolver(weightSchema),
-    defaultValues: { height_cm: '', weight_kg: '' },
+    defaultValues: {
+      weight_kg: profile?.weight_kg ? String(profile.weight_kg) : '',
+      height_cm: profile?.height_cm ? String(profile.height_cm) : '',
+    },
     mode: 'onChange',
   });
 
