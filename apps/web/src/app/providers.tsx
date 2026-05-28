@@ -25,7 +25,7 @@ function withTimeout<T>(
   return Promise.race([
     Promise.resolve(promise),
     new Promise<T>((_, reject) => {
-      window.setTimeout(() => {
+      globalThis.setTimeout(() => {
         reject(new Error('Profile request timed out'));
       }, timeoutMs);
     }),

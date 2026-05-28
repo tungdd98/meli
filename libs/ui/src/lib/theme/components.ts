@@ -121,8 +121,14 @@ export const components: ThemeOptions['components'] = {
       root: {
         fontSize: '1.125rem',
         fontWeight: 600,
-        padding: 0,
-        paddingBottom: 16,
+      },
+    },
+  },
+
+  MuiDialogActions: {
+    styleOverrides: {
+      root: {
+        padding: '16px 24px',
       },
     },
   },
@@ -144,6 +150,7 @@ export const components: ThemeOptions['components'] = {
       root: {
         borderRadius: shape.md,
         boxShadow: shadows[2],
+        alignItems: 'center',
       },
       standardSuccess: {
         backgroundColor: '#ecfdf5',
@@ -206,6 +213,22 @@ export const components: ThemeOptions['components'] = {
         '&.MuiChip-filled': {
           backgroundColor: alpha(palette.secondary.main, 0.1),
         },
+      },
+    },
+  },
+
+  MuiPaper: {
+    styleOverrides: {
+      root: {
+        borderRadius: shape.md,
+      },
+    },
+  },
+
+  MuiAppBar: {
+    styleOverrides: {
+      root: {
+        borderRadius: 0,
       },
     },
   },

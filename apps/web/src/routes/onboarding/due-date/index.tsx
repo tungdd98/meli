@@ -90,7 +90,7 @@ function DueDateLmpPage() {
                 <Typography variant="h2">
                   {dayjs(dueDateStr).format('DD/MM/YYYY')}
                 </Typography>
-                <Typography color="text.secondary" variant="caption">
+                <Typography color="textSecondary" variant="caption">
                   Bạn có thể thay đổi thông tin này sau trong hồ sơ.
                 </Typography>
               </Stack>

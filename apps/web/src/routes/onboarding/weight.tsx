@@ -154,12 +154,12 @@ function WeightPage() {
                   alignItems="center"
                   justifyContent="space-between"
                 >
-                  <Typography color="text.secondary" variant="subtitle2">
+                  <Typography color="textSecondary" variant="subtitle2">
                     BMI của bạn
                   </Typography>
                   <Typography variant="h2">{bmi.toFixed(1)}</Typography>
                 </Stack>
-                <Typography color="text.secondary" variant="caption">
+                <Typography color="textSecondary" variant="caption">
                   {weightTip}
                 </Typography>
               </Stack>

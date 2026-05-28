@@ -7,24 +7,22 @@ import {
   CardActionArea,
   CardContent,
   Divider,
-  IconButton,
   CircularProgress,
+  AppBar,
+  Toolbar,
 } from '@mui/material';
 import {
   HomeRounded,
   MenuBookRounded,
   PsychologyRounded,
   SettingsRounded,
-  ChildCareRounded,
-  FamilyRestroomRounded,
-  PhotoCameraRounded,
   ChevronRightRounded,
 } from '@mui/icons-material';
 import { useQuery } from '@tanstack/react-query';
 import dayjs from 'dayjs';
 import { useAuthStore } from '../../stores/auth.store';
 import { weightEntriesApi } from '@meli/api';
-import { BottomNav, shape } from '@meli/ui';
+import { BottomNav } from '@meli/ui';
 
 export const Route = createFileRoute('/_auth/')({
   component: HomePage,
@@ -67,7 +65,7 @@ function HomePage() {
 
   const { data: weightEntries } = useQuery({
     queryKey: ['weightEntries', user?.id],
-    queryFn: () => weightEntriesApi.list(user!.id),
+    queryFn: () => (user ? weightEntriesApi.list(user.id) : undefined),
     enabled: !!user,
   });
 
@@ -84,109 +82,45 @@ function HomePage() {
         overflow: 'hidden',
       }}
     >
-      {/* WeekHeader */}
-      <Box
-        sx={{
-          bgcolor: 'background.paper',
-          borderBottom: 1,
-          borderColor: 'coral.100',
-          py: 1.5,
-          textAlign: 'center',
-        }}
-      >
-        <Typography variant="subtitle2">
-          Tuần thứ {week}, ngày {dayOfWeek}
-        </Typography>
-      </Box>
+      <AppBar position="static" color="default" elevation={1}>
+        <Toolbar>
+          <Typography variant="subtitle2" sx={{ textAlign: 'center', flex: 1 }}>
+            Tuần thứ {week}, ngày {dayOfWeek}
+          </Typography>
+        </Toolbar>
+      </AppBar>
 
-      {/* Scrollable content */}
-      <Box sx={{ flex: 1, overflowY: 'auto', pb: '80px' }}>
-        {/* HeroSection */}
+      <Box sx={{ flex: 1, overflowY: 'auto', pb: 8 }}>
         <Box sx={{ bgcolor: 'primary.main', px: 2, py: 3 }}>
-          <Stack direction="row" alignItems="center" spacing={2}>
-            {/* Baby avatar */}
-            <Box
-              sx={{
-                width: 64,
-                height: 64,
-                borderRadius: shape.full,
-                bgcolor: 'rgba(255,255,255,0.3)',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                flexShrink: 0,
-              }}
-            >
-              <ChildCareRounded
-                sx={{ color: 'primary.contrastText', fontSize: 32 }}
-              />
-            </Box>
-
-            {/* Greeting */}
-            <Stack spacing={0.5} sx={{ flex: 1 }}>
-              <Typography
-                variant="h4"
-                sx={{ color: 'primary.contrastText', fontWeight: 700 }}
-              >
-                Chào mẹ
-              </Typography>
-              <Typography
-                variant="body2"
-                sx={{ color: 'rgba(255,255,255,0.8)' }}
-              >
-                {greeting}
-              </Typography>
-            </Stack>
-
-            {/* Right actions */}
-            <Stack spacing={1} alignItems="center">
-              <IconButton
-                size="small"
-                sx={{
-                  bgcolor: 'rgba(255,255,255,0.2)',
-                  color: 'primary.contrastText',
-                }}
-              >
-                <FamilyRestroomRounded />
-              </IconButton>
-              <IconButton
-                size="small"
-                sx={{
-                  bgcolor: 'rgba(255,255,255,0.2)',
-                  color: 'primary.contrastText',
-                }}
-              >
-                <PhotoCameraRounded />
-              </IconButton>
-            </Stack>
+          <Stack spacing={0.5} sx={{ flex: 1 }}>
+            <Typography variant="h4" sx={{ color: 'primary.contrastText' }}>
+              Chào mẹ
+            </Typography>
+            <Typography variant="body2" sx={{ color: 'primary.contrastText' }}>
+              {greeting}
+            </Typography>
           </Stack>
         </Box>
 
-        {/* Widget Grid */}
         <Stack direction="row" spacing={1.5} sx={{ p: 2 }}>
-          {/* CÂN NẶNG card */}
           <WidgetCard
             label="CÂN NẶNG"
             onClick={() => navigate({ to: '/weight' })}
             sx={{ flex: 1 }}
           >
-            <Typography variant="h4" sx={{ fontWeight: 700 }}>
-              {latestWeight != null ? `${latestWeight} kg` : '—'}
+            <Typography variant="h4">
+              {latestWeight == null ? '—' : `${latestWeight} kg`}
             </Typography>
           </WidgetCard>
 
-          {/* ĐẾM NGƯỢC card */}
           <WidgetCard label="ĐẾM NGƯỢC" sx={{ flex: 1 }}>
             <Stack direction="row" alignItems="center" spacing={1.5}>
               <Stack spacing={0}>
-                <Typography variant="h4" sx={{ fontWeight: 700 }}>
-                  {daysLeft}
-                </Typography>
-                <Typography variant="caption" color="text.secondary">
+                <Typography variant="h4">{daysLeft}</Typography>
+                <Typography variant="caption" color="textSecondary">
                   ngày
                 </Typography>
               </Stack>
-              {/* Donut ring */}
               <Box
                 sx={{
                   position: 'relative',
@@ -220,7 +154,6 @@ function HomePage() {
         </Stack>
       </Box>
 
-      {/* Bottom Nav */}
       <BottomNav
         items={NAV_ITEMS}
         value={0}
@@ -251,14 +184,16 @@ function WidgetCard({
           sx={{
             color: 'primary.main',
             fontWeight: 700,
-            letterSpacing: 0.5,
             flex: 1,
           }}
         >
           {label}
         </Typography>
         {onClick && (
-          <ChevronRightRounded sx={{ color: 'primary.main', fontSize: 16 }} />
+          <ChevronRightRounded
+            sx={{ color: 'primary.main' }}
+            fontSize="small"
+          />
         )}
       </Stack>
       <Divider sx={{ borderColor: 'coral.100' }} />

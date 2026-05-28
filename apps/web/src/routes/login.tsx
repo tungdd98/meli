@@ -102,7 +102,7 @@ function LoginPage() {
               </Typography>
               <Typography
                 variant="body2"
-                color="text.secondary"
+                color="textSecondary"
                 textAlign="center"
               >
                 Sử dụng email và mật khẩu được cấp để vào hệ thống.

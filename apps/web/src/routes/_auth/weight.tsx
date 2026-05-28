@@ -17,6 +17,7 @@ import {
   Alert,
   List,
   ListItem,
+  InputAdornment,
 } from '@mui/material';
 import {
   ArrowBackRounded,
@@ -33,7 +34,7 @@ import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
 import dayjs, { type Dayjs } from 'dayjs';
 import { LocalizationProvider } from '@mui/x-date-pickers';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useAuthStore } from '../../stores/auth.store';
 import { weightEntriesApi, type WeightEntry } from '@meli/api';
 import {
@@ -41,7 +42,7 @@ import {
   buildIdealChartData,
   buildActualChartData,
 } from '@meli/utils';
-import { FormTextField, FormDatePicker, shape } from '@meli/ui';
+import { FormTextField, FormDatePicker } from '@meli/ui';
 import {
   ResponsiveContainer,
   ComposedChart,
@@ -58,17 +59,16 @@ export const Route = createFileRoute('/_auth/weight')({
   component: WeightPage,
 });
 
-// ── Zod schema ───────────────────────────────────────────────
 const schema = z.object({
   measured_at: z.custom<Dayjs>((v) => dayjs.isDayjs(v), 'Ngày không hợp lệ'),
   weight_kg: z
-    .number({ message: 'Vui lòng nhập số' })
-    .min(20, 'Tối thiểu 20 kg')
-    .max(200, 'Tối đa 200 kg'),
+    .string()
+    .min(1, 'Tối thiểu 20 kg')
+    .refine((value) => Number(value) >= 20, 'Tối thiểu 20 kg')
+    .refine((value) => Number(value) <= 300, 'Tối đa 300 kg'),
 });
 type FormValues = z.infer<typeof schema>;
 
-// ── WeightEntryDialog ─────────────────────────────────────────
 function WeightEntryDialog({
   open,
   entry,
@@ -88,15 +88,28 @@ function WeightEntryDialog({
     resolver: zodResolver(schema),
     defaultValues: {
       measured_at: entry ? dayjs(entry.measured_at) : dayjs(),
-      weight_kg: entry?.weight_kg ?? defaultWeight ?? undefined,
+      weight_kg:
+        entry?.weight_kg?.toString() ?? defaultWeight?.toString() ?? undefined,
     },
   });
+
+  useEffect(() => {
+    if (open) {
+      reset({
+        measured_at: entry ? dayjs(entry.measured_at) : dayjs(),
+        weight_kg:
+          entry?.weight_kg?.toString() ??
+          defaultWeight?.toString() ??
+          undefined,
+      });
+    }
+  }, [open, entry, defaultWeight, reset]);
 
   const mutation = useMutation({
     mutationFn: (values: FormValues) => {
       const data = {
         measured_at: values.measured_at.format('YYYY-MM-DD'),
-        weight_kg: values.weight_kg,
+        weight_kg: Number(values.weight_kg),
       };
       return entry
         ? weightEntriesApi.update(entry.id, userId, data)
@@ -113,14 +126,8 @@ function WeightEntryDialog({
 
   return (
     <LocalizationProvider dateAdapter={AdapterDayjs}>
-      <Dialog
-        open={open}
-        onClose={onClose}
-        PaperProps={{ sx: { borderRadius: shape.lg, width: '100%', mx: 2 } }}
-      >
-        <DialogTitle
-          sx={{ textAlign: 'center', color: 'primary.main', fontWeight: 700 }}
-        >
+      <Dialog open={open} onClose={onClose}>
+        <DialogTitle>
           {entry ? 'Chỉnh sửa cân nặng' : 'Bổ sung cân nặng hiện tại'}
         </DialogTitle>
         <DialogContent>
@@ -138,22 +145,30 @@ function WeightEntryDialog({
               control={control}
               label="Cân nặng (kg)"
               type="number"
-              fullWidth
-              inputProps={{ step: 0.1 }}
+              placeholder="42"
+              slotProps={{
+                input: {
+                  startAdornment: (
+                    <InputAdornment position="start">
+                      <ScaleRounded />
+                    </InputAdornment>
+                  ),
+                  endAdornment: (
+                    <InputAdornment position="end">kg</InputAdornment>
+                  ),
+                },
+              }}
             />
           </Stack>
         </DialogContent>
-        <DialogActions sx={{ px: 3, pb: 2 }}>
-          <Button onClick={onClose} color="inherit">
-            Huỷ
-          </Button>
+        <DialogActions>
+          <Button onClick={onClose}>Huỷ</Button>
           <Button
             onClick={onSubmit}
-            variant="text"
+            variant="contained"
             disabled={mutation.isPending}
-            sx={{ fontWeight: 700 }}
           >
-            TIẾP TỤC
+            Tiếp tục
           </Button>
         </DialogActions>
       </Dialog>
@@ -161,7 +176,6 @@ function WeightEntryDialog({
   );
 }
 
-// ── DeleteConfirmDialog ───────────────────────────────────────
 function DeleteConfirmDialog({
   entry,
   userId,
@@ -173,7 +187,8 @@ function DeleteConfirmDialog({
 }) {
   const queryClient = useQueryClient();
   const mutation = useMutation({
-    mutationFn: async () => weightEntriesApi.remove(entry!.id, userId),
+    mutationFn: async () =>
+      entry ? weightEntriesApi.remove(entry.id, userId) : undefined,
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['weightEntries', userId] });
       onClose();
@@ -187,14 +202,12 @@ function DeleteConfirmDialog({
         Xoá bản ghi ngày{' '}
         {entry ? dayjs(entry.measured_at).format('DD/MM/YYYY') : ''}?
       </DialogContentText>
-      <DialogActions sx={{ px: 3, pb: 2 }}>
-        <Button onClick={onClose} color="inherit">
-          Huỷ
-        </Button>
+      <DialogActions>
+        <Button onClick={onClose}>Huỷ</Button>
         <Button
           onClick={() => mutation.mutate()}
-          color="error"
           disabled={mutation.isPending}
+          variant="contained"
         >
           Xoá
         </Button>
@@ -203,7 +216,6 @@ function DeleteConfirmDialog({
   );
 }
 
-// ── WeightChart ───────────────────────────────────────────────
 function WeightChart({
   entries,
   preWeight,
@@ -307,7 +319,6 @@ function WeightChart({
   );
 }
 
-// ── WeightPage ────────────────────────────────────────────────
 function WeightPage() {
   const navigate = useNavigate();
   const { profile, user } = useAuthStore();
@@ -317,7 +328,7 @@ function WeightPage() {
 
   const { data: weightData } = useQuery({
     queryKey: ['weightEntries', user?.id],
-    queryFn: () => weightEntriesApi.list(user!.id),
+    queryFn: () => (user ? weightEntriesApi.list(user.id) : undefined),
     enabled: !!user,
   });
 
@@ -327,7 +338,7 @@ function WeightPage() {
 
   const currentGain =
     hasProfileData && latestEntry
-      ? (latestEntry.weight_kg - profile!.weight_kg!).toFixed(1)
+      ? (latestEntry.weight_kg - (profile?.weight_kg ?? 0)).toFixed(1)
       : null;
 
   function openAdd() {
@@ -352,100 +363,60 @@ function WeightPage() {
         bgcolor: 'background.default',
       }}
     >
-      {/* AppBar */}
       <AppBar position="static" color="default" elevation={1}>
         <Toolbar>
           <IconButton edge="start" onClick={() => navigate({ to: '/' })}>
             <ArrowBackRounded />
           </IconButton>
-          <Typography
-            variant="subtitle1"
-            sx={{ flex: 1, textAlign: 'center', fontWeight: 600 }}
-          >
+          <Typography variant="subtitle1" sx={{ flex: 1, textAlign: 'center' }}>
             CÂN NẶNG CỦA MẸ
           </Typography>
           <Box sx={{ width: 40 }} />
         </Toolbar>
       </AppBar>
 
-      {/* Scrollable content */}
       <Box sx={{ flex: 1, overflowY: 'auto' }}>
-        <Stack spacing={2} sx={{ p: '16px 16px 80px' }}>
-          {/* Header */}
+        <Stack spacing={2} sx={{ p: 2 }}>
           <Stack spacing={1}>
-            <Typography variant="h3" sx={{ fontSize: 18, fontWeight: 600 }}>
-              Tăng cân trong thai kỳ
-            </Typography>
+            <Typography variant="h3">Tăng cân trong thai kỳ</Typography>
             {hasProfileData ? (
-              <Typography
-                variant="body2"
-                sx={{ color: 'text.secondary', lineHeight: 1.5 }}
-              >
-                Dựa trên {profile!.weight_kg} kg và {profile!.height_cm} cm
+              <Typography color="textSecondary" variant="body2">
+                Dựa trên {profile?.weight_kg} kg và {profile?.height_cm} cm
                 trước khi mang thai, hiện tại mẹ{' '}
-                {currentGain !== null
-                  ? `đã tăng ${currentGain} kg`
-                  : 'chưa có lần cân nào'}
+                {currentGain === null
+                  ? 'chưa có lần cân nào'
+                  : `đã tăng ${currentGain} kg`}
                 .
               </Typography>
             ) : (
-              <Alert severity="warning" sx={{ borderRadius: shape.md }}>
+              <Alert severity="warning">
                 Vui lòng bổ sung cân nặng và chiều cao trước thai kỳ trong hồ sơ
                 để xem dải tăng cân lý tưởng.
               </Alert>
             )}
           </Stack>
 
-          {/* Chart */}
           {hasProfileData && profile?.due_date && (
-            <Paper
-              elevation={0}
-              sx={{
-                borderRadius: shape.xl,
-                p: '12px 16px',
-                border: '1px solid',
-                borderColor: 'coral.100',
-              }}
-            >
+            <Paper sx={{ p: 2 }}>
               <WeightChart
                 entries={entries}
-                preWeight={profile.weight_kg!}
-                preHeight={profile.height_cm!}
+                preWeight={profile.weight_kg ?? 0}
+                preHeight={profile.height_cm ?? 0}
                 dueDate={profile.due_date}
               />
             </Paper>
           )}
 
-          {/* Divider */}
-          <Stack direction="row" alignItems="center" spacing={1} sx={{ mt: 1 }}>
-            <Box sx={{ flex: 1, height: 1, bgcolor: 'coral.100' }} />
-            <Typography
-              variant="caption"
-              sx={{ color: 'text.secondary', fontWeight: 600 }}
-            >
-              Lịch sử cân nặng
-            </Typography>
-            <Box sx={{ flex: 1, height: 1, bgcolor: 'coral.100' }} />
-          </Stack>
-
-          {/* History list */}
           {entries.length === 0 ? (
             <Typography
               variant="body2"
-              sx={{ color: 'text.secondary', textAlign: 'center', py: 2 }}
+              color="textSecondary"
+              sx={{ textAlign: 'center', py: 2 }}
             >
-              Chưa có lần cân nào. Nhấn + để thêm.
+              Chưa có lần cân nào.
             </Typography>
           ) : (
-            <Paper
-              elevation={0}
-              sx={{
-                borderRadius: shape.md,
-                border: '1px solid',
-                borderColor: 'coral.100',
-                overflow: 'hidden',
-              }}
-            >
+            <Paper>
               <List disablePadding>
                 {[...entries].reverse().map((entry, idx) => (
                   <ListItem
@@ -462,26 +433,23 @@ function WeightPage() {
                   >
                     <Typography
                       variant="body2"
-                      sx={{ color: 'text.secondary', minWidth: 90 }}
+                      color="textSecondary"
+                      sx={{ minWidth: 90 }}
                     >
                       {dayjs(entry.measured_at).format('DD/MM/YYYY')}
                     </Typography>
                     <Box sx={{ flex: 1 }} />
                     <Typography
                       variant="body2"
-                      sx={{
-                        fontWeight: 600,
-                        color: 'text.primary',
-                        minWidth: 60,
-                        textAlign: 'right',
-                      }}
+                      sx={{ minWidth: 60, textAlign: 'right' }}
                     >
                       {entry.weight_kg} kg
                     </Typography>
                     <Stack direction="row">
                       <IconButton size="small" onClick={() => openEdit(entry)}>
                         <EditRounded
-                          sx={{ fontSize: 18, color: 'text.secondary' }}
+                          sx={{ color: 'textSecondary' }}
+                          fontSize="small"
                         />
                       </IconButton>
                       <IconButton
@@ -489,7 +457,8 @@ function WeightPage() {
                         onClick={() => setDeleteEntry(entry)}
                       >
                         <DeleteRounded
-                          sx={{ fontSize: 18, color: 'error.main' }}
+                          fontSize="small"
+                          sx={{ color: 'error.main' }}
                         />
                       </IconButton>
                     </Stack>
@@ -501,7 +470,6 @@ function WeightPage() {
         </Stack>
       </Box>
 
-      {/* FAB */}
       <Fab
         color="primary"
         onClick={openAdd}
@@ -510,7 +478,6 @@ function WeightPage() {
         <AddRounded />
       </Fab>
 
-      {/* Dialogs */}
       {user && (
         <>
           <WeightEntryDialog

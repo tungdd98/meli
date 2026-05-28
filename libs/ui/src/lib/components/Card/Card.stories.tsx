@@ -21,7 +21,7 @@ export const Basic: Story = {
         <Typography variant="h4" gutterBottom>
           Card Title
         </Typography>
-        <Typography variant="body2" color="text.secondary">
+        <Typography variant="body2" color="textSecondary">
           Card content goes here. This card uses the PawSpa-inspired design with
           offset shadow and coral border.
         </Typography>
@@ -35,7 +35,7 @@ export const WithHeaderAndActions: Story = {
     <Card sx={{ maxWidth: 360 }}>
       <CardHeader title="Card Title" subheader="Card subtitle" />
       <CardContent>
-        <Typography variant="body2" color="text.secondary">
+        <Typography variant="body2" color="textSecondary">
           Card with header and action buttons at the bottom.
         </Typography>
       </CardContent>
@@ -65,7 +65,7 @@ export const WithMedia: Story = {
         <Typography variant="h4" gutterBottom>
           Card with Image
         </Typography>
-        <Typography variant="body2" color="text.secondary">
+        <Typography variant="body2" color="textSecondary">
           Card content with media at the top.
         </Typography>
       </CardContent>

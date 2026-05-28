@@ -98,7 +98,7 @@ export function WizardHero({
         <Typography variant="h1" textAlign="center">
           {title}
         </Typography>
-        <Typography color="text.secondary" textAlign="center" variant="body2">
+        <Typography color="textSecondary" textAlign="center" variant="body2">
           {description}
         </Typography>
       </Stack>
@@ -170,7 +170,7 @@ export function InlineLinkRow({
       justifyContent="space-between"
       sx={{ height: 18 }}
     >
-      <Typography color="text.secondary" variant="caption">
+      <Typography color="textSecondary" variant="caption">
         {label}
       </Typography>
       <Button

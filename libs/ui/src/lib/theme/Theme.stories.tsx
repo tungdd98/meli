@@ -18,7 +18,7 @@ function PaletteShowcase() {
     { name: 'success.main', color: theme.palette.success.main },
     { name: 'info.main', color: theme.palette.info.main },
     { name: 'text.primary', color: theme.palette.text.primary },
-    { name: 'text.secondary', color: theme.palette.text.secondary },
+    { name: 'textSecondary', color: theme.palette.text.secondary },
     { name: 'background.default', color: theme.palette.background.default },
     { name: 'background.paper', color: theme.palette.background.paper },
   ];
@@ -52,7 +52,7 @@ function PaletteShowcase() {
           </Typography>
           <Typography
             variant="caption"
-            sx={{ fontSize: 10, color: 'text.secondary' }}
+            sx={{ fontSize: 10, color: 'textSecondary' }}
           >
             {color}
           </Typography>
@@ -86,7 +86,7 @@ function TypographyShowcase() {
         >
           <Typography
             variant="caption"
-            sx={{ width: 80, color: 'text.secondary', flexShrink: 0 }}
+            sx={{ width: 80, color: 'textSecondary', flexShrink: 0 }}
           >
             {variant}
           </Typography>
@@ -106,7 +106,7 @@ function ShapeShowcase() {
   ];
 
   const capRadius = (v: string) => {
-    const px = parseInt(v, 10);
+    const px = Number.parseInt(v, 10);
     return px > 40 ? '40px' : v;
   };
 
@@ -146,7 +146,7 @@ function ShapeShowcase() {
           </Typography>
           <Typography
             variant="caption"
-            sx={{ fontSize: 10, color: 'text.secondary' }}
+            sx={{ fontSize: 10, color: 'textSecondary' }}
           >
             {value}
           </Typography>
@@ -192,7 +192,7 @@ function ShadowShowcase() {
           <Typography variant="subtitle2">{name}</Typography>
           <Typography
             variant="caption"
-            sx={{ color: 'text.secondary', overflowWrap: 'anywhere' }}
+            sx={{ color: 'textSecondary', overflowWrap: 'anywhere' }}
           >
             {value}
           </Typography>

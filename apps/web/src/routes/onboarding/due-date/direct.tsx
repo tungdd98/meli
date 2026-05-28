@@ -84,7 +84,7 @@ function DueDateDirectPage() {
         <Card>
           <CardContent sx={{ display: 'flex', gap: 1, alignItems: 'center' }}>
             <MedicalInformationRounded color="primary" fontSize="small" />
-            <Typography color="text.secondary" variant="caption">
+            <Typography color="textSecondary" variant="caption">
               Nếu ngày này thay đổi sau lần khám tiếp theo, bạn vẫn có thể cập
               nhật trong hồ sơ.
             </Typography>
