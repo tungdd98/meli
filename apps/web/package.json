@@ -3,6 +3,7 @@
   "version": "0.0.1",
   "private": true,
   "dependencies": {
+    "@hookform/resolvers": "5.4.0",
     "recharts": "3.8.1"
   }
 }
