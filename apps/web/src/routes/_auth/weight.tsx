@@ -15,8 +15,11 @@ import {
   DialogActions,
   Button,
   Alert,
-  List,
-  ListItem,
+  Table,
+  TableHead,
+  TableBody,
+  TableRow,
+  TableCell,
   InputAdornment,
 } from '@mui/material';
 import {
@@ -416,56 +419,63 @@ function WeightPage() {
               Chưa có lần cân nào.
             </Typography>
           ) : (
-            <Paper>
-              <List disablePadding>
-                {[...entries].reverse().map((entry, idx) => (
-                  <ListItem
-                    key={entry.id}
-                    disablePadding
-                    sx={{
-                      px: 2,
-                      height: 52,
-                      gap: 1,
-                      borderBottom:
-                        idx < entries.length - 1 ? '1px solid' : 'none',
-                      borderColor: 'coral.100',
-                    }}
-                  >
-                    <Typography
-                      variant="body2"
-                      color="textSecondary"
-                      sx={{ minWidth: 90 }}
-                    >
-                      {dayjs(entry.measured_at).format('DD/MM/YYYY')}
-                    </Typography>
-                    <Box sx={{ flex: 1 }} />
-                    <Typography
-                      variant="body2"
-                      sx={{ minWidth: 60, textAlign: 'right' }}
-                    >
-                      {entry.weight_kg} kg
-                    </Typography>
-                    <Stack direction="row">
-                      <IconButton size="small" onClick={() => openEdit(entry)}>
-                        <EditRounded
-                          sx={{ color: 'textSecondary' }}
-                          fontSize="small"
-                        />
-                      </IconButton>
-                      <IconButton
-                        size="small"
-                        onClick={() => setDeleteEntry(entry)}
-                      >
-                        <DeleteRounded
-                          fontSize="small"
-                          sx={{ color: 'error.main' }}
-                        />
-                      </IconButton>
-                    </Stack>
-                  </ListItem>
-                ))}
-              </List>
-            </Paper>
+            <Table size="small">
+              <TableHead>
+                <TableRow>
+                  <TableCell sx={{ fontWeight: 600 }}>Ngày</TableCell>
+                  <TableCell sx={{ fontWeight: 600 }}>Tuần</TableCell>
+                  <TableCell sx={{ fontWeight: 600 }}>Cân nặng</TableCell>
+                  <TableCell padding="checkbox" />
+                </TableRow>
+              </TableHead>
+              <TableBody>
+                {[...entries].reverse().map((entry) => {
+                  const week = profile?.due_date
+                    ? Math.max(
+                        0,
+                        Math.min(
+                          40,
+                          dayjs(entry.measured_at).diff(
+                            dayjs(profile.due_date).subtract(40, 'week'),
+                            'week',
+                          ),
+                        ),
+                      )
+                    : 0;
+                  return (
+                    <TableRow key={entry.id}>
+                      <TableCell>
+                        {dayjs(entry.measured_at).format('DD/MM/YYYY')}
+                      </TableCell>
+                      <TableCell>{week}</TableCell>
+                      <TableCell>{entry.weight_kg} kg</TableCell>
+                      <TableCell padding="checkbox">
+                        <Stack direction="row">
+                          <IconButton
+                            size="small"
+                            onClick={() => openEdit(entry)}
+                          >
+                            <EditRounded
+                              fontSize="small"
+                              sx={{ color: 'text.secondary' }}
+                            />
+                          </IconButton>
+                          <IconButton
+                            size="small"
+                            onClick={() => setDeleteEntry(entry)}
+                          >
+                            <DeleteRounded
+                              fontSize="small"
+                              sx={{ color: 'error.main' }}
+                            />
+                          </IconButton>
+                        </Stack>
+                      </TableCell>
+                    </TableRow>
+                  );
+                })}
+              </TableBody>
+            </Table>
           )}
         </Stack>
       </Box>
