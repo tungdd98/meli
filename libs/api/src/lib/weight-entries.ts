@@ -15,7 +15,7 @@ export type WeightEntryInput = {
   weight_kg: number;
 };
 
-type ListResponse = Promise<PostgrestResponse<WeightEntry[]>>;
+type ListResponse = Promise<PostgrestResponse<WeightEntry>>;
 type SingleResponse = Promise<PostgrestResponse<WeightEntry>>;
 
 export const weightEntriesApi = {
@@ -25,7 +25,7 @@ export const weightEntriesApi = {
       .select('*')
       .eq('user_id', userId)
       .order('measured_at', { ascending: true })
-      .returns<WeightEntry[]>() as unknown as ListResponse,
+      .returns<WeightEntry>() as unknown as ListResponse,
 
   create: (userId: string, data: WeightEntryInput): SingleResponse =>
     supabase
