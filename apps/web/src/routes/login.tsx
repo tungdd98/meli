@@ -112,6 +112,7 @@ function LoginPage() {
             <Stack
               component="form"
               gap={2}
+              noValidate
               onSubmit={handleSubmit(onSubmit)}
               sx={{ width: '100%' }}
             >
