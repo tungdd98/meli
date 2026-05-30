@@ -11,31 +11,16 @@ import {
   AppBar,
   Toolbar,
 } from '@mui/material';
-import {
-  HomeRounded,
-  MenuBookRounded,
-  PsychologyRounded,
-  SettingsRounded,
-  ChevronRightRounded,
-} from '@mui/icons-material';
+import { ChevronRightRounded } from '@mui/icons-material';
 import { useQuery } from '@tanstack/react-query';
 import dayjs from 'dayjs';
 import { useAuthStore } from '../../stores/auth.store';
 import { weightEntriesApi } from '@meli/api';
-import { BottomNav } from '@meli/ui';
+import { AppBottomNav } from '../../components/AppBottomNav';
 
 export const Route = createFileRoute('/_auth/')({
   component: HomePage,
 });
-
-const NAV_ITEMS = [
-  { label: 'Trang chủ', icon: <HomeRounded /> },
-  { label: 'Hướng dẫn', icon: <MenuBookRounded /> },
-  { label: 'AI', icon: <PsychologyRounded /> },
-  { label: 'Cài đặt', icon: <SettingsRounded /> },
-];
-
-const NAV_ROUTES = ['/', '/guide', '/ai', '/settings'];
 
 function usePregnancyInfo(dueDate: string | null) {
   if (!dueDate) return { week: 0, dayOfWeek: 0, daysLeft: 0, pct: 0 };
@@ -154,11 +139,7 @@ function HomePage() {
         </Stack>
       </Box>
 
-      <BottomNav
-        items={NAV_ITEMS}
-        value={0}
-        onChange={(_, idx) => navigate({ to: NAV_ROUTES[idx] })}
-      />
+      <AppBottomNav value={0} />
     </Box>
   );
 }
