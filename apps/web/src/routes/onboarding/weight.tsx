@@ -16,21 +16,14 @@ import {
 } from '@mui/icons-material';
 import { FormTextField } from '@meli/ui';
 import { profilesApi } from '@meli/api';
-import { calcBmi, calcPregnancyWeek, calcWeightGainTip } from '@meli/utils';
+import {
+  calcBmi,
+  calcPregnancyWeek,
+  calcWeightGainTip,
+  numericString,
+} from '@meli/utils';
 import { useAuthStore } from '../../stores/auth.store';
 import { FooterActions, WizardHero, WizardTopBar } from './-shared';
-
-const numericString = (
-  min: number,
-  max: number,
-  minMessage: string,
-  maxMessage: string,
-) =>
-  z
-    .string()
-    .min(1, minMessage)
-    .refine((value) => Number(value) >= min, minMessage)
-    .refine((value) => Number(value) <= max, maxMessage);
 
 const weightSchema = z.object({
   weight_kg: numericString(20, 300, 'Tối thiểu 20 kg', 'Tối đa 300 kg'),
