@@ -3,6 +3,8 @@ import { supabase } from './supabase.js';
 
 export type Profile = {
   id: string;
+  display_name: string | null;
+  birth_date: string | null;
   due_date: string | null;
   weight_kg: number | null;
   height_cm: number | null;
@@ -15,6 +17,8 @@ export type Profile = {
 };
 
 export type ProfileUpdate = {
+  display_name?: string | null;
+  birth_date?: string | null;
   due_date?: string | null;
   weight_kg?: number | null;
   height_cm?: number | null;
