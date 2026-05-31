@@ -46,6 +46,7 @@ import {
   buildActualChartData,
 } from '@meli/utils';
 import { FormTextField, FormDatePicker } from '@meli/ui';
+import { AppBottomNav } from '../../components/AppBottomNav';
 import {
   ResponsiveContainer,
   ComposedChart,
@@ -378,7 +379,7 @@ function WeightPage() {
         </Toolbar>
       </AppBar>
 
-      <Box sx={{ flex: 1, overflowY: 'auto' }}>
+      <Box sx={{ flex: 1, overflowY: 'auto', pb: 10 }}>
         <Stack spacing={2} sx={{ p: 2 }}>
           <Stack spacing={1}>
             <Typography variant="h3">Tăng cân trong thai kỳ</Typography>
@@ -483,7 +484,7 @@ function WeightPage() {
       <Fab
         color="primary"
         onClick={openAdd}
-        sx={{ position: 'fixed', bottom: 24, right: 24 }}
+        sx={{ position: 'fixed', bottom: 80, right: 24 }}
       >
         <AddRounded />
       </Fab>
@@ -504,6 +505,8 @@ function WeightPage() {
           />
         </>
       )}
+
+      <AppBottomNav value={0} />
     </Box>
   );
 }
