@@ -52,3 +52,7 @@ storybook-static
 
 # Supabase local env (contains secrets)
 apps/web/.env.local
+
+# Python cache (from data build scripts under docs/)
+__pycache__/
+*.pyc
