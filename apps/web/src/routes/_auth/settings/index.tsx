@@ -10,12 +10,10 @@ import {
   DialogContentText,
   DialogTitle,
   Stack,
-  Typography,
 } from '@mui/material';
 import { LogoutRounded, PersonRounded } from '@mui/icons-material';
-import { SettingsRow } from '@meli/ui';
+import { AppHeader, SettingsRow } from '@meli/ui';
 import { useAuthStore } from '../../../stores/auth.store';
-import { AppBottomNav } from '../../../components/AppBottomNav';
 
 export const Route = createFileRoute('/_auth/settings/')({
   component: SettingsPage,
@@ -50,10 +48,10 @@ function SettingsPage() {
         bgcolor: 'background.default',
       }}
     >
+      <AppHeader variant="plain" title="Cài đặt" />
+
       <Box sx={{ flex: 1, p: 2, pb: 10 }}>
         <Stack gap={2}>
-          <Typography variant="h4">Cài đặt</Typography>
-
           <SettingsRow
             label="Thông tin cá nhân"
             icon={<PersonRounded />}
@@ -96,8 +94,6 @@ function SettingsPage() {
           </Button>
         </DialogActions>
       </Dialog>
-
-      <AppBottomNav value={3} />
     </Box>
   );
 }

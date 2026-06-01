@@ -8,15 +8,13 @@ import {
   CardContent,
   Divider,
   CircularProgress,
-  AppBar,
-  Toolbar,
 } from '@mui/material';
 import { ChevronRightRounded } from '@mui/icons-material';
 import { useQuery } from '@tanstack/react-query';
 import dayjs from 'dayjs';
 import { useAuthStore } from '../../stores/auth.store';
 import { weightEntriesApi } from '@meli/api';
-import { AppBottomNav } from '../../components/AppBottomNav';
+import { AppHeader } from '@meli/ui';
 
 export const Route = createFileRoute('/_auth/')({
   component: HomePage,
@@ -67,13 +65,10 @@ function HomePage() {
         overflow: 'hidden',
       }}
     >
-      <AppBar position="static" color="default" elevation={1}>
-        <Toolbar>
-          <Typography variant="subtitle2" sx={{ textAlign: 'center', flex: 1 }}>
-            Tuần thứ {week}, ngày {dayOfWeek}
-          </Typography>
-        </Toolbar>
-      </AppBar>
+      <AppHeader
+        variant="plain"
+        title={`Tuần thứ ${week}, ngày ${dayOfWeek}`}
+      />
 
       <Box sx={{ flex: 1, overflowY: 'auto', pb: 8 }}>
         <Box sx={{ bgcolor: 'primary.main', px: 2, py: 3 }}>
@@ -138,8 +133,6 @@ function HomePage() {
           </WidgetCard>
         </Stack>
       </Box>
-
-      <AppBottomNav value={0} />
     </Box>
   );
 }

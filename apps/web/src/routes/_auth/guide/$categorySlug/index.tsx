@@ -1,23 +1,16 @@
 import { createFileRoute, redirect, useNavigate } from '@tanstack/react-router';
 import {
-  AppBar,
   Avatar,
   Box,
-  IconButton,
   List,
   ListItemButton,
   ListItemAvatar,
   ListItemText,
-  Toolbar,
   Typography,
 } from '@mui/material';
-import {
-  ArrowBackRounded,
-  ChevronRightRounded,
-  ImageRounded,
-} from '@mui/icons-material';
+import { ChevronRightRounded, ImageRounded } from '@mui/icons-material';
+import { AppHeader } from '@meli/ui';
 import { getCategory, getWeeks } from '../-data';
-import { AppBottomNav } from '../../../../components/AppBottomNav';
 
 export const Route = createFileRoute('/_auth/guide/$categorySlug/')({
   beforeLoad: ({ params }) => {
@@ -44,22 +37,12 @@ function GuideCategoryPage() {
         bgcolor: 'background.default',
       }}
     >
-      <AppBar position="static" color="primary" elevation={1}>
-        <Toolbar>
-          <IconButton
-            edge="start"
-            color="inherit"
-            aria-label="Quay lại"
-            onClick={() => navigate({ to: '/guide' })}
-          >
-            <ArrowBackRounded />
-          </IconButton>
-          <Typography variant="subtitle1" sx={{ flex: 1, textAlign: 'center' }}>
-            {category?.title}
-          </Typography>
-          <Box sx={{ width: 40 }} />
-        </Toolbar>
-      </AppBar>
+      <AppHeader
+        variant="primary"
+        showBack
+        title={category?.title}
+        onBack={() => navigate({ to: '/guide' })}
+      />
 
       <Box sx={{ flex: 1, overflowY: 'auto', pb: 10 }}>
         <Box sx={{ maxWidth: 480, mx: 'auto' }}>
@@ -102,8 +85,6 @@ function GuideCategoryPage() {
           )}
         </Box>
       </Box>
-
-      <AppBottomNav value={1} />
     </Box>
   );
 }

@@ -1,5 +1,6 @@
 import { createFileRoute, Outlet, redirect } from '@tanstack/react-router';
 import { useAuthStore } from '../stores/auth.store';
+import { AppBottomNav } from '../components/AppBottomNav';
 
 export const Route = createFileRoute('/_auth')({
   beforeLoad: () => {
@@ -9,5 +10,14 @@ export const Route = createFileRoute('/_auth')({
       throw redirect({ to: '/onboarding/due-date' });
     }
   },
-  component: () => <Outlet />,
+  component: AuthLayout,
 });
+
+function AuthLayout() {
+  return (
+    <>
+      <Outlet />
+      <AppBottomNav />
+    </>
+  );
+}

@@ -1,7 +1,7 @@
 import { createFileRoute, useNavigate } from '@tanstack/react-router';
-import { AppBar, Box, Toolbar, Typography } from '@mui/material';
+import { Box } from '@mui/material';
+import { AppHeader } from '@meli/ui';
 import { guideCategories } from './-data';
-import { AppBottomNav } from '../../../components/AppBottomNav';
 import { GuideCategoryCard } from './-components/GuideCategoryCard';
 
 export const Route = createFileRoute('/_auth/guide/')({
@@ -20,13 +20,7 @@ function GuideIndexPage() {
         bgcolor: 'background.default',
       }}
     >
-      <AppBar position="static" color="primary" elevation={1}>
-        <Toolbar>
-          <Typography variant="subtitle1" sx={{ flex: 1, textAlign: 'center' }}>
-            HƯỚNG DẪN
-          </Typography>
-        </Toolbar>
-      </AppBar>
+      <AppHeader variant="primary" title="HƯỚNG DẪN" />
 
       <Box sx={{ flex: 1, overflowY: 'auto', pb: 10 }}>
         <Box
@@ -53,8 +47,6 @@ function GuideIndexPage() {
           ))}
         </Box>
       </Box>
-
-      <AppBottomNav value={1} />
     </Box>
   );
 }
