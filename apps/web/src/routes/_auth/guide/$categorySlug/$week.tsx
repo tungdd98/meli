@@ -1,9 +1,8 @@
 import { createFileRoute, notFound, useNavigate } from '@tanstack/react-router';
-import { Box, IconButton, Stack, Typography } from '@mui/material';
-import { ArrowBackRounded, ImageRounded } from '@mui/icons-material';
-import { shape } from '@meli/ui';
+import { Box, Stack, Typography } from '@mui/material';
+import { ImageRounded } from '@mui/icons-material';
+import { AppHeader } from '@meli/ui';
 import { getWeek } from '../-data';
-import { AppBottomNav } from '../../../../components/AppBottomNav';
 import type { GuideBlock } from '../-types';
 
 export const Route = createFileRoute('/_auth/guide/$categorySlug/$week')({
@@ -73,24 +72,16 @@ function GuideDetailPage() {
           }}
         >
           <ImageRounded sx={{ fontSize: 72, color: 'coral.100' }} />
-          <IconButton
-            aria-label="Quay lại"
-            onClick={() =>
+          <AppHeader
+            variant="transparent"
+            showBack
+            onBack={() =>
               navigate({
                 to: '/guide/$categorySlug',
                 params: { categorySlug },
               })
             }
-            sx={{
-              position: 'absolute',
-              top: 16,
-              left: 16,
-              bgcolor: 'background.paper',
-              borderRadius: shape.full,
-            }}
-          >
-            <ArrowBackRounded />
-          </IconButton>
+          />
         </Box>
 
         <Stack spacing={2} sx={{ p: 2 }}>
@@ -105,8 +96,6 @@ function GuideDetailPage() {
           ))}
         </Stack>
       </Box>
-
-      <AppBottomNav value={1} />
     </Box>
   );
 }

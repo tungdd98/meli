@@ -7,7 +7,6 @@ import {
   Alert,
   Box,
   Button,
-  IconButton,
   InputAdornment,
   Snackbar,
   Stack,
@@ -16,18 +15,16 @@ import {
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import {
-  ChevronLeftRounded,
   HeightRounded,
   PersonRounded,
   PhotoCameraRounded,
   ScaleRounded,
 } from '@mui/icons-material';
-import { FormDatePicker, FormTextField, shape } from '@meli/ui';
+import { AppHeader, FormDatePicker, FormTextField, shape } from '@meli/ui';
 import { profilesApi } from '@meli/api';
 import { numericString } from '@meli/utils';
 import { useState } from 'react';
 import { useAuthStore } from '../../../stores/auth.store';
-import { AppBottomNav } from '../../../components/AppBottomNav';
 
 const profileSchema = z.object({
   display_name: z.string().trim().optional(),
@@ -106,15 +103,11 @@ function ProfilePage() {
           bgcolor: 'background.default',
         }}
       >
-        <Box sx={{ bgcolor: 'primary.main', px: 2, py: 1.5 }}>
-          <IconButton
-            aria-label="Quay lại"
-            onClick={() => navigate({ to: '/settings' })}
-            sx={{ color: 'primary.contrastText' }}
-          >
-            <ChevronLeftRounded />
-          </IconButton>
-        </Box>
+        <AppHeader
+          variant="primary"
+          showBack
+          onBack={() => navigate({ to: '/settings' })}
+        />
 
         <Stack
           component="form"
@@ -231,8 +224,6 @@ function ProfilePage() {
             Lưu
           </Button>
         </Stack>
-
-        <AppBottomNav value={3} />
       </Box>
 
       <Snackbar

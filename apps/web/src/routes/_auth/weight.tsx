@@ -1,7 +1,5 @@
 import { createFileRoute, useNavigate } from '@tanstack/react-router';
 import {
-  AppBar,
-  Toolbar,
   Box,
   Typography,
   Stack,
@@ -23,7 +21,6 @@ import {
   InputAdornment,
 } from '@mui/material';
 import {
-  ArrowBackRounded,
   EditRounded,
   DeleteRounded,
   AddRounded,
@@ -45,8 +42,7 @@ import {
   buildIdealChartData,
   buildActualChartData,
 } from '@meli/utils';
-import { FormTextField, FormDatePicker } from '@meli/ui';
-import { AppBottomNav } from '../../components/AppBottomNav';
+import { AppHeader, FormTextField, FormDatePicker } from '@meli/ui';
 import {
   ResponsiveContainer,
   ComposedChart,
@@ -367,17 +363,12 @@ function WeightPage() {
         bgcolor: 'background.default',
       }}
     >
-      <AppBar position="static" color="default" elevation={1}>
-        <Toolbar>
-          <IconButton edge="start" onClick={() => navigate({ to: '/' })}>
-            <ArrowBackRounded />
-          </IconButton>
-          <Typography variant="subtitle1" sx={{ flex: 1, textAlign: 'center' }}>
-            CÂN NẶNG CỦA MẸ
-          </Typography>
-          <Box sx={{ width: 40 }} />
-        </Toolbar>
-      </AppBar>
+      <AppHeader
+        variant="primary"
+        showBack
+        title="CÂN NẶNG CỦA MẸ"
+        onBack={() => navigate({ to: '/' })}
+      />
 
       <Box sx={{ flex: 1, overflowY: 'auto', pb: 10 }}>
         <Stack spacing={2} sx={{ p: 2 }}>
@@ -505,8 +496,6 @@ function WeightPage() {
           />
         </>
       )}
-
-      <AppBottomNav value={0} />
     </Box>
   );
 }
