@@ -6,6 +6,31 @@ import { shadows, offsetShadows } from './shadows';
 import { shape } from './shape';
 
 export const components: ThemeOptions['components'] = {
+  MuiCssBaseline: {
+    styleOverrides: {
+      '*': {
+        scrollbarWidth: 'thin',
+        scrollbarColor: `${palette.coral[100]} transparent`,
+      },
+      '*::-webkit-scrollbar': {
+        width: 10,
+        height: 10,
+      },
+      '*::-webkit-scrollbar-track': {
+        backgroundColor: 'transparent',
+      },
+      '*::-webkit-scrollbar-thumb': {
+        backgroundColor: palette.coral[100],
+        borderRadius: shape.full,
+        border: '2px solid transparent',
+        backgroundClip: 'padding-box',
+      },
+      '*::-webkit-scrollbar-thumb:hover': {
+        backgroundColor: palette.primary.light,
+      },
+    },
+  },
+
   MuiButton: {
     styleOverrides: {
       root: {

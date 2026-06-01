@@ -43,7 +43,7 @@ export function GuideCategoryCard({
   );
 
   const content = (
-    <Stack spacing={1} sx={{ p: 1 }}>
+    <Stack spacing={1} sx={{ p: 1, height: '100%' }}>
       {thumbnail}
       <Typography
         variant="caption"
@@ -64,7 +64,9 @@ export function GuideCategoryCard({
 
   return (
     <Card>
-      <CardActionArea onClick={onClick}>{content}</CardActionArea>
+      <CardActionArea onClick={onClick} sx={{ height: '100%' }}>
+        {content}
+      </CardActionArea>
     </Card>
   );
 }
