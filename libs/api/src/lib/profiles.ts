@@ -10,6 +10,7 @@ export type Profile = {
   height_cm: number | null;
   baby_name: string | null;
   baby_gender: 'male' | 'female' | 'unknown' | null;
+  birth_plan: 'natural' | 'c_section' | null;
   is_twins: boolean;
   onboarding_completed: boolean;
   created_at: string;
@@ -24,6 +25,7 @@ export type ProfileUpdate = {
   height_cm?: number | null;
   baby_name?: string | null;
   baby_gender?: 'male' | 'female' | 'unknown';
+  birth_plan?: 'natural' | 'c_section' | null;
   is_twins?: boolean;
   onboarding_completed?: boolean;
 };
