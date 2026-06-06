@@ -16,6 +16,7 @@ import { usePregnancyInfo } from '@meli/hooks';
 import { useAuthStore } from '../../stores/auth.store';
 import { weightEntriesApi } from '@meli/api';
 import { AppHeader } from '@meli/ui';
+import { TaskSummaryCard } from './tasks/-TaskSummaryCard';
 
 export const Route = createFileRoute('/_auth/')({
   component: HomePage,
@@ -72,59 +73,63 @@ function HomePage() {
           </Stack>
         </Box>
 
-        <Stack direction="row" spacing={1.5} sx={{ p: 2 }}>
-          <WidgetCard
-            label="CÂN NẶNG"
-            onClick={() => navigate({ to: '/weight' })}
-            sx={{ flex: 1 }}
-          >
-            <Typography variant="h4">
-              {latestWeight == null ? '—' : `${latestWeight} kg`}
-            </Typography>
-          </WidgetCard>
+        <Stack spacing={1.5} sx={{ p: 2 }}>
+          <Stack direction="row" spacing={1.5}>
+            <WidgetCard
+              label="CÂN NẶNG"
+              onClick={() => navigate({ to: '/weight' })}
+              sx={{ flex: 1 }}
+            >
+              <Typography variant="h4">
+                {latestWeight == null ? '—' : `${latestWeight} kg`}
+              </Typography>
+            </WidgetCard>
 
-          <WidgetCard
-            label="ĐẾM NGƯỢC"
-            onClick={() => navigate({ to: '/due-date' })}
-            sx={{ flex: 1 }}
-          >
-            <Stack direction="row" alignItems="center" spacing={1.5}>
-              <Stack spacing={0}>
-                <Typography variant="h4">{daysLeft}</Typography>
-                <Typography variant="caption" color="textSecondary">
-                  ngày
-                </Typography>
-              </Stack>
-              <Box
-                sx={{
-                  position: 'relative',
-                  width: 48,
-                  height: 48,
-                  flexShrink: 0,
-                }}
-              >
-                <CircularProgress
-                  variant="determinate"
-                  value={100}
-                  size={48}
-                  thickness={5}
+            <WidgetCard
+              label="ĐẾM NGƯỢC"
+              onClick={() => navigate({ to: '/due-date' })}
+              sx={{ flex: 1 }}
+            >
+              <Stack direction="row" alignItems="center" spacing={1.5}>
+                <Stack spacing={0}>
+                  <Typography variant="h4">{daysLeft}</Typography>
+                  <Typography variant="caption" color="textSecondary">
+                    ngày
+                  </Typography>
+                </Stack>
+                <Box
                   sx={{
-                    color: 'coral.100',
-                    position: 'absolute',
-                    top: 0,
-                    left: 0,
+                    position: 'relative',
+                    width: 48,
+                    height: 48,
+                    flexShrink: 0,
                   }}
-                />
-                <CircularProgress
-                  variant="determinate"
-                  value={pct * 100}
-                  size={48}
-                  thickness={5}
-                  sx={{ color: 'primary.main' }}
-                />
-              </Box>
-            </Stack>
-          </WidgetCard>
+                >
+                  <CircularProgress
+                    variant="determinate"
+                    value={100}
+                    size={48}
+                    thickness={5}
+                    sx={{
+                      color: 'coral.100',
+                      position: 'absolute',
+                      top: 0,
+                      left: 0,
+                    }}
+                  />
+                  <CircularProgress
+                    variant="determinate"
+                    value={pct * 100}
+                    size={48}
+                    thickness={5}
+                    sx={{ color: 'primary.main' }}
+                  />
+                </Box>
+              </Stack>
+            </WidgetCard>
+          </Stack>
+
+          {user && <TaskSummaryCard userId={user.id} />}
         </Stack>
       </Box>
     </Box>
