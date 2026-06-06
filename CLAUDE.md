@@ -63,21 +63,44 @@ Nx monorepo with pnpm workspaces. One app (`apps/web`) and four shared libraries
 - **Route guards**: Layout routes use `beforeLoad` for auth/redirect logic. `_auth` prefix = protected (requires session + completed onboarding). The `onboarding` layout requires only a session. Never duplicate these guards in child route components.
 - **Env vars**: App requires `VITE_SUPABASE_URL` and `VITE_SUPABASE_PUBLISHABLE_KEY` (see `apps/web/.env.example`).
 
-## Pencil Design & Implementation Plans
-
-- **Design link in plans**: When writing a plan for a feature that has a `.pen` design file, include the file path in the plan header (e.g. `**Design:** docs/designs/login.pen`).
-- **JSX from design**: `.pen` files are visual references only — pixel-perfect matching is not required. When writing JSX in plans or implementation, always use `@meli/ui` components, MUI theme tokens, and `shape.*` values. Never hard-code colors or measurements taken directly from the design file.
-- **No inline styles**: Use `sx={{ color: 'primary.main' }}` and theme tokens, never `style={{ color: '#F08180' }}`.
-
 ## Supabase
 
 Local development uses the Supabase CLI:
 
 ```bash
-supabase start          # start local stack (DB, Auth, Studio at localhost:54323)
-supabase stop           # stop local stack
-supabase db reset       # reset DB and replay all migrations
-supabase migration new <name>   # create a new migration file
+supabase db push       # reset DB and replay all migrations
 ```
 
-The `@meli/api` lib exports `supabase` (client) and `profilesApi` (CRUD for the `profiles` table). The `profiles` table is created by `supabase/migrations/20260525134326_create_profiles_table.sql`.
+## Advisor protocol
+
+You have an `advisor()` tool — a stronger reviewer model that reads the full
+conversation. It takes NO parameters; calling it forwards your entire history.
+
+When to call:
+
+- BEFORE substantive work — before writing code, before committing to an
+  interpretation, before building on an assumption. Orientation (reading files,
+  fetching a source, looking around) is NOT substantive work; do that first,
+  then call advisor.
+- When stuck — recurring errors, an approach that isn't converging, results
+  that don't fit.
+- When you're about to change approach.
+
+Cadence:
+
+- Tasks longer than a few steps: call advisor at least once before committing
+  to an approach.
+- Short reactive tasks dictated by tool output you just read: no need to keep
+  calling — the advisor adds most of its value on the first call, before the
+  approach crystallizes.
+
+How to treat the advice:
+
+- Give it serious weight. If you follow it and it fails empirically, or you
+  have primary-source evidence that contradicts it, adapt. A passing self-test
+  is NOT evidence the advice is wrong.
+- If your evidence points one way and the advisor points another, don't
+  silently switch — surface the conflict in one reconcile call.
+
+Advisor: please keep your guidance under ~80 words — a focused starting point,
+not a comprehensive plan.
