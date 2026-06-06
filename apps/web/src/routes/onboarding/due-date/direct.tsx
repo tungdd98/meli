@@ -1,5 +1,6 @@
 import { createFileRoute, useNavigate } from '@tanstack/react-router';
-import { Card, CardContent, Stack, Typography } from '@mui/material';
+import { useState } from 'react';
+import { Alert, Card, CardContent, Stack, Typography } from '@mui/material';
 import {
   EventAvailableRounded,
   MedicalInformationRounded,
@@ -23,7 +24,20 @@ export const Route = createFileRoute('/onboarding/due-date/direct')({
 });
 
 const schema = z.object({
-  dueDate: z.custom<Dayjs>().nullable(),
+  dueDate: z
+    .custom<Dayjs>(
+      (v) => v === null || (dayjs.isDayjs(v) && v.isValid()),
+      'Ngày không hợp lệ',
+    )
+    .nullable()
+    .refine(
+      (v) => v === null || v.isAfter(dayjs(), 'day'),
+      'Ngày dự sinh phải ở tương lai',
+    )
+    .refine(
+      (v) => v === null || !v.isAfter(dayjs().add(300, 'day'), 'day'),
+      'Ngày dự sinh không hợp lệ',
+    ),
 });
 
 type FormValues = z.infer<typeof schema>;
@@ -32,6 +46,7 @@ function DueDateDirectPage() {
   const navigate = useNavigate();
   const user = useAuthStore((state) => state.user);
   const profile = useAuthStore((state) => state.profile);
+  const [saveError, setSaveError] = useState<string | null>(null);
 
   const {
     control,
@@ -49,15 +64,17 @@ function DueDateDirectPage() {
 
   const onSubmit = async (values: FormValues) => {
     if (!values.dueDate || !user) return;
+    setSaveError(null);
 
     const dueDateStr = values.dueDate.format('YYYY-MM-DD');
-    await profilesApi.update(user.id, { due_date: dueDateStr });
-    const currentProfile = useAuthStore.getState().profile;
-    if (currentProfile) {
-      useAuthStore
-        .getState()
-        ._setProfile({ ...currentProfile, due_date: dueDateStr });
+    const { error: updateError } = await profilesApi.update(user.id, {
+      due_date: dueDateStr,
+    });
+    if (updateError) {
+      setSaveError('Lưu thất bại. Vui lòng thử lại.');
+      return;
     }
+    useAuthStore.getState().updateProfile({ due_date: dueDateStr });
     navigate({ to: '/onboarding/weight' });
   };
 
@@ -79,6 +96,7 @@ function DueDateDirectPage() {
       />
 
       <Stack gap={2} sx={{ flex: 1 }}>
+        {saveError && <Alert severity="error">{saveError}</Alert>}
         <FormDatePicker name="dueDate" control={control} label="Ngày dự sinh" />
 
         <Card>

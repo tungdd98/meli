@@ -1,5 +1,6 @@
 import { createFileRoute, useNavigate } from '@tanstack/react-router';
-import { Card, CardContent, Stack, Typography } from '@mui/material';
+import { useState } from 'react';
+import { Alert, Card, CardContent, Stack, Typography } from '@mui/material';
 import { PregnantWomanRounded } from '@mui/icons-material';
 import dayjs, { type Dayjs } from 'dayjs';
 import { zodResolver } from '@hookform/resolvers/zod';
@@ -21,7 +22,20 @@ export const Route = createFileRoute('/onboarding/due-date/')({
 });
 
 const schema = z.object({
-  lmp: z.custom<Dayjs>().nullable(),
+  lmp: z
+    .custom<Dayjs>(
+      (v) => v === null || (dayjs.isDayjs(v) && v.isValid()),
+      'Ngày không hợp lệ',
+    )
+    .nullable()
+    .refine(
+      (v) => v === null || !v.isAfter(dayjs(), 'day'),
+      'Ngày kinh cuối không thể ở tương lai',
+    )
+    .refine(
+      (v) => v === null || !v.isBefore(dayjs().subtract(280, 'day'), 'day'),
+      'Ngày kinh cuối quá xa trong quá khứ',
+    ),
 });
 
 type FormValues = z.infer<typeof schema>;
@@ -30,6 +44,7 @@ function DueDateLmpPage() {
   const navigate = useNavigate();
   const user = useAuthStore((state) => state.user);
   const onboardingLmp = useAuthStore((state) => state.onboardingLmp);
+  const [saveError, setSaveError] = useState<string | null>(null);
 
   const {
     control,
@@ -46,15 +61,17 @@ function DueDateLmpPage() {
 
   const onSubmit = async (values: FormValues) => {
     if (!values.lmp || !user) return;
+    setSaveError(null);
 
     const nextDueDate = calcDueDateFromLmp(values.lmp.format('YYYY-MM-DD'));
-    await profilesApi.update(user.id, { due_date: nextDueDate });
-    const profile = useAuthStore.getState().profile;
-    if (profile) {
-      useAuthStore
-        .getState()
-        ._setProfile({ ...profile, due_date: nextDueDate });
+    const { error: updateError } = await profilesApi.update(user.id, {
+      due_date: nextDueDate,
+    });
+    if (updateError) {
+      setSaveError('Lưu thất bại. Vui lòng thử lại.');
+      return;
     }
+    useAuthStore.getState().updateProfile({ due_date: nextDueDate });
     useAuthStore.getState()._setOnboardingLmp(values.lmp.format('YYYY-MM-DD'));
     navigate({ to: '/onboarding/weight' });
   };
@@ -74,6 +91,7 @@ function DueDateLmpPage() {
       />
 
       <Stack gap={2} sx={{ flex: 1 }}>
+        {saveError && <Alert severity="error">{saveError}</Alert>}
         <FormDatePicker
           name="lmp"
           control={control}

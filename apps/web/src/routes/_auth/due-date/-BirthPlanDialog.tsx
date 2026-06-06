@@ -42,12 +42,7 @@ export function BirthPlanDialog({
       setError('Lưu thất bại. Vui lòng thử lại.');
       return;
     }
-    const profile = useAuthStore.getState().profile;
-    if (profile) {
-      useAuthStore
-        .getState()
-        ._setProfile({ ...profile, birth_plan: birthPlan });
-    }
+    useAuthStore.getState().updateProfile({ birth_plan: birthPlan });
     close();
   }
 

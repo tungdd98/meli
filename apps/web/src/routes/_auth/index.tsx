@@ -12,6 +12,7 @@ import {
 import { ChevronRightRounded } from '@mui/icons-material';
 import { useQuery } from '@tanstack/react-query';
 import dayjs from 'dayjs';
+import { usePregnancyInfo } from '@meli/hooks';
 import { useAuthStore } from '../../stores/auth.store';
 import { weightEntriesApi } from '@meli/api';
 import { AppHeader } from '@meli/ui';
@@ -19,17 +20,6 @@ import { AppHeader } from '@meli/ui';
 export const Route = createFileRoute('/_auth/')({
   component: HomePage,
 });
-
-function usePregnancyInfo(dueDate: string | null) {
-  if (!dueDate) return { week: 0, dayOfWeek: 0, daysLeft: 0, pct: 0 };
-  const pregnancyStart = dayjs(dueDate).subtract(40, 'week');
-  const daysPregnant = Math.max(0, dayjs().diff(pregnancyStart, 'day'));
-  const week = Math.floor(daysPregnant / 7);
-  const dayOfWeek = daysPregnant % 7;
-  const daysLeft = Math.max(0, dayjs(dueDate).diff(dayjs(), 'day'));
-  const pct = Math.min(1, daysPregnant / 280);
-  return { week, dayOfWeek, daysLeft, pct };
-}
 
 function useGreeting() {
   const hour = dayjs().hour();

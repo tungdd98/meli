@@ -12,6 +12,7 @@ import {
 } from '@mui/material';
 import { EditRounded } from '@mui/icons-material';
 import dayjs from 'dayjs';
+import { calcPregnancyWeek } from '@meli/utils';
 import { AppHeader } from '@meli/ui';
 import { useAuthStore } from '../../../stores/auth.store';
 import {
@@ -29,14 +30,6 @@ export const Route = createFileRoute('/_auth/due-date/')({
 });
 
 const TAB_ORDER: TabKey[] = ['trimester', 'risk', 'labor'];
-
-function weeksRemaining(dueDate: string | null): number | null {
-  if (!dueDate) return null;
-  const days = dayjs(dueDate)
-    .startOf('day')
-    .diff(dayjs().startOf('day'), 'day');
-  return Math.ceil(days / 7);
-}
 
 function InfoCard({
   label,
@@ -75,12 +68,11 @@ function DueDatePage() {
   const [birthPlanOpen, setBirthPlanOpen] = useState(false);
 
   const dueDate = profile?.due_date ?? null;
-  const remaining = weeksRemaining(dueDate);
-  // Derive the marker from the same weeksRemaining the screen displays so the
-  // marker, countdown, and home header all agree (gestationalWeek + remaining
-  // = 40, per spec §5), clamped to the 0–42 chart range.
-  const gestationalWeek =
-    remaining == null ? null : Math.min(42, Math.max(0, 40 - remaining));
+  const gestationalWeek = dueDate ? calcPregnancyWeek(dueDate) : null;
+  const daysLeft = dueDate
+    ? Math.max(0, dayjs(dueDate).diff(dayjs(), 'day'))
+    : null;
+  const weeksLeft = daysLeft != null ? Math.ceil(daysLeft / 7) : null;
 
   const dueDateLabel = dueDate ? dayjs(dueDate).format('D/M/YYYY') : 'Chưa đặt';
   const birthPlanLabel = profile?.birth_plan
@@ -88,10 +80,10 @@ function DueDatePage() {
     : BIRTH_PLAN_FALLBACK;
 
   const countdownText =
-    remaining == null
+    weeksLeft == null
       ? 'Hãy cập nhật ngày dự sinh của bạn'
-      : remaining > 0
-        ? `Chỉ còn ${remaining} tuần nữa!`
+      : weeksLeft > 0
+        ? `Chỉ còn ${weeksLeft} tuần nữa!`
         : 'Đã đến ngày dự sinh!';
 
   const content = tabContent[tab];
