@@ -93,7 +93,11 @@ function HomePage() {
             </Typography>
           </WidgetCard>
 
-          <WidgetCard label="ĐẾM NGƯỢC" sx={{ flex: 1 }}>
+          <WidgetCard
+            label="ĐẾM NGƯỢC"
+            onClick={() => navigate({ to: '/due-date' })}
+            sx={{ flex: 1 }}
+          >
             <Stack direction="row" alignItems="center" spacing={1.5}>
               <Stack spacing={0}>
                 <Typography variant="h4">{daysLeft}</Typography>
