@@ -35,4 +35,14 @@ export default defineConfig(() => ({
       external: ['react','react-dom','react/jsx-runtime']
     },
   },
+  resolve: {
+    alias: {
+      '@meli/utils': path.resolve(import.meta.dirname, '../../libs/utils/src/index.ts'),
+    },
+  },
+  test: {
+    globals: true,
+    environment: 'node',
+    include: ['src/**/*.{test,spec}.{js,mjs,cjs,ts,mts,cts,jsx,tsx}'],
+  },
 }));

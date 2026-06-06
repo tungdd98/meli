@@ -1,4 +1,6 @@
 import { createFileRoute, Outlet, redirect } from '@tanstack/react-router';
+import { LocalizationProvider } from '@mui/x-date-pickers';
+import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { useAuthStore } from '../stores/auth.store';
 import { AppBottomNav } from '../components/AppBottomNav';
 
@@ -15,9 +17,9 @@ export const Route = createFileRoute('/_auth')({
 
 function AuthLayout() {
   return (
-    <>
+    <LocalizationProvider dateAdapter={AdapterDayjs}>
       <Outlet />
       <AppBottomNav />
-    </>
+    </LocalizationProvider>
   );
 }

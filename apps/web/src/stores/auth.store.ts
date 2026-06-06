@@ -15,6 +15,7 @@ interface AuthState {
   _setSession: (session: Session | null) => void;
   _setProfile: (profile: Profile | null) => void;
   _setOnboardingLmp: (lmp: string | null) => void;
+  updateProfile: (partial: Partial<Profile>) => void;
   signIn: (email: string, password: string) => Promise<Profile | null>;
   signOut: () => Promise<void>;
 }
@@ -28,6 +29,10 @@ export const useAuthStore = create<AuthState>((set) => ({
   _setSession: (session) => set({ session, user: session?.user ?? null }),
   _setProfile: (profile) => set({ profile }),
   _setOnboardingLmp: (lmp) => set({ onboardingLmp: lmp }),
+  updateProfile: (partial) =>
+    set((state) => ({
+      profile: state.profile ? { ...state.profile, ...partial } : state.profile,
+    })),
   signIn: async (email, password) => {
     set({ isLoading: true });
     try {
