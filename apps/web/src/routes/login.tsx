@@ -21,7 +21,7 @@ import babyLogo from '../assets/baby.png';
 import { useAuthStore } from '../stores/auth.store';
 
 const loginSchema = z.object({
-  email: z.string().email('Email không hợp lệ'),
+  email: z.email('Email không hợp lệ'),
   password: z.string().min(6, 'Mật khẩu tối thiểu 6 ký tự'),
 });
 
@@ -131,24 +131,26 @@ function LoginPage() {
                 type={showPassword ? 'text' : 'password'}
                 placeholder="••••••••"
                 autoComplete="current-password"
-                InputProps={{
-                  endAdornment: (
-                    <InputAdornment position="end">
-                      <IconButton
-                        aria-label={
-                          showPassword ? 'Ẩn mật khẩu' : 'Hiện mật khẩu'
-                        }
-                        edge="end"
-                        onClick={() => setShowPassword((current) => !current)}
-                      >
-                        {showPassword ? (
-                          <VisibilityOffRounded />
-                        ) : (
-                          <VisibilityRounded />
-                        )}
-                      </IconButton>
-                    </InputAdornment>
-                  ),
+                slotProps={{
+                  input: {
+                    endAdornment: (
+                      <InputAdornment position="end">
+                        <IconButton
+                          aria-label={
+                            showPassword ? 'Ẩn mật khẩu' : 'Hiện mật khẩu'
+                          }
+                          edge="end"
+                          onClick={() => setShowPassword((current) => !current)}
+                        >
+                          {showPassword ? (
+                            <VisibilityOffRounded />
+                          ) : (
+                            <VisibilityRounded />
+                          )}
+                        </IconButton>
+                      </InputAdornment>
+                    ),
+                  },
                 }}
               />
               {error && <Alert severity="error">{error}</Alert>}
