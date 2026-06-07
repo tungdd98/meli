@@ -99,7 +99,9 @@ export function ListPickerDialog({ open, userId, onClose, onSelect }: Props) {
           <ListItemButton onClick={() => setNewListOpen(true)}>
             <ListItemText
               primary="Danh sách mới"
-              primaryTypographyProps={{ color: 'primary', fontWeight: 600 }}
+              slotProps={{
+                primary: { color: 'primary', fontWeight: 600 },
+              }}
             />
           </ListItemButton>
           <Divider />

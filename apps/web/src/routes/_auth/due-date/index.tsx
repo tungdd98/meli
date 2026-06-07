@@ -72,19 +72,21 @@ function DueDatePage() {
   const daysLeft = dueDate
     ? Math.max(0, dayjs(dueDate).diff(dayjs(), 'day'))
     : null;
-  const weeksLeft = daysLeft != null ? Math.ceil(daysLeft / 7) : null;
+  const weeksLeft = daysLeft == null ? null : Math.ceil(daysLeft / 7);
 
   const dueDateLabel = dueDate ? dayjs(dueDate).format('D/M/YYYY') : 'Chưa đặt';
   const birthPlanLabel = profile?.birth_plan
     ? birthPlanLabels[profile.birth_plan]
     : BIRTH_PLAN_FALLBACK;
 
-  const countdownText =
-    weeksLeft == null
-      ? 'Hãy cập nhật ngày dự sinh của bạn'
-      : weeksLeft > 0
-        ? `Chỉ còn ${weeksLeft} tuần nữa!`
-        : 'Đã đến ngày dự sinh!';
+  let countdownText: string;
+  if (weeksLeft == null) {
+    countdownText = 'Hãy cập nhật ngày dự sinh của bạn';
+  } else if (weeksLeft > 0) {
+    countdownText = `Chỉ còn ${weeksLeft} tuần nữa!`;
+  } else {
+    countdownText = 'Đã đến ngày dự sinh!';
+  }
 
   const content = tabContent[tab];
 

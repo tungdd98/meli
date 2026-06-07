@@ -33,7 +33,7 @@ export function FormDatePicker<TFieldValues extends FieldValues>({
             textField: {
               inputRef: ref,
               variant: 'outlined',
-              InputLabelProps: { shrink: true },
+              slotProps: { inputLabel: { shrink: true } },
               fullWidth: true,
               error: !!fieldState.error,
               helperText: fieldState.error?.message ?? helperText,

@@ -33,6 +33,71 @@ export function TaskSummaryCard({ userId }: Props) {
   const nextTask =
     pendingTasks.find((t) => t.scheduled_date != null) ?? pendingTasks[0];
 
+  function renderContent() {
+    if (isLoading) {
+      return <Skeleton variant="text" width="80%" />;
+    }
+
+    if (isError) {
+      return (
+        <Typography variant="caption" color="text.disabled" textAlign="center">
+          Không thể tải
+        </Typography>
+      );
+    }
+
+    if (pendingTasks.length === 0) {
+      return (
+        <Stack alignItems="center" spacing={0.5} sx={{ width: '100%' }}>
+          <ChecklistRounded sx={{ color: 'text.disabled', fontSize: 28 }} />
+          <Typography
+            variant="caption"
+            color="text.disabled"
+            textAlign="center"
+          >
+            Chưa có việc cần làm
+          </Typography>
+          <Button
+            size="small"
+            color="primary"
+            onClick={(e) => {
+              e.stopPropagation();
+              navigate({
+                to: '/tasks/new',
+                search: { taskId: undefined },
+              });
+            }}
+            sx={{ fontSize: '0.7rem', py: 0, minHeight: 0 }}
+          >
+            Tạo ngay
+          </Button>
+        </Stack>
+      );
+    }
+
+    return (
+      <Stack spacing={0}>
+        <Typography variant="h4">{pendingTasks.length}</Typography>
+        <Typography variant="caption" color="text.secondary">
+          việc cần làm
+        </Typography>
+        {nextTask && (
+          <Typography
+            variant="caption"
+            color="text.secondary"
+            noWrap
+            sx={{ maxWidth: 120, mt: 0.5 }}
+          >
+            {nextTask.title}
+            {nextTask.scheduled_date
+              ? ` · ${dayjs(nextTask.scheduled_date).format('DD/MM')}`
+              : ''}
+          </Typography>
+        )}
+      </Stack>
+    );
+  }
+
   return (
     <Card>
       <CardActionArea
@@ -63,64 +128,7 @@ export function TaskSummaryCard({ userId }: Props) {
           <Divider sx={{ borderColor: 'coral.100' }} />
 
           <Box sx={{ flex: 1, display: 'flex', alignItems: 'center' }}>
-            {isLoading ? (
-              <Skeleton variant="text" width="80%" />
-            ) : isError ? (
-              <Typography
-                variant="caption"
-                color="text.disabled"
-                textAlign="center"
-              >
-                Không thể tải
-              </Typography>
-            ) : pendingTasks.length === 0 ? (
-              <Stack alignItems="center" spacing={0.5} sx={{ width: '100%' }}>
-                <ChecklistRounded
-                  sx={{ color: 'text.disabled', fontSize: 28 }}
-                />
-                <Typography
-                  variant="caption"
-                  color="text.disabled"
-                  textAlign="center"
-                >
-                  Chưa có việc cần làm
-                </Typography>
-                <Button
-                  size="small"
-                  color="primary"
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    navigate({
-                      to: '/tasks/new',
-                      search: { taskId: undefined },
-                    });
-                  }}
-                  sx={{ fontSize: '0.7rem', py: 0, minHeight: 0 }}
-                >
-                  Tạo ngay
-                </Button>
-              </Stack>
-            ) : (
-              <Stack spacing={0}>
-                <Typography variant="h4">{pendingTasks.length}</Typography>
-                <Typography variant="caption" color="text.secondary">
-                  việc cần làm
-                </Typography>
-                {nextTask && (
-                  <Typography
-                    variant="caption"
-                    color="text.secondary"
-                    noWrap
-                    sx={{ maxWidth: 120, mt: 0.5 }}
-                  >
-                    {nextTask.title}
-                    {nextTask.scheduled_date
-                      ? ` · ${dayjs(nextTask.scheduled_date).format('DD/MM')}`
-                      : ''}
-                  </Typography>
-                )}
-              </Stack>
-            )}
+            {renderContent()}
           </Box>
         </CardContent>
       </CardActionArea>

@@ -48,14 +48,18 @@ export function TaskBottomSheet({
   const [confirmDeleteOpen, setConfirmDeleteOpen] = useState(false);
 
   const toggleImportantMutation = useMutation({
-    mutationFn: () =>
-      tasksApi.update(task!.id, { is_important: !task!.is_important }),
-    onSuccess: () => onToggleImportant(task!),
+    mutationFn: () => {
+      if (!task) throw new Error('Missing task');
+      return tasksApi.update(task.id, { is_important: !task.is_important });
+    },
+    onSuccess: () => task && onToggleImportant(task),
   });
 
   const deleteMutation = useMutation({
-    mutationFn: () =>
-      Promise.resolve(tasksApi.remove(task!.id)).then(() => undefined),
+    mutationFn: () => {
+      if (!task) throw new Error('Missing task');
+      return Promise.resolve(tasksApi.remove(task.id)).then(() => undefined);
+    },
     onSuccess: () => {
       setConfirmDeleteOpen(false);
       onDeleted();
@@ -70,11 +74,13 @@ export function TaskBottomSheet({
         anchor="bottom"
         open={open}
         onClose={onClose}
-        PaperProps={{
-          sx: {
-            borderTopLeftRadius: shape.lg,
-            borderTopRightRadius: shape.lg,
-            pb: 2,
+        slotProps={{
+          paper: {
+            sx: {
+              borderTopLeftRadius: shape.lg,
+              borderTopRightRadius: shape.lg,
+              pb: 2,
+            },
           },
         }}
       >

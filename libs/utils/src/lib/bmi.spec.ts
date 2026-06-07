@@ -25,16 +25,14 @@ describe('calcWeightGainTip', () => {
   });
 
   it('underweight (BMI < 18.5) có min gain cao hơn normal', () => {
-    const getMin = (tip: string) =>
-      parseFloat(tip.match(/khoảng ([\d.]+)/)![1]);
+    const getMin = (tip: string) => Number(/khoảng ([\d.]+)/.exec(tip)?.[1]);
     expect(getMin(calcWeightGainTip(17, 20))).toBeGreaterThan(
       getMin(calcWeightGainTip(22, 20)),
     );
   });
 
   it('overweight (BMI >= 25) có min gain thấp hơn normal', () => {
-    const getMin = (tip: string) =>
-      parseFloat(tip.match(/khoảng ([\d.]+)/)![1]);
+    const getMin = (tip: string) => Number(/khoảng ([\d.]+)/.exec(tip)?.[1]);
     expect(getMin(calcWeightGainTip(27, 20))).toBeLessThan(
       getMin(calcWeightGainTip(22, 20)),
     );

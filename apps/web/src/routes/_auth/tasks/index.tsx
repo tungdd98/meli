@@ -34,7 +34,10 @@ function TaskListScreen() {
 
   const { data, isLoading, isError, refetch } = useQuery({
     queryKey: ['tasks', user?.id],
-    queryFn: () => tasksApi.listByUser(user!.id),
+    queryFn: () => {
+      if (!user) throw new Error('Missing user');
+      return tasksApi.listByUser(user.id);
+    },
     enabled: !!user,
   });
 
@@ -212,10 +215,15 @@ function TaskListScreen() {
                               ? dayjs(task.scheduled_date).format('DD/MM/YYYY')
                               : undefined
                           }
-                          primaryTypographyProps={{
-                            sx: task.is_completed
-                              ? { textDecoration: 'line-through', opacity: 0.5 }
-                              : {},
+                          slotProps={{
+                            primary: {
+                              sx: task.is_completed
+                                ? {
+                                    textDecoration: 'line-through',
+                                    opacity: 0.5,
+                                  }
+                                : {},
+                            },
                           }}
                         />
                       </ListItemButton>
@@ -259,7 +267,7 @@ function TaskListScreen() {
             prev ? { ...prev, is_completed: !prev.is_completed } : prev,
           );
         }}
-        onToggleImportant={(task) => {
+        onToggleImportant={() => {
           queryClient.invalidateQueries({ queryKey: ['tasks', user?.id] });
           setSelectedTask((prev) =>
             prev ? { ...prev, is_important: !prev.is_important } : prev,

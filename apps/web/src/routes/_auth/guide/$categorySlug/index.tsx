@@ -15,7 +15,7 @@ import { getCategory, getWeeks } from '../-data';
 export const Route = createFileRoute('/_auth/guide/$categorySlug/')({
   beforeLoad: ({ params }) => {
     const category = getCategory(params.categorySlug);
-    if (!category || !category.available) {
+    if (!category?.available) {
       throw redirect({ to: '/guide' });
     }
   },

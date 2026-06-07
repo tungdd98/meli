@@ -29,11 +29,11 @@ const schema = z.object({
     )
     .nullable()
     .refine(
-      (v) => v === null || !v.isAfter(dayjs(), 'day'),
+      (v) => !v?.isAfter(dayjs(), 'day'),
       'Ngày kinh cuối không thể ở tương lai',
     )
     .refine(
-      (v) => v === null || !v.isBefore(dayjs().subtract(280, 'day'), 'day'),
+      (v) => !v?.isBefore(dayjs().subtract(280, 'day'), 'day'),
       'Ngày kinh cuối quá xa trong quá khứ',
     ),
 });
