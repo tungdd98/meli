@@ -129,7 +129,14 @@ function HomePage() {
             </WidgetCard>
           </Stack>
 
-          {user && <TaskSummaryCard userId={user.id} />}
+          {user && (
+            <Stack direction="row" spacing={1.5}>
+              <Box sx={{ flex: 1 }}>
+                <TaskSummaryCard userId={user.id} />
+              </Box>
+              <Box sx={{ flex: 1 }} />
+            </Stack>
+          )}
         </Stack>
       </Box>
     </Box>
