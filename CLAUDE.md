@@ -70,37 +70,3 @@ Local development uses the Supabase CLI:
 ```bash
 supabase db push       # reset DB and replay all migrations
 ```
-
-## Advisor protocol
-
-You have an `advisor()` tool — a stronger reviewer model that reads the full
-conversation. It takes NO parameters; calling it forwards your entire history.
-
-When to call:
-
-- BEFORE substantive work — before writing code, before committing to an
-  interpretation, before building on an assumption. Orientation (reading files,
-  fetching a source, looking around) is NOT substantive work; do that first,
-  then call advisor.
-- When stuck — recurring errors, an approach that isn't converging, results
-  that don't fit.
-- When you're about to change approach.
-
-Cadence:
-
-- Tasks longer than a few steps: call advisor at least once before committing
-  to an approach.
-- Short reactive tasks dictated by tool output you just read: no need to keep
-  calling — the advisor adds most of its value on the first call, before the
-  approach crystallizes.
-
-How to treat the advice:
-
-- Give it serious weight. If you follow it and it fails empirically, or you
-  have primary-source evidence that contradicts it, adapt. A passing self-test
-  is NOT evidence the advice is wrong.
-- If your evidence points one way and the advisor points another, don't
-  silently switch — surface the conflict in one reconcile call.
-
-Advisor: please keep your guidance under ~80 words — a focused starting point,
-not a comprehensive plan.
