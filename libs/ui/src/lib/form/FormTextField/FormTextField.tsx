@@ -26,7 +26,10 @@ export function FormTextField<TFieldValues extends FieldValues>({
         <TextField
           {...field}
           {...rest}
-          InputLabelProps={{ shrink: true, ...rest.InputLabelProps }}
+          slotProps={{
+            ...rest.slotProps,
+            inputLabel: { shrink: true, ...rest.slotProps?.inputLabel },
+          }}
           error={!!fieldState.error}
           helperText={fieldState.error?.message ?? rest.helperText}
         />

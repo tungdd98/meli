@@ -35,7 +35,7 @@ const schema = z.object({
       'Ngày dự sinh phải ở tương lai',
     )
     .refine(
-      (v) => v === null || !v.isAfter(dayjs().add(300, 'day'), 'day'),
+      (v) => !v?.isAfter(dayjs().add(300, 'day'), 'day'),
       'Ngày dự sinh không hợp lệ',
     ),
 });

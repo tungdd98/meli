@@ -39,7 +39,7 @@ const schema = z
     url: z
       .string()
       .optional()
-      .refine((v) => !v || z.string().url().safeParse(v).success, {
+      .refine((v) => !v || z.url().safeParse(v).success, {
         message: 'URL không hợp lệ',
       }),
     details: z.string().optional(),
@@ -51,7 +51,7 @@ const schema = z
   .superRefine((data, ctx) => {
     if (data.enable_notification && !data.scheduled_date) {
       ctx.addIssue({
-        code: z.ZodIssueCode.custom,
+        code: 'custom',
         path: ['enable_notification'],
         message: 'Vui lòng chọn ngày trước',
       });
@@ -74,13 +74,19 @@ function TaskFormScreen() {
 
   const { data: taskData } = useQuery({
     queryKey: ['task', taskId],
-    queryFn: () => tasksApi.getById(taskId!),
+    queryFn: () => {
+      if (!taskId) throw new Error('Missing taskId');
+      return tasksApi.getById(taskId);
+    },
     enabled: isEdit,
   });
 
   const { data: userListsData } = useQuery({
     queryKey: ['taskLists', user?.id],
-    queryFn: () => taskListsApi.listByUser(user!.id),
+    queryFn: () => {
+      if (!user) throw new Error('Missing user');
+      return taskListsApi.listByUser(user.id);
+    },
     enabled: !!user && isEdit,
   });
 
@@ -131,6 +137,8 @@ function TaskFormScreen() {
 
   const saveMutation = useMutation({
     mutationFn: (values: FormValues) => {
+      if (!selectedList) throw new Error('Missing list');
+
       const notify_at =
         values.enable_notification &&
         values.scheduled_date &&
@@ -142,7 +150,7 @@ function TaskFormScreen() {
           : null;
 
       const payload = {
-        list_id: selectedList!.id,
+        list_id: selectedList.id,
         title: values.title,
         url: values.url || null,
         details: values.details || null,
@@ -156,8 +164,8 @@ function TaskFormScreen() {
         is_important: values.is_important,
       };
 
-      return isEdit
-        ? tasksApi.update(taskId!, payload)
+      return taskId
+        ? tasksApi.update(taskId, payload)
         : tasksApi.create(payload);
     },
     onSuccess: () => {
@@ -225,24 +233,26 @@ function TaskFormScreen() {
             value={selectedList?.name ?? ''}
             placeholder="Chọn danh sách"
             onClick={() => setListPickerOpen(true)}
-            InputProps={{
-              readOnly: true,
-              endAdornment: (
-                <InputAdornment position="end">
-                  {selectedList && (
-                    <Box
-                      sx={{
-                        width: 10,
-                        height: 10,
-                        borderRadius: shape.full,
-                        bgcolor: selectedList.color,
-                        mr: 0.5,
-                      }}
-                    />
-                  )}
-                  <ChevronRightRounded sx={{ color: 'text.secondary' }} />
-                </InputAdornment>
-              ),
+            slotProps={{
+              input: {
+                readOnly: true,
+                endAdornment: (
+                  <InputAdornment position="end">
+                    {selectedList && (
+                      <Box
+                        sx={{
+                          width: 10,
+                          height: 10,
+                          borderRadius: shape.full,
+                          bgcolor: selectedList.color,
+                          mr: 0.5,
+                        }}
+                      />
+                    )}
+                    <ChevronRightRounded sx={{ color: 'text.secondary' }} />
+                  </InputAdornment>
+                ),
+              },
             }}
             fullWidth
             sx={{ cursor: 'pointer', '& *': { cursor: 'pointer' } }}
@@ -290,7 +300,7 @@ function TaskFormScreen() {
 
         {/* Notification toggle */}
         <Tooltip
-          title={!scheduledDate ? 'Vui lòng chọn ngày trước' : ''}
+          title={scheduledDate ? '' : 'Vui lòng chọn ngày trước'}
           placement="top"
         >
           <span>
